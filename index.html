@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ian Era Studio — Sesiones de Ableton Live</title>
+<meta name="description" content="Recreo temas de progressive house en Ableton Live y vendo la sesión completa: cada pista, cada dispositivo, cada línea de automatización.">
+
+<link rel="icon" href="img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="img/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="img/apple-touch-icon-180.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ian Era Studio">
+<meta property="og:description" content="Sesiones completas de Ableton Live de progressive house.">
+<meta property="og:image" content="img/hero.jpg">
+<meta name="theme-color" content="#000000">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
+     o quien ya haya visitado la web seguirá viendo la versión antigua. -->
+<link rel="stylesheet" href="css/estilo.css?v=5">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="mk" viewBox="0 0 76 64">
+    <rect x="0" y="0" width="11" height="64" fill="currentColor"/>
+    <rect x="20" y="0" width="56" height="13" fill="currentColor"/>
+    <rect x="20" y="25.5" width="35" height="13" fill="currentColor"/>
+    <rect x="20" y="51" width="46" height="13" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<header class="bar" id="bar">
+  <a class="lock" href="#top" aria-label="Ian Era Studio — inicio">
+    <svg width="36" height="30" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
+    <span>Ian&nbsp;Era</span>
+  </a>
+  <nav class="top et" aria-label="Principal">
+    <a href="#sesiones" data-sec>Sesiones</a>
+    <a href="#videos" data-sec>Vídeos</a>
+    <a href="#catalogo" data-sec>Catálogo</a>
+    <a href="#bio" data-sec>Bio</a>
+    <a href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">YouTube<sup>↗</sup></a>
+  </nav>
+</header>
+
+<nav class="rail" id="rail" aria-label="Redes"></nav>
+
+<span id="top"></span>
+
+<!-- 1 · HÉROE — foto a sangre, sin una palabra -->
+<section class="hero">
+  <img src="img/hero.jpg" alt="Ian Era en el estudio" fetchpriority="high" width="1480" height="704">
+  <div class="fund"></div>
+  <div class="cue et" aria-hidden="true"><i></i><span>Baja</span></div>
+</section>
+
+<!-- 2 · SESIONES — carril horizontal -->
+<section class="bl bg2" id="sesiones">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv">Sesiones</h2>
+      <span class="et n rv" id="ses-n">04</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="carril-caja rv">
+      <div class="carril" id="carril" role="group" aria-label="Sesiones — desplaza para ver más"></div>
+    </div>
+    <div class="flechas rv">
+      <button id="car-antes" type="button" aria-label="Sesión anterior">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button id="car-luego" type="button" aria-label="Sesión siguiente">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · VÍDEOS -->
+<section class="bl bg1" id="videos">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv">Vídeos</h2>
+      <span class="et n rv">Cada dos jueves</span>
+    </div>
+    <div class="lista rv" id="videos-lista"></div>
+  </div>
+</section>
+
+<!-- 4 · DECLARACIÓN -->
+<section class="bl bg3">
+  <div class="wrap">
+    <p class="dp h-dec dec rv">Lo que hay dentro es lo que suena.</p>
+    <p class="dec-sub rv">Sesiones completas de Ableton Live: cada pista, cada dispositivo, cada línea
+      de automatización, tal y como se construyeron. Sin limpiar, sin congelar, sin maquillar para la foto.</p>
+  </div>
+</section>
+
+<!-- 5-8 · Cuatro fotos a sangre, sin texto -->
+<div class="foto alta"><img src="img/teclado.jpg" alt="" loading="lazy" width="1040" height="945"></div>
+<div class="foto baja n3"><img src="img/ondas.jpg" alt="" loading="lazy" width="1200" height="490"></div>
+<div class="foto alta"><img src="img/mesa.jpg" alt="" loading="lazy" width="1040" height="945"></div>
+<div class="foto baja n3"><img src="img/luz.jpg" alt="" loading="lazy" width="900" height="324"></div>
+
+<!-- 9 · CATÁLOGO — todo junto, con precio y compra directa -->
+<section class="bl bg2" id="catalogo">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv">Catálogo</h2>
+      <span class="et n rv">Descarga inmediata</span>
+    </div>
+    <div class="lista rv" id="catalogo-lista"></div>
+    <p class="cat-nota rv">Pago y entrega gestionados por Gumroad.
+      Archivos <b>.als</b> de Ableton Live.</p>
+  </div>
+</section>
+
+<!-- 10 · BIO -->
+<section class="bl bg1" id="bio">
+  <div class="wrap">
+    <div class="cab"><h2 class="dp h-sec rv">Bio</h2></div>
+    <div class="bio">
+      <div class="rt rv"><img src="img/retrato.jpg" alt="Retrato de Ian Era" loading="lazy" width="470" height="704"></div>
+      <div>
+        <p class="rv">Recreo temas de progressive house desde cero para entender por qué funcionan.
+          No de oído por encima: <b>nota por nota, cadena por cadena</b>, hasta que el arreglo aguanta
+          al lado del original.</p>
+        <p class="rv">De ese proceso salen dos cosas. Un vídeo cada dos semanas donde abro la sesión y
+          enseño las tres decisiones que sostienen el tema. Y <b>el proyecto entero</b>, por si prefieres
+          abrirlo tú y trastear dentro.</p>
+        <p class="rv">No son stems ni un pack de loops. Es el archivo con el que trabajo: el arreglo
+          completo, las cadenas sin congelar y la automatización en su sitio.</p>
+        <p class="rv"><a class="btn gh" href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">Ver el canal ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div class="mrc">
+        <svg width="38" height="32" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
+        <p>Sesiones completas de Ableton Live de progressive house.</p>
+      </div>
+      <div class="fcol">
+        <span class="t et">Sesiones</span>
+        <a href="#catalogo">Catálogo</a>
+        <button type="button" data-gum="bundle">Los cuatro proyectos</button>
+        <button type="button" data-gum="gratis">MIDI + preset gratis</button>
+      </div>
+      <div class="fcol">
+        <span class="t et">Canal</span>
+        <a href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://ianerastudio.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
+      </div>
+    </div>
+    <div class="fbot et">
+      <span>© 2026 Ian Era Studio</span>
+      <span>Pago y entrega · Gumroad</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cta-fijo" id="cta-fijo">
+  <button class="btn" type="button" data-gum="bundle">Ver la tienda ↗</button>
+</div>
+
+<div class="velo" id="velo"></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="p-tit" hidden>
+  <button class="cerrar" id="cerrar" type="button" aria-label="Cerrar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="pin" id="pin"></div>
+</div>
+
+<!-- Anclas que abre el overlay de Gumroad. Si el script no carga, navegan al producto. -->
+<div class="gr-slot" id="gr-slots" aria-hidden="true"></div>
+
+<script src="https://gumroad.com/js/gumroad.js" defer></script>
+<script src="js/datos.js?v=5"></script>
+<script src="js/sitio.js?v=5"></script>
+</body>
+</html>

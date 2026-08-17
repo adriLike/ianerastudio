@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 64" width="76" height="64"
+     role="img" aria-label="Ian Era">
+  <title>Ian Era</title>
+  <rect x="0" y="0" width="11" height="64" fill="currentColor"/>
+  <rect x="20" y="0" width="56" height="13" fill="currentColor"/>
+  <rect x="20" y="25.5" width="35" height="13" fill="currentColor"/>
+  <rect x="20" y="51" width="46" height="13" fill="currentColor"/>
+</svg>

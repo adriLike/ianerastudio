@@ -1,0 +1,350 @@
+/* ============================================================
+   Ian Era Studio
+   Tres negros y tinta. Cero acento de marca, cero degradado.
+   Todo el color entra por las fotos.
+   ============================================================ */
+
+:root{
+  --n1:#000000;
+  --n2:#101010;
+  --n3:#181818;
+  --tinta:#ffffff;
+  --tinta70:rgba(255,255,255,.70);
+  --tinta45:rgba(255,255,255,.45);
+  --linea:rgba(255,255,255,.14);
+
+  /* Acento. Blanco por defecto = negro puro y blanco, como Lento y como el
+     manual de marca. Streampass usa un amarillo reservado SOLO al botón de
+     compra: si lo quieres, cambia estas dos líneas y nada más. */
+  --acento:#ffffff;
+  --acento-tinta:#000000;
+
+  --mono:"Chivo Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --display:"Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.8,.3,1);
+
+  /* Iguala el grado entre el retrato cálido y el estudio en blanco y negro. */
+  --grado:saturate(.82) contrast(1.04);
+
+  --lat:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--n1);color:var(--tinta);
+  font-family:var(--mono);font-weight:300;font-size:15px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:1px solid var(--tinta);outline-offset:5px}
+
+/* ---------- primitivas tipográficas ---------- */
+.et{font-family:var(--mono);font-weight:400;text-transform:uppercase;
+    font-size:11px;letter-spacing:.02em}
+.dp{font-family:var(--display);font-weight:700;text-transform:uppercase;
+    letter-spacing:-.035em;line-height:.95;margin:0}
+.h-sec{font-size:clamp(38px,9vw,104px)}
+.h-dec{font-size:clamp(26px,4.6vw,58px);line-height:1.08;letter-spacing:-.03em}
+
+.rv{opacity:0;transform:translateY(16px);
+    transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.on{opacity:1;transform:none}
+
+/* ---------- barra ---------- */
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:20px;
+     padding:24px var(--lat);transition:background .4s ease,padding .4s ease}
+.bar.solid{background:rgba(0,0,0,.86);backdrop-filter:blur(14px);
+           padding:15px var(--lat);border-bottom:1px solid var(--linea)}
+.bar .lock{display:flex;align-items:center;gap:14px;text-decoration:none;line-height:0}
+.bar .lock span{font-family:var(--mono);font-weight:300;font-size:13.5px;text-transform:uppercase;
+                letter-spacing:.34em;line-height:1;padding-top:1px}
+nav.top{margin-left:auto;display:flex;gap:clamp(16px,3vw,44px);align-items:center;
+        font-size:15px;letter-spacing:.09em}
+nav.top a{position:relative;text-decoration:none;color:var(--tinta70);transition:color .25s}
+nav.top a:hover,nav.top a:focus-visible{color:var(--tinta)}
+/* dónde estás. La rayita crece desde la izquierda al entrar en la sección. */
+nav.top a[data-sec]::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease)}
+nav.top a[aria-current="true"]{color:var(--tinta)}
+nav.top a[aria-current="true"]::after{transform:scaleX(1)}
+nav.top a sup{font-size:8px;margin-left:2px}
+@media(max-width:820px){
+  .bar .lock span{display:none}
+  nav.top a[data-sec]{display:none}
+}
+
+/* ============================================================
+   RAÍL DE REDES — columna fija a la izquierda, como en Lento.
+   Sin caja: una línea vertical y los iconos colgando de ella.
+   ============================================================ */
+.rail{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:50;
+      display:flex;flex-direction:column;align-items:center;gap:4px;
+      padding:16px 12px;filter:drop-shadow(0 2px 14px rgba(0,0,0,.85))}
+/* la línea de la que cuelgan, arriba y abajo */
+.rail::before,.rail::after{content:"";width:1px;height:clamp(30px,6vh,58px);
+      background:linear-gradient(var(--linea),transparent)}
+.rail::after{background:linear-gradient(transparent,var(--linea))}
+.rail a{width:46px;height:44px;display:grid;place-items:center;color:var(--tinta45);
+        transition:color .25s ease,transform .25s var(--ease)}
+.rail a:hover{color:var(--tinta);transform:translateX(2px)}
+.rail a:focus-visible{outline:1px solid var(--tinta);outline-offset:-4px}
+/* por debajo de 1100 se cruzaría con el contenido; el pie ya lleva los enlaces */
+@media(max-width:1100px){.rail{display:none}}
+
+/* ---------- foto a sangre ---------- */
+.foto{position:relative;overflow:hidden;background:var(--n2)}
+.foto img{width:100%;height:100%;object-fit:cover;filter:var(--grado)}
+.foto.alta{height:clamp(420px,64vh,700px)}
+.foto.baja{height:clamp(200px,32vh,360px)}
+.foto.n3{background:var(--n3)}
+
+.hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--n2)}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;filter:var(--grado)}
+.hero .fund{position:absolute;inset:0;background:linear-gradient(180deg,
+  rgba(0,0,0,.62) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 62%,rgba(0,0,0,.92) 100%)}
+.cue{position:absolute;left:var(--lat);bottom:26px;display:flex;align-items:center;
+     gap:12px;color:var(--tinta45)}
+.cue i{display:block;width:40px;height:1px;background:currentColor;transform-origin:left;
+       animation:cue 3.2s var(--ease) infinite}
+@keyframes cue{
+  0%{transform:scaleX(0)}45%{transform:scaleX(1)}
+  55%{transform:scaleX(1);transform-origin:right}100%{transform:scaleX(0);transform-origin:right}
+}
+
+/* ============================================================
+   CORTINA — el héroe se queda clavado y todo lo demás sube por
+   encima. Es el efecto de «uncover»: no se mueve nada raro, solo
+   deja de desplazarse lo de detrás.
+   ============================================================ */
+.hero{position:sticky;top:0;z-index:0}
+/* todo lo que va después tiene que pasar por delante */
+section.bl,.foto,footer{position:relative;z-index:1}
+
+/* ---------- secciones ---------- */
+section.bl{padding:clamp(70px,11vw,140px) var(--lat);scroll-margin-top:76px}
+.bg1{background:var(--n1)}.bg2{background:var(--n2)}.bg3{background:var(--n3)}
+.wrap{max-width:1180px;margin:0 auto}
+.cab{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(34px,5vw,60px)}
+.cab .n{margin-left:auto;color:var(--tinta45)}
+
+/* ============================================================
+   CARRIL DE SESIONES — scroll horizontal
+   Sin márgenes negativos: el carril vive dentro del contenedor,
+   así la primera tarjeta cuadra con el titular por construcción.
+   Las de la derecha se cortan solas y eso ya avisa de que hay más.
+   ============================================================ */
+.carril-caja{position:relative}
+.carril{display:flex;gap:clamp(12px,1.6vw,20px);overflow-x:auto;overflow-y:hidden;
+        scroll-snap-type:x mandatory;scroll-behavior:smooth;
+        padding-bottom:4px;
+        scrollbar-width:none;-ms-overflow-style:none}
+.carril::-webkit-scrollbar{display:none}
+
+.tarjeta{scroll-snap-align:start;flex:0 0 clamp(250px,30vw,340px);
+         background:var(--n1);border:1px solid var(--linea);margin:0;padding:0;
+         cursor:pointer;font:inherit;color:inherit;text-align:left;
+         display:flex;flex-direction:column;transition:border-color .3s ease,background .3s ease}
+.tarjeta:hover,.tarjeta:focus-visible{background:var(--n3);border-color:rgba(255,255,255,.3)}
+.tarjeta .mini{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--n3);
+               border-bottom:1px solid var(--linea)}
+.tarjeta .mini img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.tarjeta:hover .mini img{transform:scale(1.04)}
+/* sin captura todavía: el hueco lleva el número, no un rectángulo vacío */
+.tarjeta .mini.vacia{display:grid;place-items:center}
+.tarjeta .mini.vacia b{font-family:var(--display);font-weight:700;font-size:clamp(44px,7vw,68px);
+                       letter-spacing:-.05em;color:rgba(255,255,255,.09);line-height:1}
+.tarjeta .cuerpo{padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;flex:1}
+.tarjeta .top{display:flex;align-items:baseline;gap:12px;color:var(--tinta45);margin-bottom:16px}
+.tarjeta .top .yr{margin-left:auto}
+.tarjeta h3{font-family:var(--display);font-weight:700;text-transform:uppercase;
+            letter-spacing:-.035em;line-height:.98;font-size:clamp(22px,2.6vw,30px);margin:0}
+.tarjeta .art{margin:10px 0 0;color:var(--tinta70);font-size:12.5px;line-height:1.5}
+.tarjeta .ens{margin:12px 0 0;color:var(--tinta70);font-size:12.5px;line-height:1.55}
+.tarjeta .pie{display:flex;align-items:baseline;gap:12px;margin-top:auto;padding-top:18px;
+              color:var(--tinta45)}
+.tarjeta .pie .ab{margin-left:auto;color:var(--tinta);opacity:0;transform:translateX(-5px);
+                  transition:opacity .3s,transform .3s var(--ease)}
+.tarjeta:hover .pie .ab,.tarjeta:focus-visible .pie .ab{opacity:1;transform:none}
+
+/* flechas — solo donde hay ratón */
+.flechas{display:flex;gap:8px;margin-top:22px}
+.flechas button{width:42px;height:42px;border:1px solid var(--linea);background:transparent;
+                color:var(--tinta);cursor:pointer;display:grid;place-items:center;
+                transition:background .25s,border-color .25s,opacity .25s}
+.flechas button:hover:not(:disabled){background:var(--n3);border-color:var(--tinta)}
+.flechas button:disabled{opacity:.28;cursor:default}
+@media(hover:none){.flechas{display:none}}
+
+/* ---------- listas de filas (vídeos y catálogo) ---------- */
+.lista{border-top:1px solid var(--linea)}
+.fila{display:grid;grid-template-columns:130px 1fr auto;gap:clamp(14px,2.4vw,32px);
+      align-items:center;padding:clamp(20px,2.6vw,30px) 0;border-bottom:1px solid var(--linea)}
+.fila .fch{color:var(--tinta45)}
+.fila .tit{display:block;font-size:clamp(15px,1.9vw,19px);line-height:1.4;font-weight:300}
+.fila .acc{text-decoration:none;color:var(--tinta70);white-space:nowrap;transition:color .25s;
+           background:none;border:0;padding:0;font:inherit;cursor:pointer}
+.fila:hover .acc{color:var(--tinta)}
+.fila.prox .tit{color:var(--tinta70)}
+@media(max-width:680px){
+  .fila{grid-template-columns:1fr;gap:8px;align-items:start}
+  .fila .acc{justify-self:start;margin-top:6px}
+}
+
+/* catálogo: misma fila, con el precio a la derecha del título */
+.fila .meta{display:block;color:var(--tinta45);font-size:13px;margin-top:5px}
+.fila .pr{font-family:var(--mono);font-weight:400;color:var(--tinta);white-space:nowrap}
+.fila.destacada{border-bottom-width:1px}
+.fila.destacada .tit{font-family:var(--display);font-weight:700;text-transform:uppercase;
+                     letter-spacing:-.03em;font-size:clamp(19px,2.4vw,26px)}
+.cat-nota{margin:26px 0 0;color:var(--tinta45);font-size:12.5px;line-height:1.7}
+
+/* ---------- declaración ---------- */
+.dec{max-width:19ch}
+.dec-sub{margin:clamp(28px,4vw,44px) 0 0;max-width:56ch;color:var(--tinta70);
+         font-size:clamp(14px,1.7vw,16px)}
+
+/* ---------- bio ---------- */
+.bio{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1fr);
+     gap:clamp(28px,5vw,80px);align-items:start}
+/* El retrato no lleva marco: se funde con el fondo por abajo y por la
+   izquierda, y se sale por el borde de la pantalla. Así deja de parecer
+   una foto pegada dentro de un cuadrado. */
+.bio .rt{position:relative;overflow:hidden;aspect-ratio:470/704;
+         max-height:min(72vh,640px);margin-left:calc(var(--lat)*-1);
+         -webkit-mask-image:linear-gradient(to bottom,#000 54%,transparent 100%),
+                            linear-gradient(to right,transparent 0,#000 20%);
+                 mask-image:linear-gradient(to bottom,#000 54%,transparent 100%),
+                            linear-gradient(to right,transparent 0,#000 20%);
+         -webkit-mask-composite:source-in;mask-composite:intersect}
+.bio .rt img{width:100%;height:100%;object-fit:cover;object-position:50% 16%;filter:var(--grado)}
+.bio p{margin:0 0 20px;color:var(--tinta70);font-size:clamp(14px,1.7vw,16px);line-height:1.8}
+.bio p:last-child{margin:0}
+.bio p b{color:var(--tinta);font-weight:400}
+@media(max-width:800px){
+  /* apilado: el retrato se acota. A plena anchura repetiría el héroe. */
+  .bio{grid-template-columns:1fr;gap:30px}
+  .bio .rt{max-width:265px;max-height:none;margin-left:calc(var(--lat)*-1)}
+}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;cursor:pointer;
+     font-family:var(--mono);font-weight:400;font-size:11px;text-transform:uppercase;
+     letter-spacing:.02em;text-decoration:none;
+     border:1px solid var(--acento);background:var(--acento);color:var(--acento-tinta);
+     transition:opacity .25s,background .25s,color .25s}
+.btn:hover{opacity:.85}
+.btn.gh{background:transparent;color:var(--tinta);border-color:var(--linea)}
+.btn.gh:hover{border-color:var(--tinta);opacity:1}
+
+/* CTA fijo — el device de Streampass: el botón de compra no se pierde de
+   vista. Entra pasado el héroe y se aparta con el panel abierto. */
+.cta-fijo{position:fixed;right:var(--lat);bottom:24px;z-index:55;
+          opacity:0;transform:translateY(10px);pointer-events:none;
+          filter:drop-shadow(0 4px 22px rgba(0,0,0,.92));
+          transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.cta-fijo.on{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:560px){
+  .cta-fijo{left:var(--lat);right:var(--lat);bottom:16px}
+  .cta-fijo .btn{width:100%;justify-content:center}
+}
+
+/* ---------- panel de sesión ---------- */
+.velo{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.9);opacity:0;
+      pointer-events:none;transition:opacity .4s var(--ease)}
+.velo.on{opacity:1;pointer-events:auto}
+.panel{position:fixed;inset:0;z-index:101;overflow-y:auto;overscroll-behavior:contain;
+       background:var(--n2);transform:translateY(24px);opacity:0;pointer-events:none;
+       transition:transform .5s var(--ease),opacity .4s var(--ease)}
+.panel.on{transform:none;opacity:1;pointer-events:auto}
+.pin{max-width:820px;margin:0 auto;padding:clamp(64px,9vw,96px) var(--lat) clamp(60px,8vw,90px)}
+.cerrar{position:fixed;top:16px;right:16px;z-index:103;width:44px;height:44px;
+        border:1px solid var(--linea);background:var(--n1);color:var(--tinta);cursor:pointer;
+        display:grid;place-items:center;transition:background .25s}
+.cerrar:hover{background:var(--n3)}
+.pmini{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--n3);
+       border:1px solid var(--linea);margin-bottom:clamp(26px,3.4vw,38px)}
+.pmini img{width:100%;height:100%;object-fit:cover}
+.pcab{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;color:var(--tinta45)}
+.pcab .yr{margin-left:auto}
+.panel h3{font-family:var(--display);font-weight:700;text-transform:uppercase;
+          letter-spacing:-.035em;line-height:.98;font-size:clamp(32px,6.4vw,64px);margin:18px 0 0}
+.part{margin:14px 0 0;color:var(--tinta70);font-size:14px}
+.specs{display:flex;flex-wrap:wrap;gap:1px;background:var(--linea);border:1px solid var(--linea);
+       margin:clamp(30px,4vw,44px) 0}
+.specs div{background:var(--n2);padding:16px 22px;flex:1 1 130px}
+.specs b{display:block;font-family:var(--mono);font-weight:400;font-size:17px;letter-spacing:0}
+.specs span{display:block;margin-top:5px;color:var(--tinta45)}
+.formato{margin:clamp(26px,3.4vw,36px) 0;padding:14px 0;
+         border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);color:var(--tinta45)}
+.dentro{list-style:none;margin:0;padding:0}
+.dentro li{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:16px 0;
+           border-top:1px solid var(--linea);color:var(--tinta70);font-size:14px;line-height:1.65}
+.dentro li:first-child{border-top:0}
+.dentro li i{font-style:normal;color:var(--tinta45);font-size:11px;padding-top:3px;letter-spacing:.02em}
+.dentro li b{color:var(--tinta);font-weight:400}
+.compra{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:clamp(30px,4vw,44px);
+        padding-top:26px;border-top:1px solid var(--linea)}
+.compra .pr{font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.035em}
+.compra .nota{flex:1;min-width:190px;color:var(--tinta45);font-size:12px;line-height:1.55}
+.legal{margin:26px 0 0;color:var(--tinta45);font-size:12px;line-height:1.7}
+
+/* ---------- pie ---------- */
+/* el 90 de abajo deja sitio al CTA fijo para que no tape el pie */
+footer{background:var(--n1);border-top:1px solid var(--linea);
+       padding:clamp(54px,7vw,80px) var(--lat) 90px}
+.fg{display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap}
+.fg .mrc{flex:1 1 240px}
+.fg .mrc p{margin:18px 0 0;color:var(--tinta45);font-size:13px;max-width:30ch}
+.fcol{display:flex;flex-direction:column;gap:11px;min-width:118px}
+.fcol .t{color:var(--tinta45)}
+.fcol a,.fcol button{background:none;border:0;padding:0;font:inherit;text-align:left;
+                     cursor:pointer;color:var(--tinta70);text-decoration:none;font-size:13px;
+                     transition:color .25s}
+.fcol a:hover,.fcol button:hover{color:var(--tinta)}
+.fbot{margin-top:clamp(40px,6vw,64px);padding-top:20px;border-top:1px solid var(--linea);
+      display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--tinta45)}
+
+/* anclas ocultas que dispara el overlay de Gumroad */
+.gr-slot{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============================================================
+   PARALLAX ligado al scroll. Sin JavaScript: lo calcula el
+   compositor del navegador, así que no da tirones ni gasta batería.
+   Si el navegador no lo soporta, sencillamente no pasa nada.
+   ============================================================ */
+@supports (animation-timeline:view()){
+  @media(prefers-reduced-motion:no-preference){
+
+    /* las cuatro fotos a sangre derivan mientras cruzan la pantalla */
+    .foto img{
+      animation:deriva linear both;
+      animation-timeline:view();
+      animation-range:entry 0% exit 100%;
+    }
+    @keyframes deriva{
+      from{transform:scale(1.16) translateY(-3.2%)}
+      to  {transform:scale(1.16) translateY(3.2%)}
+    }
+
+    /* el héroe se acerca despacio mientras la cortina lo tapa */
+    .hero img{
+      animation:acercar linear both;
+      animation-timeline:scroll();
+      animation-range:0 100svh;
+    }
+    @keyframes acercar{
+      from{transform:scale(1)}
+      to  {transform:scale(1.14)}
+    }
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .carril{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
