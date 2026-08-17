@@ -396,9 +396,18 @@ a.acc.gumroad-button{
 .previa iframe{display:block;width:100%;height:100%;border:0}
 .previa-cara{position:absolute;inset:0;width:100%;padding:0;margin:0;border:0;
              background:none;cursor:pointer;font:inherit;color:inherit;display:block}
+/* La carátula viene de YouTube, que tope a 1280 px. En un reproductor de
+   1160 px con pantalla retina harían falta 2320: se estira al doble y se ve
+   blanda. Como esta imagen no es para mirarla —es el telón detrás del play—
+   se oscurece y se desenfoca un punto: así lee como fondo intencionado y no
+   como una foto de mala calidad. El scale tapa el borde del desenfoque. */
 .previa-cara img{width:100%;height:100%;object-fit:cover;
-                 filter:var(--grado) brightness(.5);transition:filter .4s ease}
-.previa-cara:hover img{filter:var(--grado) brightness(.66)}
+                 filter:var(--grado) brightness(.4) blur(3px);transform:scale(1.06);
+                 transition:filter .4s ease}
+.previa-cara:hover img{filter:var(--grado) brightness(.52) blur(3px)}
+/* con captura propia (1920 px) hay resolución de sobra: se enseña nítida */
+.previa-cara.nitida img{filter:var(--grado) brightness(.55);transform:none}
+.previa-cara.nitida:hover img{filter:var(--grado) brightness(.7)}
 .previa-cara .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
                    width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
                    background:rgba(0,0,0,.55);backdrop-filter:blur(8px);color:var(--tinta);

@@ -197,12 +197,12 @@ function abrir(i){
        Las reproducciones incrustadas SÍ cuentan como visitas del canal. */
     (p.video
       ? '<div class="previa" data-video="'+p.video+'">'+
-          '<button class="previa-cara" type="button" data-play="'+p.video+'">'+
-            '<img src="'+miniatura(p.video)+'" alt="" loading="lazy">'+
+          '<button class="previa-cara'+(p.captura ? ' nitida' : '')+'" type="button" data-play="'+p.video+'">'+
+            '<img src="'+(p.captura || miniatura(p.video))+'" alt="" loading="lazy">'+
             '<span class="play" aria-hidden="true">'+
               '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
             '</span>'+
-            '<span class="previa-txt"><b>Míralo por dentro antes de comprar</b>'+
+            '<span class="previa-txt"><b>Míralo por dentro antes de descargar</b>'+
             '<span class="sub">Abro esta misma sesión y enseño cómo está montada</span></span>'+
           '</button></div>'
       : '')+
