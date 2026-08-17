@@ -218,9 +218,12 @@ pin.addEventListener("click",function(e){
   var id = b.getAttribute("data-play");
   var caja = b.parentElement;
   caja.classList.add("cargado");
+  /* modestbranding quita el logotipo grande; rel=0 limita los sugeridos al
+     propio canal. La calidad no se puede pedir: la elige YouTube. */
   caja.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+
-    '?autoplay=1&rel=0" title="Vídeo del proyecto" frameborder="0" allow="accelerometer; '+
-    'autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    '?autoplay=1&rel=0&modestbranding=1" title="Vídeo del proyecto" '+
+    'allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" '+
+    'allowfullscreen></iframe>';
 });
 
 cerrarBtn.addEventListener("click",cerrar);
