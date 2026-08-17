@@ -203,7 +203,7 @@ function abrir(i){
               '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
             '</span>'+
             '<span class="previa-txt"><b>Míralo por dentro antes de descargar</b>'+
-            '<span class="sub">Abro esta misma sesión y enseño cómo está montada</span></span>'+
+            '<span class="sub">Abro esta sesión y te enseño cómo está montada</span></span>'+
           '</button></div>'
       : '')+
 
