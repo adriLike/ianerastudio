@@ -180,6 +180,10 @@ if(faqCaja){
 var resCaja = $("#resenas-lista"), resSec = $("#resenas");
 if(resSec){
   if(RESENAS.length){
+    /* Con una o dos, cita grande a toda anchura: dos opiniones reales bien
+       puestas transmiten más que ocho tarjetas pequeñas medio vacías.
+       De tres en adelante, rejilla. */
+    resCaja.className = "resenas rv on" + (RESENAS.length <= 2 ? " pocas" : "");
     resCaja.innerHTML = RESENAS.map(function(r){
       return '<figure class="res">'+
         '<blockquote>'+r.t+'</blockquote>'+

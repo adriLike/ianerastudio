@@ -118,7 +118,7 @@ var FAQ = [
   },
   {
     p:"¿Y si me atasco o algo no me abre?",
-    r:"Escríbeme por Instagram y lo miramos. Son archivos que uso yo a diario, así que sé dónde suelen dar guerra."
+    r:"Lo normal es que no pase nada: son archivos que abro yo a diario y salen del mismo Ableton con el que trabajo. Si aun así algo no te carga o no lo encuentras, escríbeme por Instagram y lo miramos — sé dónde pueden dar guerra y suele resolverse en un par de mensajes."
   }
 ];
 
