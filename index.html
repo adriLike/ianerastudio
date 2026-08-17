@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
      o quien ya haya visitado la web seguirá viendo la versión antigua. -->
-<link rel="stylesheet" href="css/estilo.css?v=14">
+<link rel="stylesheet" href="css/estilo.css?v=16">
 </head>
 <body>
 
@@ -102,12 +102,39 @@
   </div>
 </section>
 
-<!-- 5-8 · A sangre. Las capturas se ven ENTERAS; las fotos van en banda. -->
-<div class="foto completa"><img src="img/ses-arreglo.jpg" alt="Arrangement completo de la sesión de «Rise Again» en Ableton Live" loading="lazy" width="1920" height="996"></div>
-<div class="foto banda n3"><img src="img/directo.jpg" alt="" loading="lazy" width="1600" height="1408"></div>
-<div class="foto completa"><img src="img/ses-serum.jpg" alt="Cadena de sonido de la sesión, con Serum abierto sobre el mezclador" loading="lazy" width="1920" height="995"></div>
-<div class="foto completa"><img src="img/ses-midi.jpg" alt="Edición MIDI del pad de la sesión, con la automatización de velocidad" loading="lazy" width="1920" height="996"></div>
-<div class="foto banda n3"><img src="img/luz.jpg" alt="" loading="lazy" width="900" height="324"></div>
+<!-- 5 · Una sola foto a sangre, la del estudio. Antes había tres bandas más
+     y no aportaban: la del directo salía negra entera, y la del retrato
+     repetía la misma foto que ya están el héroe y la bio. -->
+<div class="foto banda"><img src="img/mesa.jpg" alt="" loading="lazy" width="1920" height="1071"></div>
+
+<!-- 6 · POR DENTRO — las capturas, contenidas y con pie.
+     Una captura es un rectángulo con su ventana: a sangre parece un error. -->
+<section class="bl bg2" id="dentro">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv">Por dentro</h2>
+      <span class="et n rv">Sesión real</span>
+    </div>
+
+    <figure class="cap rv">
+      <img src="img/ses-arreglo.jpg" alt="Arrangement completo de una sesión de Ableton Live" loading="lazy" width="1920" height="996">
+      <figcaption class="et">01 — El arreglo completo, con las pistas nombradas y agrupadas</figcaption>
+    </figure>
+
+    <figure class="cap rv">
+      <img src="img/ses-serum.jpg" alt="Cadena de sonido con Serum abierto sobre el mezclador" loading="lazy" width="1920" height="995">
+      <figcaption class="et">02 — Los racks y las cadenas de efectos, editables</figcaption>
+    </figure>
+
+    <figure class="cap rv">
+      <img src="img/ses-midi.jpg" alt="Edición MIDI de un pad con su automatización de velocidad" loading="lazy" width="1920" height="996">
+      <figcaption class="et">03 — El MIDI y la automatización de cada parte</figcaption>
+    </figure>
+
+    <p class="cap-nota rv">Capturas de una sesión de verdad, sin montaje.
+      Esto es exactamente lo que se abre al descargar el <b>.als</b>.</p>
+  </div>
+</section>
 
 <!-- 9 · CATÁLOGO — todo junto, con precio y compra directa -->
 <section class="bl bg2" id="catalogo">
@@ -183,7 +210,7 @@
 
 
 <script src="https://gumroad.com/js/gumroad.js" defer></script>
-<script src="js/datos.js?v=14"></script>
-<script src="js/sitio.js?v=14"></script>
+<script src="js/datos.js?v=16"></script>
+<script src="js/sitio.js?v=16"></script>
 </body>
 </html>

@@ -105,9 +105,25 @@ nav.top a sup{font-size:8px;margin-left:2px}
 .foto{position:relative;overflow:hidden;background:var(--n2)}
 .foto.n3{background:var(--n3)}
 
-.foto.completa img{display:block;width:100%;height:auto;filter:var(--grado)}
 .foto.banda{height:clamp(200px,34vh,380px)}
 .foto.banda img{width:100%;height:100%;object-fit:cover;filter:var(--grado)}
+/* las fotos a sangre se funden por arriba y por abajo con el fondo, para que
+   no haya una línea recta entre la foto y la sección siguiente */
+.foto.banda::before,.foto.banda::after{content:"";position:absolute;left:0;right:0;
+  height:46px;pointer-events:none;z-index:1}
+.foto.banda::before{top:0;background:linear-gradient(rgba(0,0,0,.85),transparent)}
+.foto.banda::after{bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+
+/* ---------- capturas de sesión, contenidas ----------
+   NO van a sangre: una captura es un rectángulo con su propia ventana, y
+   cortarla contra el borde de la pantalla parece un fallo. Enmarcada y con
+   pie deja de ser decoración y pasa a ser la prueba de lo que vendes. */
+.cap{margin:0 0 clamp(26px,3.6vw,48px)}
+.cap img{width:100%;height:auto;border:1px solid var(--linea);
+         filter:var(--grado) brightness(.88) contrast(1.02)}
+.cap figcaption{margin-top:14px;color:var(--tinta45);line-height:1.6}
+.cap-nota{margin:clamp(10px,2vw,20px) 0 0;color:var(--tinta45);font-size:13px;line-height:1.75}
+.cap-nota b{color:var(--tinta70);font-weight:400}
 
 .hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--n2)}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;filter:var(--grado)}
@@ -239,12 +255,11 @@ a.fila-video:hover .acc{color:var(--tinta)}
    una foto pegada dentro de un cuadrado. */
 .bio .rt{position:relative;overflow:hidden;aspect-ratio:470/704;
          max-height:min(72vh,640px);margin-left:calc(var(--lat)*-1);
-         /* se difumina por los tres lados libres: abajo, izquierda y derecha.
-            Solo el borde de arriba queda limpio, para que tenga estructura. */
-         -webkit-mask-image:linear-gradient(to bottom,#000 52%,transparent 100%),
+         /* se funde por los cuatro lados: sin ningún borde recto */
+         -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 54%,transparent 100%),
                             linear-gradient(to right,transparent 0,#000 18%),
                             linear-gradient(to left,transparent 0,#000 16%);
-                 mask-image:linear-gradient(to bottom,#000 52%,transparent 100%),
+                 mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 54%,transparent 100%),
                             linear-gradient(to right,transparent 0,#000 18%),
                             linear-gradient(to left,transparent 0,#000 16%);
          -webkit-mask-composite:source-in;mask-composite:intersect}
