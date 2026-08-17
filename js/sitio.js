@@ -66,7 +66,7 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
       '<div class="top et"><span>'+n+'</span><span class="yr">'+p.y+'</span></div>'+
       '<h3>'+p.t+'</h3>'+
       '<p class="art">'+p.a+'</p>'+
-      '<div class="pie et"><span>'+PRECIO+'</span><span class="ab">Ver ↗</span></div>'+
+      '<div class="pie et"><span class="ab">Ver ↗</span></div>'+
     '</div></button>';
 }).join("");
 $("#proy-n").textContent = String(PROYECTOS.length).padStart(2,"0");
@@ -272,12 +272,26 @@ addEventListener("scroll",function(){
 },{passive:true});
 pintarScroll();
 
-/* El CTA fijo no promete un pack que todavía no se puede comprar. */
+/* El CTA fijo NO manda fuera. Tu catálogo es mejor que el escaparate de
+   Gumroad: está en tu marca y desde él se compra sin salir. Solo enlaza a
+   Gumroad cuando hay algo concreto que comprar (el bundle). */
 var ctaBtn = $("#cta-fijo .btn");
 if(PRODUCTOS.bundle){
   ctaBtn.outerHTML = botonCompra("bundle","Los 4 proyectos · "+BUNDLE.precio,"btn");
 }else{
-  ctaBtn.outerHTML = '<a class="btn" href="'+TIENDA+'" target="_blank" rel="noopener">Ver la tienda ↗</a>';
+  ctaBtn.outerHTML = '<a class="btn" href="#catalogo">Ver el catálogo</a>';
+}
+
+/* Pie: lo mismo. Y el regalo solo se anuncia si existe de verdad. */
+var pieBundle = $("#pie-bundle"), pieGratis = $("#pie-gratis");
+if(pieBundle){
+  pieBundle.outerHTML = PRODUCTOS.bundle
+    ? botonCompra("bundle","Los cuatro proyectos","")
+    : '<a href="#catalogo">Los cuatro proyectos</a>';
+}
+if(pieGratis){
+  if(PRODUCTOS.gratis) pieGratis.outerHTML = botonCompra("gratis","MIDI + preset gratis","");
+  else pieGratis.remove();
 }
 
 })();

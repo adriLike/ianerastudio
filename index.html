@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
      o quien ya haya visitado la web seguirá viendo la versión antigua. -->
-<link rel="stylesheet" href="css/estilo.css?v=16">
+<link rel="stylesheet" href="css/estilo.css?v=17">
 </head>
 <body>
 
@@ -180,8 +180,8 @@
       <div class="fcol">
         <span class="t et">Proyectos</span>
         <a href="#catalogo">Catálogo</a>
-        <a href="https://tienda.ianerastudio.com" target="_blank" rel="noopener">Los cuatro proyectos</a>
-        <a href="https://tienda.ianerastudio.com" target="_blank" rel="noopener">MIDI + preset gratis</a>
+        <a id="pie-bundle" href="#catalogo">Los cuatro proyectos</a>
+        <a id="pie-gratis" href="#catalogo">MIDI + preset gratis</a>
       </div>
       <div class="fcol">
         <span class="t et">Canal</span>
@@ -197,7 +197,7 @@
 </footer>
 
 <div class="cta-fijo" id="cta-fijo">
-  <button class="btn" type="button" data-gum="bundle">Ver la tienda ↗</button>
+  <a class="btn" href="#catalogo">Ver el catálogo</a>
 </div>
 
 <div class="velo" id="velo"></div>
@@ -210,7 +210,7 @@
 
 
 <script src="https://gumroad.com/js/gumroad.js" defer></script>
-<script src="js/datos.js?v=16"></script>
-<script src="js/sitio.js?v=16"></script>
+<script src="js/datos.js?v=17"></script>
+<script src="js/sitio.js?v=17"></script>
 </body>
 </html>
