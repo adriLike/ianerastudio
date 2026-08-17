@@ -22,7 +22,7 @@ var CANAL   = "https://www.youtube.com/@IanEraStudio";
 /* Raíl de redes de la izquierda. Un null NO pinta el icono. */
 var REDES = {
   youtube   : CANAL,
-  instagram : null,   // PENDIENTE: https://instagram.com/...
+  instagram : "https://instagram.com/ianerastudio",
   soundcloud: null,   // PENDIENTE
   spotify   : null    // PENDIENTE
 };

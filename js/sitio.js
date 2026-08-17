@@ -8,7 +8,10 @@
 function $(s){ return document.querySelector(s); }
 function url(id){ return PRODUCTOS[id] || TIENDA; }
 function yt(id){ return "https://www.youtube.com/watch?v=" + id; }
-function miniatura(id){ return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
+/* NO se usan las miniaturas de YouTube como imagen de producto: las cuatro
+   son la PORTADA DEL DISCO ORIGINAL con el logo de Ableton encima. Son de
+   otros artistas, rompen la paleta y es justo lo que el punto B2 del plan
+   manda quitar. La tarjeta usa solo `captura`, que son capturas tuyas. */
 
 /* ---------------------------------------------------------------
    COMPRA — enlaces reales, no botones falsos.
@@ -49,9 +52,8 @@ $("#rail").innerHTML = Object.keys(ICONOS).filter(function(k){ return REDES[k]; 
 var carril = $("#carril");
 carril.innerHTML = PROYECTOS.map(function(p,i){
   var n = String(i+1).padStart(2,"0");
-  var img = p.captura || (p.video ? miniatura(p.video) : null);
-  var mini = img
-    ? '<div class="mini"><img src="'+img+'" alt="" loading="lazy">'+
+  var mini = p.captura
+    ? '<div class="mini"><img src="'+p.captura+'" alt="Arrangement de '+p.t+'" loading="lazy">'+
       '<span class="lupa" aria-hidden="true">'+
         '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
       '</span></div>'
@@ -149,10 +151,8 @@ function fondoInerte(v){ fondo.forEach(function(el){ el.inert = v; }); }
 
 function abrir(i){
   var p = PROYECTOS[i];
-  var img = p.captura || (p.video ? miniatura(p.video) : null);
-
   pin.innerHTML =
-    (img ? '<div class="pmini"><img src="'+img+'" alt=""></div>' : '')+
+    (p.captura ? '<div class="pmini"><img src="'+p.captura+'" alt="Arrangement de '+p.t+'"></div>' : '')+
     '<div class="pcab et"><span>Proyecto '+String(i+1).padStart(2,"0")+'</span>'+
       '<span class="yr">'+p.y+'</span></div>'+
     '<h3 id="p-tit">'+p.t+'</h3><p class="part">'+p.a+'</p>'+
