@@ -145,10 +145,50 @@ var faqCaja = $("#faq-lista");
 if(faqCaja){
   var conRespuesta = FAQ.filter(function(f){ return f.r; });
   faqCaja.innerHTML = conRespuesta.map(function(f,i){
-    return '<details class="qa"'+(i===0?' open':'')+'>'+
-      '<summary><span>'+f.p+'</span><i aria-hidden="true"></i></summary>'+
-      '<p>'+f.r+'</p></details>';
+    var n = String(i+1).padStart(2,"0");
+    return '<div class="qa">'+
+      '<button class="qa-p" type="button" aria-expanded="false" aria-controls="qa-'+i+'">'+
+        '<span class="qa-n et">'+n+'</span>'+
+        '<span class="qa-t">'+f.p+'</span>'+
+        '<span class="qa-mas" aria-hidden="true"></span>'+
+      '</button>'+
+      '<div class="qa-c" id="qa-'+i+'" role="region"><div class="qa-i"><p>'+f.r+'</p></div></div>'+
+    '</div>';
   }).join("");
+
+  /* Acordeón de uno en uno: abrir una cierra la anterior. Con más de tres
+     respuestas abiertas a la vez la sección deja de leerse. */
+  faqCaja.addEventListener("click",function(e){
+    var b = e.target.closest(".qa-p");
+    if(!b) return;
+    var abierta = b.getAttribute("aria-expanded") === "true";
+    faqCaja.querySelectorAll(".qa-p").forEach(function(o){
+      o.setAttribute("aria-expanded","false");
+      o.parentElement.classList.remove("on");
+    });
+    if(!abierta){
+      b.setAttribute("aria-expanded","true");
+      b.parentElement.classList.add("on");
+    }
+  });
+  /* la primera, abierta de entrada */
+  var primera = faqCaja.querySelector(".qa-p");
+  if(primera){ primera.setAttribute("aria-expanded","true"); primera.parentElement.classList.add("on"); }
+}
+
+/* Reseñas. Si no hay, la sección entera desaparece. */
+var resCaja = $("#resenas-lista"), resSec = $("#resenas");
+if(resSec){
+  if(RESENAS.length){
+    resCaja.innerHTML = RESENAS.map(function(r){
+      return '<figure class="res">'+
+        '<blockquote>'+r.t+'</blockquote>'+
+        '<figcaption class="et"><b>'+r.n+'</b>'+(r.d?'<span>'+r.d+'</span>':'')+'</figcaption>'+
+      '</figure>';
+    }).join("");
+  } else {
+    resSec.remove();
+  }
 }
 
 var cCaja = $("#contacto");

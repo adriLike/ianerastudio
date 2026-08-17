@@ -117,11 +117,14 @@ var FAQ = [
     r:"Sí, sin pedirme permiso. Lo único que no puedes es revender ni redistribuir el archivo del proyecto tal cual."
   },
   {
-    p:"¿Es el archivo original del artista?",
-    r:"No, y no lo dice en ninguna parte. Es mi propia recreación, hecha de oído: no contiene audio, samples ni material del lanzamiento original."
-  },
-  {
     p:"¿Y si me atasco o algo no me abre?",
-    r:"Escríbeme y lo miramos. Son archivos que uso yo a diario, así que sé dónde suelen dar guerra."
+    r:"Escríbeme por Instagram y lo miramos. Son archivos que uso yo a diario, así que sé dónde suelen dar guerra."
   }
 ];
+
+/* Reseñas. VACÍO a propósito: la sección no se pinta hasta que haya reales.
+   Formato: { t:"lo que dijeron", n:"Nombre", d:"qué compraron" }
+   Tienes dos compradores contentos (febrero y junio) y sus correos en
+   Gumroad. Dos respuestas suyas valen más que veinte inventadas — y son
+   las únicas que puedes publicar. */
+var RESENAS = [];
