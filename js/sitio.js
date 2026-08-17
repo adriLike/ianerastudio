@@ -160,15 +160,20 @@ function abrir(i){
       '<span class="yr">'+p.y+'</span></div>'+
     '<h3 id="p-tit">'+p.t+'</h3><p class="part">'+p.a+'</p>'+
 
-    /* La prueba antes que el precio: el vídeo enseña el proyecto por dentro. */
+    /* La prueba antes que el precio. El vídeo se ve AQUÍ: pulsas y se
+       carga el reproductor de YouTube dentro del panel. No se incrusta de
+       entrada porque cargarlo son ~800 KB por proyecto aunque nadie le dé.
+       Las reproducciones incrustadas SÍ cuentan como visitas del canal. */
     (p.video
-      ? '<a class="previa" href="'+yt(p.video)+'" target="_blank" rel="noopener">'+
-          '<span class="play" aria-hidden="true">'+
-            '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
-          '</span>'+
-          '<span><b>Míralo por dentro antes de comprar</b>'+
-          '<span class="sub">Abro esta misma sesión en vídeo y enseño cómo está montada</span></span>'+
-          '<span class="flecha et">YouTube ↗</span></a>'
+      ? '<div class="previa" data-video="'+p.video+'">'+
+          '<button class="previa-cara" type="button" data-play="'+p.video+'">'+
+            '<img src="'+miniatura(p.video)+'" alt="" loading="lazy">'+
+            '<span class="play" aria-hidden="true">'+
+              '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
+            '</span>'+
+            '<span class="previa-txt"><b>Míralo por dentro antes de comprar</b>'+
+            '<span class="sub">Abro esta misma sesión y enseño cómo está montada</span></span>'+
+          '</button></div>'
       : '')+
 
     specs(p)+
@@ -206,6 +211,18 @@ document.addEventListener("click",function(e){
   if(!b) return;
   previo = b; abrir(+b.dataset.i);
 });
+/* Cambia la carátula por el reproductor real de YouTube, ya reproduciendo. */
+pin.addEventListener("click",function(e){
+  var b = e.target.closest("[data-play]");
+  if(!b) return;
+  var id = b.getAttribute("data-play");
+  var caja = b.parentElement;
+  caja.classList.add("cargado");
+  caja.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+
+    '?autoplay=1&rel=0" title="Vídeo del proyecto" frameborder="0" allow="accelerometer; '+
+    'autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+});
+
 cerrarBtn.addEventListener("click",cerrar);
 velo.addEventListener("click",cerrar);
 addEventListener("keydown",function(e){

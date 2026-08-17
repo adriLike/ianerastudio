@@ -94,12 +94,20 @@ nav.top a sup{font-size:8px;margin-left:2px}
 /* por debajo de 1100 se cruzaría con el contenido; el pie ya lleva los enlaces */
 @media(max-width:1100px){.rail{display:none}}
 
-/* ---------- foto a sangre ---------- */
+/* ---------- imágenes a sangre ----------
+   Dos tratamientos distintos, y la diferencia importa:
+
+   .completa  para CAPTURAS. Se ve entera, sin recortar, a lo ancho de la
+              pantalla. Recortar un Arrangement es tirar la información que
+              justifica el precio.
+   .banda     para FOTOS. Altura fija y recorte por el centro: en una foto
+              el encuadre aguanta y así se mantiene el ritmo de la página. */
 .foto{position:relative;overflow:hidden;background:var(--n2)}
-.foto img{width:100%;height:100%;object-fit:cover;filter:var(--grado)}
-.foto.alta{height:clamp(420px,64vh,700px)}
-.foto.baja{height:clamp(200px,32vh,360px)}
 .foto.n3{background:var(--n3)}
+
+.foto.completa img{display:block;width:100%;height:auto;filter:var(--grado)}
+.foto.banda{height:clamp(200px,34vh,380px)}
+.foto.banda img{width:100%;height:100%;object-fit:cover;filter:var(--grado)}
 
 .hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--n2)}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;filter:var(--grado)}
@@ -231,10 +239,14 @@ a.fila-video:hover .acc{color:var(--tinta)}
    una foto pegada dentro de un cuadrado. */
 .bio .rt{position:relative;overflow:hidden;aspect-ratio:470/704;
          max-height:min(72vh,640px);margin-left:calc(var(--lat)*-1);
-         -webkit-mask-image:linear-gradient(to bottom,#000 54%,transparent 100%),
-                            linear-gradient(to right,transparent 0,#000 20%);
-                 mask-image:linear-gradient(to bottom,#000 54%,transparent 100%),
-                            linear-gradient(to right,transparent 0,#000 20%);
+         /* se difumina por los tres lados libres: abajo, izquierda y derecha.
+            Solo el borde de arriba queda limpio, para que tenga estructura. */
+         -webkit-mask-image:linear-gradient(to bottom,#000 52%,transparent 100%),
+                            linear-gradient(to right,transparent 0,#000 18%),
+                            linear-gradient(to left,transparent 0,#000 16%);
+                 mask-image:linear-gradient(to bottom,#000 52%,transparent 100%),
+                            linear-gradient(to right,transparent 0,#000 18%),
+                            linear-gradient(to left,transparent 0,#000 16%);
          -webkit-mask-composite:source-in;mask-composite:intersect}
 .bio .rt img{width:100%;height:100%;object-fit:cover;object-position:50% 16%;filter:var(--grado)}
 .bio p{margin:0 0 20px;color:var(--tinta70);font-size:clamp(14px,1.7vw,16px);line-height:1.8}
@@ -322,23 +334,28 @@ a.acc.gumroad-button{
 .specs div{background:var(--n2);padding:16px 22px;flex:1 1 130px}
 .specs b{display:block;font-family:var(--mono);font-weight:400;font-size:17px;letter-spacing:0}
 .specs span{display:block;margin-top:5px;color:var(--tinta45)}
-/* Vista previa: el vídeo donde abres esta misma sesión. Va ANTES del precio,
+/* Vista previa: el vídeo se reproduce DENTRO del panel. Va antes del precio,
    porque la prueba tiene que llegar antes que la cifra. */
-.previa{display:flex;align-items:center;gap:18px;margin:clamp(26px,3.4vw,36px) 0 0;
-        padding:18px 20px;border:1px solid var(--linea);text-decoration:none;
-        transition:border-color .3s ease,background .3s ease}
-.previa:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.04)}
-.previa .play{flex:0 0 40px;width:40px;height:40px;border-radius:50%;display:grid;
-              place-items:center;border:1px solid var(--linea);color:var(--tinta);
-              transition:background .3s ease,color .3s ease}
-.previa:hover .play{background:var(--tinta);color:var(--n1)}
-.previa b{display:block;font-weight:400;font-size:14.5px;line-height:1.4}
-.previa .sub{display:block;margin-top:4px;color:var(--tinta45);font-size:12.5px;line-height:1.5}
-.previa .flecha{margin-left:auto;color:var(--tinta45);white-space:nowrap}
-@media(max-width:560px){
-  .previa{flex-wrap:wrap;gap:14px}
-  .previa .flecha{margin-left:0;width:100%}
-}
+.previa{position:relative;margin:clamp(26px,3.4vw,36px) 0 0;aspect-ratio:16/9;
+        background:var(--n3);border:1px solid var(--linea);overflow:hidden}
+.previa.cargado{border-color:transparent}
+.previa iframe{display:block;width:100%;height:100%;border:0}
+.previa-cara{position:absolute;inset:0;width:100%;padding:0;margin:0;border:0;
+             background:none;cursor:pointer;font:inherit;color:inherit;display:block}
+.previa-cara img{width:100%;height:100%;object-fit:cover;
+                 filter:var(--grado) brightness(.5);transition:filter .4s ease}
+.previa-cara:hover img{filter:var(--grado) brightness(.66)}
+.previa-cara .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                   width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+                   background:rgba(0,0,0,.55);backdrop-filter:blur(8px);color:var(--tinta);
+                   border:1px solid rgba(255,255,255,.4);
+                   transition:background .3s ease,color .3s ease,transform .3s var(--ease)}
+.previa-cara:hover .play{background:var(--tinta);color:var(--n1);
+                         transform:translate(-50%,-50%) scale(1.08)}
+.previa-txt{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;text-align:left;
+            background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.previa-txt b{display:block;font-weight:400;font-size:14.5px;line-height:1.4}
+.previa-txt .sub{display:block;margin-top:4px;color:var(--tinta70);font-size:12.5px}
 
 .formato{margin:clamp(26px,3.4vw,36px) 0;padding:14px 0;
          border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);color:var(--tinta45)}
