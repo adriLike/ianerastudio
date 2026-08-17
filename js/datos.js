@@ -4,7 +4,9 @@
    Lo que falta está en PENDIENTE.md
    ============================================================ */
 
-var TIENDA = "https://ianerastudio.gumroad.com";
+/* Dominio propio conectado en Gumroad (Settings → Advanced → Custom domain).
+   Así el comprador nunca ve una URL que no sea la tuya, ni al pagar. */
+var TIENDA = "https://tienda.ianerastudio.com";
 var CANAL  = "https://www.youtube.com/@IanEraStudio";
 
 /* Raíl de redes de la izquierda. Un null NO pinta el icono: más vale tres
