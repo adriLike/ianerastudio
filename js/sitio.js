@@ -13,7 +13,13 @@ function yt(id){ return "https://www.youtube.com/watch?v=" + id; }
    AVISO: hoy esas miniaturas son la PORTADA DEL DISCO ORIGINAL con el logo de
    Ableton encima — arte de otros artistas y fuera de paleta. En cuanto pongas
    `captura` en un proyecto, la suya se sustituye sola. */
-function miniatura(id){ return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
+function miniatura(id){
+  /* maxresdefault es la miniatura tal cual la subes: 1280x720 y 16:9 exacto.
+     hqdefault son 480x360 en 4:3, así que recorta o mete bandas negras.
+     Si un vídeo no tiene maxres (vídeos viejos), se cae a hqdefault sola. */
+  return "https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg";
+}
+function miniaturaFallback(id){ return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
 
 /* ---------------------------------------------------------------
    COMPRA — enlaces reales, no botones falsos.
@@ -56,7 +62,8 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
   var n = String(i+1).padStart(2,"0");
   var img = p.captura || (p.video ? miniatura(p.video) : null);
   var mini = img
-    ? '<div class="mini"><img src="'+img+'" alt="" loading="lazy">'+
+    ? '<div class="mini"><img src="'+img+'" alt="" loading="lazy"'+
+      (p.captura ? '' : ' onerror="this.onerror=null;this.src=\''+miniaturaFallback(p.video)+'\'"')+'>'+
       '<span class="lupa" aria-hidden="true">'+
         '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
       '</span></div>'
