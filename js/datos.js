@@ -83,3 +83,45 @@ var VIDEOS = [
   { f:"16 dic 2025", t:"Cómo hicieron Matisse &amp; Sadko «Harmony»", id:"oZLm6RlccBc" },
   { f:"06 nov 2025", t:"Cómo hicieron «Take Me There»",       id:"_4fbpisfeiM" }
 ];
+
+/* Contacto. Un null no pinta la línea. */
+var CONTACTO = {
+  instagram: REDES.instagram,
+  correo   : null   // PENDIENTE: hola@ianerastudio.com — el reenvío es gratis en Porkbun
+};
+
+/* Preguntas frecuentes.
+   Una pregunta con `r:null` NO se pinta. Prefiero cuatro respuestas ciertas
+   que seis con una inventada: estas son exactamente las dudas que frenan una
+   compra de 8,99 €, y equivocarse aquí genera devoluciones y malas reseñas.
+
+   Las dos primeras las tienes que contestar tú, y son LAS MÁS IMPORTANTES.
+   En tu captura de «Rise Again» se ven Serum 2, Nexus, Kontakt 7, Sylenth1,
+   Analog Lab V, Valhalla y FabFilter Pro-Q. Si tus proyectos necesitan
+   plugins de pago, hay que decirlo ANTES de cobrar, no después. */
+var FAQ = [
+  {
+    p:"¿Qué versión de Ableton Live necesito?",
+    r:null   // PENDIENTE: p.ej. "Live 11 o superior, edición Standard o Suite."
+  },
+  {
+    p:"¿Necesito plugins de pago?",
+    r:null   // PENDIENTE: la lista real, o "ninguno, solo dispositivos de Ableton"
+  },
+  {
+    p:"¿Cómo lo recibo?",
+    r:"Descarga inmediata en cuanto se confirma el pago. Sin esperas y sin envíos: el pago y la entrega los gestiona Gumroad."
+  },
+  {
+    p:"¿Puedo publicar lo que haga con el proyecto?",
+    r:"Sí, sin pedirme permiso. Lo único que no puedes es revender ni redistribuir el archivo del proyecto tal cual."
+  },
+  {
+    p:"¿Es el archivo original del artista?",
+    r:"No, y no lo dice en ninguna parte. Es mi propia recreación, hecha de oído: no contiene audio, samples ni material del lanzamiento original."
+  },
+  {
+    p:"¿Y si me atasco o algo no me abre?",
+    r:"Escríbeme y lo miramos. Son archivos que uso yo a diario, así que sé dónde suelen dar guerra."
+  }
+];

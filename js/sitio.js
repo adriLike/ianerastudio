@@ -132,6 +132,30 @@ if(PRODUCTOS.gratis){
 $("#catalogo-lista").innerHTML = filas.join("");
 
 /* ---------------------------------------------------------------
+   Dudas y contacto. Solo se pinta lo que tiene respuesta de verdad.
+   --------------------------------------------------------------- */
+var faqCaja = $("#faq-lista");
+if(faqCaja){
+  var conRespuesta = FAQ.filter(function(f){ return f.r; });
+  faqCaja.innerHTML = conRespuesta.map(function(f,i){
+    return '<details class="qa"'+(i===0?' open':'')+'>'+
+      '<summary><span>'+f.p+'</span><i aria-hidden="true"></i></summary>'+
+      '<p>'+f.r+'</p></details>';
+  }).join("");
+}
+
+var cCaja = $("#contacto");
+if(cCaja){
+  var vias = [];
+  if(CONTACTO.instagram) vias.push('<a href="'+CONTACTO.instagram+'" target="_blank" rel="noopener">Instagram ↗</a>');
+  if(CONTACTO.correo)    vias.push('<a href="mailto:'+CONTACTO.correo+'">'+CONTACTO.correo+'</a>');
+  cCaja.innerHTML = vias.length
+    ? '<p class="et">¿Alguna duda antes de comprar?</p><p class="vias">'+vias.join('<span class="sep">·</span>')+'</p>'+
+      '<p class="cont-nota">Pregunta lo que quieras. Contesto yo, no un formulario.</p>'
+    : '';
+}
+
+/* ---------------------------------------------------------------
    Panel de proyecto
    --------------------------------------------------------------- */
 var velo=$("#velo"), panel=$("#panel"), pin=$("#pin"), cerrarBtn=$("#cerrar"), previo=null;
@@ -198,11 +222,18 @@ function abrir(i){
   cerrarBtn.focus();
 }
 function cerrar(){
+  /* Corta el vídeo AL INSTANTE. Si solo se oculta el panel, el iframe sigue
+     vivo en el DOM y se sigue oyendo con la web ya cerrada. */
+  var marco = pin.querySelector("iframe");
+  if(marco) marco.remove();
+
   velo.classList.remove("on"); panel.classList.remove("on");
   document.documentElement.style.overflow = "";
   fondoInerte(false);
   pintarScroll();
-  setTimeout(function(){ if(!panel.classList.contains("on")) panel.hidden = true; },420);
+  setTimeout(function(){
+    if(!panel.classList.contains("on")){ panel.hidden = true; pin.innerHTML = ""; }
+  },420);
   if(previo) previo.focus();
 }
 /* el carril y el catálogo abren el mismo panel */

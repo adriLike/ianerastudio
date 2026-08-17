@@ -242,6 +242,38 @@ a.fila-video:hover .acc{color:var(--tinta)}
                      letter-spacing:-.03em;font-size:clamp(19px,2.4vw,26px)}
 .cat-nota{margin:26px 0 0;color:var(--tinta45);font-size:12.5px;line-height:1.7}
 
+/* ---------- dudas ----------
+   <details> nativo: se abre y cierra sin una línea de JavaScript, y funciona
+   con teclado y lector de pantalla de fábrica. */
+.faq{border-top:1px solid var(--linea)}
+.qa{border-bottom:1px solid var(--linea)}
+.qa summary{display:flex;align-items:center;gap:20px;cursor:pointer;list-style:none;
+            padding:clamp(20px,2.6vw,28px) 0;font-size:clamp(15px,1.9vw,18px);line-height:1.45;
+            transition:color .25s ease}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:hover{color:var(--tinta)}
+.qa summary span{flex:1}
+/* el signo + que gira a × al abrir */
+.qa summary i{position:relative;flex:0 0 14px;width:14px;height:14px;opacity:.55;
+              transition:transform .35s var(--ease),opacity .25s ease}
+.qa summary i::before,.qa summary i::after{content:"";position:absolute;background:currentColor}
+.qa summary i::before{left:0;right:0;top:6.5px;height:1px}
+.qa summary i::after{top:0;bottom:0;left:6.5px;width:1px}
+.qa[open] summary{color:var(--tinta)}
+.qa[open] summary i{transform:rotate(135deg);opacity:1}
+.qa p{margin:0 0 clamp(20px,2.6vw,28px);padding-right:clamp(0px,6vw,90px);
+      color:var(--tinta70);font-size:clamp(14px,1.7vw,15.5px);line-height:1.8}
+
+.contacto{margin-top:clamp(40px,5vw,64px)}
+.contacto .et{margin:0;color:var(--tinta45)}
+.contacto .vias{margin:14px 0 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+                font-family:var(--display);font-weight:700;letter-spacing:-.03em;
+                font-size:clamp(20px,3vw,34px);line-height:1.15}
+.contacto .vias a{text-decoration:none;transition:opacity .25s}
+.contacto .vias a:hover{opacity:.65}
+.contacto .sep{color:var(--tinta45);font-weight:400}
+.contacto .cont-nota{margin:16px 0 0;color:var(--tinta45);font-size:13px}
+
 /* ---------- declaración ---------- */
 .dec{max-width:19ch}
 .dec-sub{margin:clamp(28px,4vw,44px) 0 0;max-width:56ch;color:var(--tinta70);
