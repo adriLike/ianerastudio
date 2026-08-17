@@ -54,7 +54,7 @@ var BUNDLE = { precio:"24 €", antes:"35,96 €" };
 var PROYECTOS = [
   {
     id:"blessings", t:"Blessings", a:"Calvin Harris", y:"2026",
-    video:"P7gt_zAtb34", captura:null,
+    video:"Bw8bwS2JOoo", captura:null,
     bpm:null, tono:null, pistas:null
   },
   {
@@ -78,7 +78,7 @@ var PROYECTOS = [
 /* Vídeos publicados, del más nuevo al más antiguo. Son los reales del canal.
    Para añadir uno: copia el ID de la URL de YouTube (lo que va tras v=). */
 var VIDEOS = [
-  { f:"02 mar 2026", t:"Cómo hizo Calvin Harris «Blessings»", id:"P7gt_zAtb34" },
+  { f:"02 mar 2026", t:"Cómo hizo Calvin Harris «Blessings»", id:"Bw8bwS2JOoo" },
   { f:"14 ene 2026", t:"Cómo hizo Mesto «Caramelle»",         id:"qOChu1JnFwk" },
   { f:"16 dic 2025", t:"Cómo hicieron Matisse &amp; Sadko «Harmony»", id:"oZLm6RlccBc" },
   { f:"06 nov 2025", t:"Cómo hicieron «Take Me There»",       id:"_4fbpisfeiM" }
