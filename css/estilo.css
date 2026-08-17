@@ -131,7 +131,7 @@ section.bl{padding:clamp(70px,11vw,140px) var(--lat);scroll-margin-top:76px}
 .cab .n{margin-left:auto;color:var(--tinta45)}
 
 /* ============================================================
-   CARRIL DE SESIONES — scroll horizontal
+   CARRIL DE PROYECTOS — scroll horizontal
    Sin márgenes negativos: el carril vive dentro del contenedor,
    así la primera tarjeta cuadra con el titular por construcción.
    Las de la derecha se cortan solas y eso ya avisa de que hay más.
@@ -143,26 +143,35 @@ section.bl{padding:clamp(70px,11vw,140px) var(--lat);scroll-margin-top:76px}
         scrollbar-width:none;-ms-overflow-style:none}
 .carril::-webkit-scrollbar{display:none}
 
-.tarjeta{scroll-snap-align:start;flex:0 0 clamp(250px,30vw,340px);
+.tarjeta{scroll-snap-align:start;flex:0 0 clamp(260px,31vw,360px);
          background:var(--n1);border:1px solid var(--linea);margin:0;padding:0;
          cursor:pointer;font:inherit;color:inherit;text-align:left;
-         display:flex;flex-direction:column;transition:border-color .3s ease,background .3s ease}
-.tarjeta:hover,.tarjeta:focus-visible{background:var(--n3);border-color:rgba(255,255,255,.3)}
+         display:flex;flex-direction:column;overflow:hidden;
+         transition:border-color .35s ease,background .35s ease,transform .35s var(--ease)}
+.tarjeta:hover,.tarjeta:focus-visible{background:var(--n3);border-color:rgba(255,255,255,.32);
+         transform:translateY(-3px)}
 .tarjeta .mini{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--n3);
                border-bottom:1px solid var(--linea)}
-.tarjeta .mini img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
-.tarjeta:hover .mini img{transform:scale(1.04)}
-/* sin captura todavía: el hueco lleva el número, no un rectángulo vacío */
+.tarjeta .mini img{width:100%;height:100%;object-fit:cover;filter:var(--grado) brightness(.82);
+                   transition:transform 1.1s var(--ease),filter .45s ease}
+.tarjeta:hover .mini img{transform:scale(1.05);filter:var(--grado) brightness(1)}
+/* el play sobre la miniatura: dice que hay vídeo sin escribirlo */
+.tarjeta .lupa{position:absolute;left:14px;bottom:14px;width:34px;height:34px;border-radius:50%;
+               display:grid;place-items:center;color:var(--tinta);
+               background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+               border:1px solid rgba(255,255,255,.28);
+               transition:background .3s ease,color .3s ease,transform .3s var(--ease)}
+.tarjeta:hover .lupa{background:var(--tinta);color:var(--n1);transform:scale(1.08)}
+/* sin miniatura todavía: el número, no un rectángulo vacío */
 .tarjeta .mini.vacia{display:grid;place-items:center}
 .tarjeta .mini.vacia b{font-family:var(--display);font-weight:700;font-size:clamp(44px,7vw,68px);
                        letter-spacing:-.05em;color:rgba(255,255,255,.09);line-height:1}
-.tarjeta .cuerpo{padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;flex:1}
-.tarjeta .top{display:flex;align-items:baseline;gap:12px;color:var(--tinta45);margin-bottom:16px}
+.tarjeta .cuerpo{padding:clamp(18px,2.2vw,24px);display:flex;flex-direction:column;flex:1}
+.tarjeta .top{display:flex;align-items:baseline;gap:12px;color:var(--tinta45);margin-bottom:14px}
 .tarjeta .top .yr{margin-left:auto}
 .tarjeta h3{font-family:var(--display);font-weight:700;text-transform:uppercase;
             letter-spacing:-.035em;line-height:.98;font-size:clamp(22px,2.6vw,30px);margin:0}
 .tarjeta .art{margin:10px 0 0;color:var(--tinta70);font-size:12.5px;line-height:1.5}
-.tarjeta .ens{margin:12px 0 0;color:var(--tinta70);font-size:12.5px;line-height:1.55}
 .tarjeta .pie{display:flex;align-items:baseline;gap:12px;margin-top:auto;padding-top:18px;
               color:var(--tinta45)}
 .tarjeta .pie .ab{margin-left:auto;color:var(--tinta);opacity:0;transform:translateX(-5px);
@@ -192,6 +201,14 @@ section.bl{padding:clamp(70px,11vw,140px) var(--lat);scroll-margin-top:76px}
   .fila{grid-template-columns:1fr;gap:8px;align-items:start}
   .fila .acc{justify-self:start;margin-top:6px}
 }
+
+/* filas de vídeo: la fila entera es el enlace */
+a.fila-video{text-decoration:none;transition:background .3s ease}
+a.fila-video:hover{background:rgba(255,255,255,.035)}
+a.fila-video:hover .acc{color:var(--tinta)}
+
+/* bloque a la derecha del catálogo: precio + acción */
+.fila .der{display:flex;align-items:center;gap:18px}
 
 /* catálogo: misma fila, con el precio a la derecha del título */
 .fila .meta{display:block;color:var(--tinta45);font-size:13px;margin-top:5px}
@@ -239,6 +256,34 @@ section.bl{padding:clamp(70px,11vw,140px) var(--lat);scroll-margin-top:76px}
 .btn.gh{background:transparent;color:var(--tinta);border-color:var(--linea)}
 .btn.gh:hover{border-color:var(--tinta);opacity:1}
 
+/* ---- Gumroad, a raya ----------------------------------------
+   Su script inyecta una hoja de estilos que repinta cualquier
+   <a class="gumroad-button"> con su diseño, y le mete el logotipo
+   dentro. Necesitamos su clase para que el pago se abra encima de
+   la web, así que le quitamos el aspecto y le dejamos el
+   comportamiento. De ahí los !important: competimos con una hoja
+   que se inyecta después de la nuestra. */
+a.btn.gumroad-button{
+  background:var(--acento)!important; color:var(--acento-tinta)!important;
+  border:1px solid var(--acento)!important; border-radius:0!important;
+  font-family:var(--mono)!important; font-weight:400!important; font-size:11px!important;
+  text-transform:uppercase!important; letter-spacing:.02em!important;
+  padding:14px 26px!important; height:auto!important; line-height:1.4!important;
+  box-shadow:none!important; text-decoration:none!important;
+}
+a.acc.gumroad-button{
+  background:transparent!important; color:var(--tinta70)!important;
+  border:0!important; padding:0!important; box-shadow:none!important;
+  font-family:var(--mono)!important; font-weight:400!important; font-size:11px!important;
+  text-transform:uppercase!important; letter-spacing:.02em!important;
+  height:auto!important; line-height:inherit!important; text-decoration:none!important;
+}
+.fila:hover a.acc.gumroad-button{color:var(--tinta)!important}
+/* fuera su logotipo de dentro de nuestros botones */
+.gumroad-button .logo-full,
+.gumroad-button .logo,
+.gumroad-button > svg{display:none!important}
+
 /* CTA fijo — el device de Streampass: el botón de compra no se pierde de
    vista. Entra pasado el héroe y se aparta con el panel abierto. */
 .cta-fijo{position:fixed;right:var(--lat);bottom:24px;z-index:55;
@@ -277,6 +322,24 @@ section.bl{padding:clamp(70px,11vw,140px) var(--lat);scroll-margin-top:76px}
 .specs div{background:var(--n2);padding:16px 22px;flex:1 1 130px}
 .specs b{display:block;font-family:var(--mono);font-weight:400;font-size:17px;letter-spacing:0}
 .specs span{display:block;margin-top:5px;color:var(--tinta45)}
+/* Vista previa: el vídeo donde abres esta misma sesión. Va ANTES del precio,
+   porque la prueba tiene que llegar antes que la cifra. */
+.previa{display:flex;align-items:center;gap:18px;margin:clamp(26px,3.4vw,36px) 0 0;
+        padding:18px 20px;border:1px solid var(--linea);text-decoration:none;
+        transition:border-color .3s ease,background .3s ease}
+.previa:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.04)}
+.previa .play{flex:0 0 40px;width:40px;height:40px;border-radius:50%;display:grid;
+              place-items:center;border:1px solid var(--linea);color:var(--tinta);
+              transition:background .3s ease,color .3s ease}
+.previa:hover .play{background:var(--tinta);color:var(--n1)}
+.previa b{display:block;font-weight:400;font-size:14.5px;line-height:1.4}
+.previa .sub{display:block;margin-top:4px;color:var(--tinta45);font-size:12.5px;line-height:1.5}
+.previa .flecha{margin-left:auto;color:var(--tinta45);white-space:nowrap}
+@media(max-width:560px){
+  .previa{flex-wrap:wrap;gap:14px}
+  .previa .flecha{margin-left:0;width:100%}
+}
+
 .formato{margin:clamp(26px,3.4vw,36px) 0;padding:14px 0;
          border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);color:var(--tinta45)}
 .dentro{list-style:none;margin:0;padding:0}

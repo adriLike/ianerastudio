@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
      o quien ya haya visitado la web seguirá viendo la versión antigua. -->
-<link rel="stylesheet" href="css/estilo.css?v=6">
+<link rel="stylesheet" href="css/estilo.css?v=7">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
     <span>Ian&nbsp;Era</span>
   </a>
   <nav class="top et" aria-label="Principal">
-    <a href="#sesiones" data-sec>Sesiones</a>
+    <a href="#proyectos" data-sec>Proyectos</a>
     <a href="#videos" data-sec>Vídeos</a>
     <a href="#catalogo" data-sec>Catálogo</a>
     <a href="#bio" data-sec>Bio</a>
@@ -59,23 +59,23 @@
   <div class="cue et" aria-hidden="true"><i></i><span>Baja</span></div>
 </section>
 
-<!-- 2 · SESIONES — carril horizontal -->
-<section class="bl bg2" id="sesiones">
+<!-- 2 · PROYECTOS — carril horizontal -->
+<section class="bl bg2" id="proyectos">
   <div class="wrap">
     <div class="cab">
-      <h2 class="dp h-sec rv">Sesiones</h2>
-      <span class="et n rv" id="ses-n">04</span>
+      <h2 class="dp h-sec rv">Proyectos</h2>
+      <span class="et n rv" id="proy-n">04</span>
     </div>
   </div>
   <div class="wrap">
     <div class="carril-caja rv">
-      <div class="carril" id="carril" role="group" aria-label="Sesiones — desplaza para ver más"></div>
+      <div class="carril" id="carril" role="group" aria-label="Proyectos — desplaza para ver más"></div>
     </div>
     <div class="flechas rv">
-      <button id="car-antes" type="button" aria-label="Sesión anterior">
+      <button id="car-antes" type="button" aria-label="Proyecto anterior">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
-      <button id="car-luego" type="button" aria-label="Sesión siguiente">
+      <button id="car-luego" type="button" aria-label="Proyecto siguiente">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
       </button>
     </div>
@@ -87,7 +87,7 @@
   <div class="wrap">
     <div class="cab">
       <h2 class="dp h-sec rv">Vídeos</h2>
-      <span class="et n rv">Cada dos jueves</span>
+      <span class="et n rv" id="vid-n">04</span>
     </div>
     <div class="lista rv" id="videos-lista"></div>
   </div>
@@ -150,10 +150,10 @@
         <p>Sesiones completas de Ableton Live de progressive house.</p>
       </div>
       <div class="fcol">
-        <span class="t et">Sesiones</span>
+        <span class="t et">Proyectos</span>
         <a href="#catalogo">Catálogo</a>
-        <button type="button" data-gum="bundle">Los cuatro proyectos</button>
-        <button type="button" data-gum="gratis">MIDI + preset gratis</button>
+        <a href="https://tienda.ianerastudio.com" target="_blank" rel="noopener">Los cuatro proyectos</a>
+        <a href="https://tienda.ianerastudio.com" target="_blank" rel="noopener">MIDI + preset gratis</a>
       </div>
       <div class="fcol">
         <span class="t et">Canal</span>
@@ -180,11 +180,9 @@
   <div class="pin" id="pin"></div>
 </div>
 
-<!-- Anclas que abre el overlay de Gumroad. Si el script no carga, navegan al producto. -->
-<div class="gr-slot" id="gr-slots" aria-hidden="true"></div>
 
 <script src="https://gumroad.com/js/gumroad.js" defer></script>
-<script src="js/datos.js?v=6"></script>
-<script src="js/sitio.js?v=6"></script>
+<script src="js/datos.js?v=7"></script>
+<script src="js/sitio.js?v=7"></script>
 </body>
 </html>
