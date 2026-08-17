@@ -114,8 +114,9 @@ var filas = PROYECTOS.map(function(p,i){
   return '<div class="fila">'+
     '<span class="fch et">'+String(i+1).padStart(2,"0")+' · '+p.y+'</span>'+
     '<span><span class="tit">'+p.t+'</span><span class="meta">'+p.a+'</span></span>'+
+    /* Sin precio: ya está en el detalle, y repetirlo cuatro veces con el
+       mismo número no informa. La fila invita a abrir, no a decidir. */
     '<span class="der">'+
-      '<span class="pr">'+PRECIO+'</span>'+
       '<button class="acc et" type="button" data-i="'+i+'">Ver ↗</button>'+
     '</span></div>';
 });
@@ -207,6 +208,48 @@ if(cCaja){
 }
 
 /* ---------------------------------------------------------------
+   Datos estructurados. Sin esto, para un buscador la web es texto:
+   no sabe que hay cuatro productos con precio y descarga. Se genera
+   desde PROYECTOS para no duplicar la lista a mano.
+   Nada de valoraciones: no las hay, e inventarlas se penaliza.
+   --------------------------------------------------------------- */
+(function(){
+  var base = "https://ianerastudio.com/";
+  var precioNum = PRECIO.replace(/[^0-9,]/g,"").replace(",",".");
+  var datos = {
+    "@context":"https://schema.org",
+    "@graph":[
+      { "@type":"WebSite", "@id":base+"#web", "url":base,
+        "name":"Ian Era Studio", "inLanguage":"es-ES" },
+      { "@type":"Person", "@id":base+"#ian", "name":"Ian Era",
+        "url":base, "jobTitle":"Productor musical",
+        "sameAs":[CANAL, REDES.instagram, TIENDA].filter(Boolean) }
+    ].concat(PROYECTOS.map(function(p){
+      var limpio = p.a.replace(/&middot;/g,"·").replace(/&amp;/g,"&");
+      return {
+        "@type":"Product",
+        "@id": base+"#"+p.id,
+        "name": p.t+" — Proyecto completo de Ableton Live",
+        "description":"Mi recreación de «"+p.t+"» de "+limpio+" como sesión de "+
+                      "Ableton Live: el arreglo completo, los racks y la automatización.",
+        "brand":{ "@type":"Brand", "name":"Ian Era Studio" },
+        "url": base+"#"+p.id,
+        "offers":{
+          "@type":"Offer", "price":precioNum, "priceCurrency":"EUR",
+          "availability":"https://schema.org/InStock",
+          "url": PRODUCTOS[p.id] || TIENDA,
+          "seller":{ "@id":base+"#ian" }
+        }
+      };
+    }))
+  };
+  var e = document.createElement("script");
+  e.type = "application/ld+json";
+  e.textContent = JSON.stringify(datos);
+  document.head.appendChild(e);
+})();
+
+/* ---------------------------------------------------------------
    Panel de proyecto
    --------------------------------------------------------------- */
 var velo=$("#velo"), panel=$("#panel"), pin=$("#pin"), cerrarBtn=$("#cerrar"), previo=null;
@@ -227,7 +270,7 @@ var fondo = Array.prototype.filter.call(document.body.children,function(el){
 });
 function fondoInerte(v){ fondo.forEach(function(el){ el.inert = v; }); }
 
-function abrir(i){
+function abrir(i, desdeUrl){
   var p = PROYECTOS[i];
   pin.innerHTML =
     (p.captura ? '<div class="pmini"><img src="'+p.captura+'" alt="Arrangement de '+p.t+'"></div>' : '')+
@@ -265,6 +308,8 @@ function abrir(i){
       'material del lanzamiento original. Puedes publicar lo que hagas con ella; no puedes '+
       'revender ni redistribuir el archivo del proyecto.</p>';
 
+  if(!desdeUrl && location.hash !== "#"+p.id) history.pushState({p:p.id}, "", "#"+p.id);
+
   panel.hidden = false;
   requestAnimationFrame(function(){ velo.classList.add("on"); panel.classList.add("on"); });
   document.documentElement.style.overflow = "hidden";
@@ -272,13 +317,14 @@ function abrir(i){
   pintarScroll();
   cerrarBtn.focus();
 }
-function cerrar(){
+function cerrar(desdeUrl){
   /* Corta el vídeo AL INSTANTE. Si solo se oculta el panel, el iframe sigue
      vivo en el DOM y se sigue oyendo con la web ya cerrada. */
   var marco = pin.querySelector("iframe");
   if(marco) marco.remove();
 
   velo.classList.remove("on"); panel.classList.remove("on");
+  if(!desdeUrl && location.hash) history.pushState(null, "", location.pathname);
   document.documentElement.style.overflow = "";
   fondoInerte(false);
   pintarScroll();
@@ -307,6 +353,26 @@ pin.addEventListener("click",function(e){
     'allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" '+
     'allowfullscreen></iframe>';
 });
+
+/* ---------------------------------------------------------------
+   Enlace directo a cada proyecto: ianerastudio.com/#blessings abre
+   su ficha al cargar. Es lo que permite que la descripción de un
+   vídeo apunte al proyecto exacto y no a la portada.
+   Además el botón Atrás del navegador cierra la ficha, que es lo
+   que cualquiera espera al llegar desde fuera.
+   --------------------------------------------------------------- */
+function porId(id){
+  for(var i=0;i<PROYECTOS.length;i++) if(PROYECTOS[i].id===id) return i;
+  return -1;
+}
+function abrirDesdeHash(){
+  var h = decodeURIComponent(location.hash.replace(/^#/,""));
+  var i = h ? porId(h) : -1;
+  if(i > -1 && !panel.classList.contains("on")) abrir(i, true);
+  else if(i === -1 && panel.classList.contains("on")) cerrar(true);
+}
+addEventListener("hashchange", abrirDesdeHash);
+abrirDesdeHash();
 
 cerrarBtn.addEventListener("click",cerrar);
 velo.addEventListener("click",cerrar);

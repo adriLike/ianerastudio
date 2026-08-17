@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
      o quien ya haya visitado la web seguirá viendo la versión antigua. -->
-<link rel="stylesheet" href="css/estilo.css?v=24">
+<link rel="stylesheet" href="css/estilo.css?v=25">
 </head>
 <body>
 
@@ -65,7 +65,7 @@
 
 <!-- 1 · HÉROE — foto a sangre, sin una palabra -->
 <section class="hero">
-  <img src="img/hero.jpg" alt="Ian Era en el estudio" fetchpriority="high" width="1480" height="704">
+  <picture><source srcset="img/hero.avif" type="image/avif"><img src="img/hero.jpg" alt="Ian Era en el estudio" fetchpriority="high" width="1480" height="704"></picture>
   <div class="fund"></div>
   <div class="cue et" aria-hidden="true"><i></i><span>Baja</span></div>
 </section>
@@ -116,7 +116,7 @@
 <!-- 5 · Una sola foto a sangre, la del estudio. Antes había tres bandas más
      y no aportaban: la del directo salía negra entera, y la del retrato
      repetía la misma foto que ya están el héroe y la bio. -->
-<div class="foto banda"><img src="img/mesa.jpg" alt="" loading="lazy" width="1920" height="1071"></div>
+<div class="foto banda"><picture><source srcset="img/mesa.avif" type="image/avif"><img src="img/mesa.jpg" alt="" loading="lazy" decoding="async" width="1920" height="1071"></picture></div>
 
 <!-- 6 · POR DENTRO — las capturas, contenidas y con pie.
      Una captura es un rectángulo con su ventana: a sangre parece un error. -->
@@ -128,17 +128,17 @@
     </div>
 
     <figure class="cap rv">
-      <img src="img/ses-arreglo.jpg" alt="Arrangement completo de una sesión de Ableton Live" loading="lazy" width="1920" height="996">
+      <picture><source srcset="img/ses-arreglo.avif" type="image/avif"><img src="img/ses-arreglo.jpg" alt="Arrangement completo de una sesión de Ableton Live" loading="lazy" decoding="async" width="1920" height="996"></picture>
       <figcaption class="et">01 — El arreglo completo, con las pistas nombradas y agrupadas</figcaption>
     </figure>
 
     <figure class="cap rv">
-      <img src="img/ses-serum.jpg" alt="Cadena de sonido con Serum abierto sobre el mezclador" loading="lazy" width="1920" height="995">
+      <picture><source srcset="img/ses-serum.avif" type="image/avif"><img src="img/ses-serum.jpg" alt="Cadena de sonido con Serum abierto sobre el mezclador" loading="lazy" decoding="async" width="1920" height="995"></picture>
       <figcaption class="et">02 — Los racks y las cadenas de efectos, editables</figcaption>
     </figure>
 
     <figure class="cap rv">
-      <img src="img/ses-midi.jpg" alt="Edición MIDI de un pad con su automatización de velocidad" loading="lazy" width="1920" height="996">
+      <picture><source srcset="img/ses-midi.avif" type="image/avif"><img src="img/ses-midi.jpg" alt="Edición MIDI de un pad con su automatización de velocidad" loading="lazy" decoding="async" width="1920" height="996"></picture>
       <figcaption class="et">03 — El MIDI y la automatización de cada parte</figcaption>
     </figure>
 
@@ -183,7 +183,7 @@
   <div class="wrap">
     <div class="cab"><h2 class="dp h-sec rv">Bio</h2></div>
     <div class="bio">
-      <div class="rt rv"><img src="img/retrato.jpg" alt="Retrato de Ian Era" loading="lazy" width="470" height="704"></div>
+      <div class="rt rv"><picture><source srcset="img/retrato.avif" type="image/avif"><img src="img/retrato.jpg" alt="Retrato de Ian Era" loading="lazy" decoding="async" width="470" height="704"></picture></div>
       <div>
         <p class="rv">Recreo temas de progressive house desde cero para entender por qué funcionan.
           No de oído por encima: <b>nota por nota, cadena por cadena</b>, hasta que el arreglo aguanta
@@ -239,7 +239,7 @@
 
 
 <script src="https://gumroad.com/js/gumroad.js" defer></script>
-<script src="js/datos.js?v=24"></script>
-<script src="js/sitio.js?v=24"></script>
+<script src="js/datos.js?v=25"></script>
+<script src="js/sitio.js?v=25"></script>
 </body>
 </html>
