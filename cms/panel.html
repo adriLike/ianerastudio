@@ -76,6 +76,12 @@ button:disabled{opacity:.4;cursor:default}
   </span>
 </header>
 
+<div id="caido" style="display:none;padding:14px 28px;background:#3b1111;
+     border-bottom:1px solid #7f1d1d;font-size:13px">
+  <b>El panel no encuentra su servidor.</b> Lo que has escrito está a salvo en el navegador.
+  Vuelve a abrir <code>Panel.command</code> y pulsa Guardar.
+</div>
+
 <main>
   <nav class="tabs" id="tabs"></nav>
 
@@ -143,6 +149,7 @@ button:disabled{opacity:.4;cursor:default}
 <div class="barra">
   <span class="punto" id="punto" title="estado"></span>
   <input id="mensaje" placeholder="Qué has cambiado (ej: capturas de Blessings)">
+  <button onclick="guardar(true)" id="btn-guardar">Guardar</button>
   <button class="p" onclick="publicar()" id="btn-pub">Publicar en la web</button>
   <span class="estado" id="estado">Se guarda solo mientras escribes</span>
 </div>
@@ -236,75 +243,89 @@ function poner(ruta,val){
 function anadir(lista,vacio){ D[lista].push(vacio); pintar(); marcar(); }
 function quitar(lista,i){ D[lista].splice(i,1); pintar(); marcar(); }
 
-let temporizador = null, guardando = false;
+const COPIA = "ianera-panel-borrador";
+let sinGuardar = false;
 
+/* Mientras escribes NO se toca la red: solo se guarda una copia en el propio
+   navegador, que no puede fallar. Al disco y a la web solo con los botones. */
 function marcar(){
-  $("#punto").className = "punto guardando";
+  sinGuardar = true;
+  try{ localStorage.setItem(COPIA, JSON.stringify({fecha:Date.now(), datos:D})); }catch(e){}
+  $("#punto").className = "punto sucio";
   $("#estado").className = "estado";
-  $("#estado").textContent = "Guardando…";
-  clearTimeout(temporizador);
-  temporizador = setTimeout(autoguardar, 700);   /* guarda solo, sin pulsar nada */
+  $("#estado").textContent = "Sin guardar";
+  $("#aviso").textContent = "Sin guardar";
+  $("#aviso").style.color = "#fbbf24";
 }
 
-async function autoguardar(){
-  if(guardando) { clearTimeout(temporizador); temporizador=setTimeout(autoguardar,400); return; }
-  guardando = true;
+function servidorCaido(si){ $("#caido").style.display = si ? "block" : "none"; }
+
+async function guardar(avisar){
+  const e = $("#estado");
   try{
     const r = await fetch("/api/contenido",{method:"POST",
       headers:{"Content-Type":"application/json"}, body:JSON.stringify(D)});
-    if(!r.ok) throw new Error("no se pudo guardar");
+    if(!r.ok) throw new Error("el servidor respondió " + r.status);
+    servidorCaido(false);
+    sinGuardar = false;
+    localStorage.removeItem(COPIA);
     $("#punto").className = "punto sucio";
-    $("#estado").className = "estado";
-    $("#estado").textContent = "Guardado en tu Mac · sin publicar";
-    $("#aviso").textContent = "Sin publicar";
-    $("#aviso").style.color = "#fbbf24";
-  }catch(e){
+    if(avisar){
+      e.className = "estado";
+      e.textContent = "Guardado en tu Mac · falta publicarlo";
+      $("#aviso").textContent = "Sin publicar";
+    }
+    return true;
+  }catch(err){
+    servidorCaido(true);
     $("#punto").className = "punto mal";
-    $("#estado").className = "estado mal";
-    $("#estado").textContent = "No se pudo guardar: " + e.message;
+    e.className = "estado mal";
+    e.textContent = "No se pudo guardar — el servidor no responde";
+    return false;
   }
-  guardando = false;
 }
 
 async function publicar(){
-  const e = $("#estado"), b = $("#btn-pub");
-  clearTimeout(temporizador);
-  b.disabled = true;
+  const e = $("#estado"), b = $("#btn-pub"), g = $("#btn-guardar");
+  b.disabled = g.disabled = true;
   try{
     e.className = "estado"; e.textContent = "Guardando…";
-    await autoguardar();
+    if(!await guardar(false)) { b.disabled = g.disabled = false; return; }
 
     e.textContent = "Subiendo a GitHub…";
     const r = await (await fetch("/api/publicar",{method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({mensaje:$("#mensaje").value})})).json();
     if(r.error) throw new Error(r.error);
-    if(r.nada){ e.textContent = "No había nada que publicar"; b.disabled=false; return; }
+    if(r.nada){ e.textContent = "No había nada que publicar"; b.disabled=g.disabled=false; return; }
 
-    /* «Publicado» no basta: espero a verlo EN LÍNEA de verdad */
-    e.textContent = "Publicado. Esperando a que esté en línea…";
+    /* «Subido» no es «en línea»: espero a verlo publicado de verdad */
+    e.textContent = "Subido. Esperando a que esté en línea…";
     for(let i=0;i<24;i++){
       await new Promise(s=>setTimeout(s,5000));
       const v = await (await fetch("/api/verificar")).json();
       if(v.enLinea){
         $("#punto").className = "punto guardado";
-        e.className = "estado ok";
-        e.textContent = "✓ En línea y comprobado";
+        e.className = "estado ok"; e.textContent = "✓ En línea y comprobado";
         $("#aviso").textContent = "Todo publicado"; $("#aviso").style.color = "";
         $("#mensaje").value = "";
-        b.disabled = false;
+        b.disabled = g.disabled = false;
         return;
       }
       e.textContent = "Esperando a GitHub… (" + ((i+1)*5) + "s)";
     }
     e.className = "estado";
-    e.textContent = "Subido, pero tarda más de lo normal. Míralo en unos minutos.";
+    e.textContent = "Subido, pero GitHub tarda. Míralo en unos minutos.";
   }catch(err){
     $("#punto").className = "punto mal";
     e.className = "estado mal"; e.textContent = "Error: " + err.message;
   }
-  b.disabled = false;
+  b.disabled = g.disabled = false;
 }
+
+addEventListener("beforeunload", e => {
+  if(sinGuardar){ e.preventDefault(); e.returnValue = ""; }
+});
 
 async function subirImagen(){
   const f=$("#i-archivo").files[0], n=$("#i-nombre").value.trim(), t=$("#i-tipo").value;
@@ -339,7 +360,16 @@ async function listarImagenes(){
     document.getElementById("nosirve").style.display = "grid";
     return;
   }
+  /* si el servidor se cayó con cambios a medias, se recuperan */
+  try{
+    const b = JSON.parse(localStorage.getItem(COPIA) || "null");
+    if(b && confirm("Tenías cambios sin guardar de la última vez. ¿Los recupero?")){
+      D = b.datos; sinGuardar = true;
+    } else if(b){ localStorage.removeItem(COPIA); }
+  }catch(e){}
+
   pintar(); listarImagenes();
+  if(sinGuardar) marcar();
 
   const st = await (await fetch("/api/estado")).json();
   if(st.cambios.length){
