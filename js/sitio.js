@@ -372,10 +372,9 @@ function abrirDesdeHash(){
   else if(i === -1 && panel.classList.contains("on")) cerrar(true);
 }
 addEventListener("hashchange", abrirDesdeHash);
-abrirDesdeHash();
 
-cerrarBtn.addEventListener("click",cerrar);
-velo.addEventListener("click",cerrar);
+cerrarBtn.addEventListener("click",function(){ cerrar(); });
+velo.addEventListener("click",function(){ cerrar(); });
 addEventListener("keydown",function(e){
   if(e.key==="Escape" && panel.classList.contains("on")) cerrar();
 });
@@ -414,6 +413,7 @@ Object.keys(enlaces).forEach(function(id){
 
 var bar=$("#bar"), cta=$("#cta-fijo"), tic=false;
 function pintarScroll(){
+  if(!bar || !cta) return;   // puede llamarse antes de que existan
   bar.classList.toggle("solid", scrollY>40);
   cta.classList.toggle("on", scrollY > innerHeight*.85 && !panel.classList.contains("on"));
 }
