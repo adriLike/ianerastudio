@@ -34,7 +34,7 @@ var PRODUCTOS = {
   harmony    : null,   // PENDIENTE: slug real
   caramelle  : null,   // PENDIENTE: slug real
   bundle     : null,   // PENDIENTE: crear el producto (C4 del plan)
-  gratis     : null    // PENDIENTE: crear el producto de 0 € (C7 del plan)
+  gratis     : GUMROAD + "/l/welcome-sample-pack",
 };
 
 var PRECIO = "8,99 €";
