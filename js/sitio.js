@@ -132,8 +132,8 @@ if(PRODUCTOS.bundle){
 if(PRODUCTOS.gratis){
   filas.push('<div class="fila destacada">'+
     '<span class="fch et">Gratis</span>'+
-    '<span><span class="tit">MIDI + preset del lead</span>'+
-      '<span class="meta">Una pieza suelta del proyecto completo</span></span>'+
+    '<span><span class="tit">Welcome Sample Pack</span>'+
+      '<span class="meta">Sonidos de progressive house para empezar</span></span>'+
     '<span class="der"><span class="pr">0 €</span>'+
       botonCompra("gratis","Descargar ↗","acc et")+'</span></div>');
 }
@@ -441,7 +441,7 @@ if(pieBundle){
     : '<a href="#catalogo">Los cuatro proyectos</a>';
 }
 if(pieGratis){
-  if(PRODUCTOS.gratis) pieGratis.outerHTML = botonCompra("gratis","MIDI + preset gratis","");
+  if(PRODUCTOS.gratis) pieGratis.outerHTML = botonCompra("gratis","Sample pack gratis","");
   else pieGratis.remove();
 }
 
