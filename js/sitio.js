@@ -445,4 +445,10 @@ if(pieGratis){
   else pieGratis.remove();
 }
 
+/* AL FINAL DEL TODO: si se llega con #blessings, abrir esa ficha.
+   Antes esto se ejecutaba a media carga, `abrir()` reventaba porque aún no
+   existían las variables de la barra, y el error cancelaba el resto del
+   script — con lo que la X se quedaba sin listener y no se podía cerrar. */
+abrirDesdeHash();
+
 })();
