@@ -1,0 +1,119 @@
+{
+  "gumroad": "https://ianerastudio.gumroad.com",
+  "tienda": "https://tienda.ianerastudio.com",
+  "canal": "https://www.youtube.com/@IanEraStudio",
+  "redes": {
+    "youtube": "https://www.youtube.com/@IanEraStudio",
+    "instagram": "https://instagram.com/ianerastudio",
+    "soundcloud": null,
+    "spotify": null
+  },
+  "productos": {
+    "blessings": "https://ianerastudio.gumroad.com/l/calvin-harris-blessings",
+    "takemethere": "https://ianerastudio.gumroad.com/l/take-me-there-project",
+    "harmony": "https://ianerastudio.gumroad.com/l/harmony",
+    "caramelle": "https://ianerastudio.gumroad.com/l/caramelle",
+    "bundle": null,
+    "gratis": "https://ianerastudio.gumroad.com/l/welcome-sample-pack"
+  },
+  "precio": "8,99 €",
+  "bundle": {
+    "precio": "24 €",
+    "antes": "35,96 €"
+  },
+  "proyectos": [
+    {
+      "id": "blessings",
+      "t": "Blessings",
+      "a": "Calvin Harris",
+      "y": "2026",
+      "video": "Bw8bwS2JOoo",
+      "captura": null,
+      "bpm": null,
+      "tono": null,
+      "pistas": null
+    },
+    {
+      "id": "takemethere",
+      "t": "Take Me There",
+      "a": "Sick Individuals &middot; Matisse &amp; Sadko &middot; Third Party",
+      "y": "2025",
+      "video": "_4fbpisfeiM",
+      "captura": null,
+      "bpm": null,
+      "tono": null,
+      "pistas": null
+    },
+    {
+      "id": "harmony",
+      "t": "Harmony",
+      "a": "Matisse &amp; Sadko",
+      "y": "2025",
+      "video": "oZLm6RlccBc",
+      "captura": null,
+      "bpm": null,
+      "tono": null,
+      "pistas": null
+    },
+    {
+      "id": "caramelle",
+      "t": "Caramelle",
+      "a": "Mesto",
+      "y": "2026",
+      "video": "qOChu1JnFwk",
+      "captura": null,
+      "bpm": null,
+      "tono": null,
+      "pistas": null
+    }
+  ],
+  "videos": [
+    {
+      "f": "02 mar 2026",
+      "t": "Cómo hizo Calvin Harris «Blessings»",
+      "id": "Bw8bwS2JOoo"
+    },
+    {
+      "f": "14 ene 2026",
+      "t": "Cómo hizo Mesto «Caramelle»",
+      "id": "qOChu1JnFwk"
+    },
+    {
+      "f": "16 dic 2025",
+      "t": "Cómo hicieron Matisse &amp; Sadko «Harmony»",
+      "id": "oZLm6RlccBc"
+    },
+    {
+      "f": "06 nov 2025",
+      "t": "Cómo hicieron «Take Me There»",
+      "id": "_4fbpisfeiM"
+    }
+  ],
+  "contacto": {
+    "instagram": "https://instagram.com/ianerastudio",
+    "correo": null
+  },
+  "faq": [
+    {
+      "p": "¿Qué versión de Ableton Live necesito?",
+      "r": null
+    },
+    {
+      "p": "¿Necesito plugins de pago?",
+      "r": null
+    },
+    {
+      "p": "¿Cómo lo recibo?",
+      "r": "Descarga inmediata en cuanto se confirma el pago. Sin esperas y sin envíos: el pago y la entrega los gestiona Gumroad."
+    },
+    {
+      "p": "¿Puedo publicar lo que haga con el proyecto?",
+      "r": "Sí, sin pedirme permiso. Lo único que no puedes es revender ni redistribuir el archivo del proyecto tal cual."
+    },
+    {
+      "p": "¿Y si me atasco o algo no me abre?",
+      "r": "Lo normal es que no pase nada: son archivos que abro yo a diario y salen del mismo Ableton con el que trabajo. Si aun así algo no te carga o no lo encuentras, escríbeme por Instagram y lo miramos — sé dónde pueden dar guerra y suele resolverse en un par de mensajes."
+    }
+  ],
+  "resenas": []
+}
