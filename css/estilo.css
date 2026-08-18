@@ -126,8 +126,7 @@ nav.top a sup{font-size:8px;margin-left:2px}
 .cap img{display:block;width:100%;max-width:960px;height:auto;
          border:1px solid var(--linea);
          filter:var(--grado) brightness(.9) contrast(1.02)}
-.cap figcaption{max-width:960px}
-.cap figcaption{margin-top:14px;color:var(--tinta45);line-height:1.6}
+.cap figcaption{max-width:960px;margin-top:14px;color:var(--tinta45);line-height:1.6}
 .cap-nota{margin:clamp(10px,2vw,20px) 0 0;color:var(--tinta45);font-size:13px;line-height:1.75}
 .cap-nota b{color:var(--tinta70);font-weight:400}
 
