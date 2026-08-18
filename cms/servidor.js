@@ -83,6 +83,18 @@ const rutas = {
       git(["push","origin","main"]);
       json(res, 200, { ok:true });
     } catch(e){ json(res, 500, { error: String(e.stderr || e.message) }); }
+  },
+
+  /* Comprueba que lo que hay EN LÍNEA es lo mismo que hay en el disco.
+     Sin esto, «publicado» solo significa «enviado», que no es lo mismo. */
+  "GET /api/verificar": async (req,res) => {
+    const local = fs.readFileSync(path.join(RAIZ,"js/datos.js"),"utf8");
+    try{
+      const r = await fetch("https://ianerastudio.com/js/datos.js?v=" + Date.now(),
+        { cache:"no-store" });
+      const remoto = await r.text();
+      json(res, 200, { enLinea: remoto.trim() === local.trim() });
+    } catch(e){ json(res, 200, { enLinea:false, error:"sin conexión" }); }
   }
 };
 
