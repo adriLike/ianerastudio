@@ -31,8 +31,8 @@ var REDES = {
 var PRODUCTOS = {
   blessings  : GUMROAD + "/l/calvin-harris-blessings",
   takemethere: GUMROAD + "/l/take-me-there-project",
-  harmony    : null,   // PENDIENTE: slug real
-  caramelle  : null,   // PENDIENTE: slug real
+  harmony    : GUMROAD + "/l/harmony",
+  caramelle  : GUMROAD + "/l/caramelle",
   bundle     : null,   // PENDIENTE: crear el producto (C4 del plan)
   gratis     : GUMROAD + "/l/welcome-sample-pack",
 };
