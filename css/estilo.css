@@ -119,8 +119,14 @@ nav.top a sup{font-size:8px;margin-left:2px}
    cortarla contra el borde de la pantalla parece un fallo. Enmarcada y con
    pie deja de ser decoración y pasa a ser la prueba de lo que vendes. */
 .cap{margin:0 0 clamp(26px,3.6vw,48px)}
-.cap img{width:100%;height:auto;border:1px solid var(--linea);
-         filter:var(--grado) brightness(.88) contrast(1.02)}
+/* Las capturas miden 1920 px. A 1180 de ancho en pantalla retina harían falta
+   2360: se ampliaban un 23 % y el texto de Ableton salía blando. Topadas a 960
+   son 1920 px reales en retina, o sea nítidas exactas. En móvil no cambia nada
+   porque ahí ya sobraba resolución. */
+.cap img{display:block;width:100%;max-width:960px;height:auto;
+         border:1px solid var(--linea);
+         filter:var(--grado) brightness(.9) contrast(1.02)}
+.cap figcaption{max-width:960px}
 .cap figcaption{margin-top:14px;color:var(--tinta45);line-height:1.6}
 .cap-nota{margin:clamp(10px,2vw,20px) 0 0;color:var(--tinta45);font-size:13px;line-height:1.75}
 .cap-nota b{color:var(--tinta70);font-weight:400}
