@@ -15,7 +15,7 @@ var TIENDA  = "https://tienda.ianerastudio.com";
 var CANAL   = "https://www.youtube.com/@IanEraStudio";
 
 /* Un null no pinta el icono. */
-var REDES = {"youtube":"https://www.youtube.com/@IanEraStudio","instagram":"https://instagram.com/ianerastudio","soundcloud":null,"spotify":null};
+var REDES = {"youtube":"https://www.youtube.com/@IanEraStudio","instagram":"https://instagram.com/ianerastudio","soundcloud":null,"spotify":null,"tiktok":"https://www.tiktok.com/@ian_era_studio"};
 
 /* Un null manda al catálogo entero en vez de a una ficha que no existe. */
 var PRODUCTOS = {"riseagain":"https://ianerastudio.gumroad.com/l/raiseagain","takemethere":"https://ianerastudio.gumroad.com/l/take-me-there-project","blessings":"https://ianerastudio.gumroad.com/l/calvin-harris-blessings","harmony":"https://ianerastudio.gumroad.com/l/harmony","caramelle":"https://ianerastudio.gumroad.com/l/caramelle","bundle":null,"gratis":"https://ianerastudio.gumroad.com/l/welcome-sample-pack"};
