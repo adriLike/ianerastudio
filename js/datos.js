@@ -43,9 +43,9 @@ var PROYECTOS = [
     "a": "Sick Individuals &middot; Matisse &amp; Sadko &middot; Third Party",
     "y": "2025",
     "video": "_4fbpisfeiM",
-    "captura": null,
-    "bpm": null,
-    "tono": null,
+    "captura": "img/ses-takemethere.jpg",
+    "bpm": "130",
+    "tono": "C maj",
     "pistas": null
   },
   {
@@ -54,9 +54,9 @@ var PROYECTOS = [
     "a": "Matisse &amp; Sadko",
     "y": "2025",
     "video": "oZLm6RlccBc",
-    "captura": null,
-    "bpm": null,
-    "tono": null,
+    "captura": "img/ses-harmony.jpg",
+    "bpm": "130",
+    "tono": "C maj",
     "pistas": null
   },
   {
@@ -65,9 +65,9 @@ var PROYECTOS = [
     "a": "Mesto",
     "y": "2026",
     "video": "qOChu1JnFwk",
-    "captura": null,
-    "bpm": null,
-    "tono": null,
+    "captura": "img/ses-caramelle.jpg",
+    "bpm": "128",
+    "tono": "C maj",
     "pistas": null
   }
 ];
