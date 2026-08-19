@@ -391,5 +391,81 @@
   "js.ldDesc": {
     "es": "Mi recreación de «{t}» de {a} como sesión de Ableton Live: el arreglo completo, los racks y la automatización.",
     "en": "My recreation of “{t}” by {a} as an Ableton Live session: the full arrangement, the racks and the automation."
+  },
+  "gr.titulo": {
+    "es": "Gracias — Ian Era Studio",
+    "en": "Thanks — Ian Era Studio"
+  },
+  "gr.desc": {
+    "es": "Cómo abrir tu proyecto de Ableton Live y por dónde empezar.",
+    "en": "How to open your Ableton Live project and where to start."
+  },
+  "gr.h1": {
+    "es": "Ya es tuyo. Gracias.",
+    "en": "It's yours now. Thank you."
+  },
+  "gr.entrada": {
+    "es": "El archivo te llega al correo desde Gumroad, y también lo tienes siempre disponible en tu biblioteca. Si no lo ves, mira en spam antes de escribirme: es donde acaba nueve de cada diez veces.",
+    "en": "Gumroad emails you the file, and it also stays in your library for good. If you can't see it, check your spam folder before writing to me: that's where it ends up nine times out of ten."
+  },
+  "gr.h2": {
+    "es": "Por dónde empezar",
+    "en": "Where to start"
+  },
+  "gr.p1t": {
+    "es": "Descomprime la carpeta entera antes de abrir nada.",
+    "en": "Unzip the whole folder before you open anything."
+  },
+  "gr.p1": {
+    "es": "Si abres el <b>.als</b> desde dentro del zip, Ableton no encuentra los samples y te salen pistas en silencio. Es el fallo más común y no tiene más misterio.",
+    "en": "If you open the <b>.als</b> from inside the zip, Ableton won't find the samples and some tracks will play silent. It's the most common issue and there's nothing more to it."
+  },
+  "gr.p2t": {
+    "es": "Abre el proyecto y dale al play antes de tocar nada.",
+    "en": "Open the project and hit play before you touch anything."
+  },
+  "gr.p2": {
+    "es": "Escúchalo entero una vez. Enterarte de por dónde va el arreglo antes de empezar a destriparlo ahorra media hora.",
+    "en": "Listen through once. Knowing where the arrangement goes before you start pulling it apart saves you half an hour."
+  },
+  "gr.p3t": {
+    "es": "Empieza por el final, no por el principio.",
+    "en": "Start at the end, not the beginning."
+  },
+  "gr.p3": {
+    "es": "Vete al drop, aísla el grupo del lead y ve desactivando dispositivos de uno en uno. Oír lo que <em>falta</em> enseña más que leer lo que hay.",
+    "en": "Go to the drop, solo the lead group and switch devices off one at a time. Hearing what's <em>missing</em> teaches you more than reading what's there."
+  },
+  "gr.p4t": {
+    "es": "Mira la automatización antes que los presets.",
+    "en": "Look at the automation before the presets."
+  },
+  "gr.p4": {
+    "es": "Es donde está la mitad del movimiento del tema, y es lo que casi nadie copia cuando intenta sacar un sonido de oído.",
+    "en": "That's where half the movement of the track lives, and it's what almost nobody copies when they try to work a sound out by ear."
+  },
+  "gr.ch2": {
+    "es": "Y ahora lo que más me ayuda",
+    "en": "And now the thing that helps me most"
+  },
+  "gr.c1b": {
+    "es": "Cuéntame qué haces con él.",
+    "en": "Tell me what you make with it."
+  },
+  "gr.c1": {
+    "es": "Escríbeme por Instagram y mándame lo que saques, aunque sean ocho compases. Contesto yo, no un formulario.",
+    "en": "Write me on Instagram and send me whatever comes out, even if it's eight bars. You get me, not a form."
+  },
+  "gr.c2": {
+    "es": "Y si te ha servido, dejar una valoración en Gumroad me cambia la vida más de lo que parece: soy una persona vendiendo esto, y cuando no hay ninguna opinión nadie se atreve a ser el primero.",
+    "en": "And if it helped, leaving a review on Gumroad changes more than it looks: I'm one person selling this, and when there are no reviews at all nobody wants to be the first."
+  },
+  "gr.insta": {
+    "es": "Escríbeme por Instagram ↗",
+    "en": "Write me on Instagram ↗"
+  },
+  "gr.volver": {
+    "es": "Volver a la web",
+    "en": "Back to the site"
   }
 }

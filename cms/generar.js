@@ -79,7 +79,19 @@ var RESENAS = ${JSON.stringify(c.resenas,null,2)};
     const nuevo = parseInt(m[1],10) + 1;
     html = html.replace(/\?v=\d+/g, "?v=" + nuevo);
     fs.writeFileSync(idx, html);
-    ingles(html, JSON.parse(fs.readFileSync(path.join(RAIZ,"textos.json"),"utf8")));
+    const TX = JSON.parse(fs.readFileSync(path.join(RAIZ,"textos.json"),"utf8"));
+    ingles(html, TX, {
+      salida: "index.html",
+      titulo: "meta.titulo", desc: "meta.desc",
+      canonical: "https://ianerastudio.com/en/",
+      inicio: "/"
+    });
+    /* La página de gracias es la que ven los compradores, y la mayoría son
+       de habla inglesa: se traduce igual que la portada. */
+    let gr = fs.readFileSync(path.join(RAIZ,"gracias.html"),"utf8");
+    gr = gr.replace(/\?v=\d+/g, "?v=" + nuevo);
+    fs.writeFileSync(path.join(RAIZ,"gracias.html"), gr);
+    ingles(gr, TX, { salida: "gracias.html", titulo: "gr.titulo", desc: "gr.desc", inicio: "/en/" });
     return nuevo;
   }
   return null;
@@ -90,7 +102,7 @@ var RESENAS = ${JSON.stringify(c.resenas,null,2)};
    mantener. El castellano es el original; si tocas el HTML, el
    inglés se rehace solo en la siguiente publicación.
    --------------------------------------------------------------- */
-function ingles(html, T){
+function ingles(html, T, op){
   const txt = (k) => (T[k] && T[k].en !== undefined) ? T[k].en : null;
   const faltan = [];
 
@@ -114,20 +126,22 @@ function ingles(html, T){
 
   /* cabecera */
   html = html.replace('<html lang="es">', '<html lang="en">');
-  html = html.replace(/<title>[^<]*<\/title>/, "<title>" + txt("meta.titulo") + "</title>");
+  html = html.replace(/<title>[^<]*<\/title>/, "<title>" + txt(op.titulo) + "</title>");
   const meta = (sel, clave) => {
     const re = new RegExp('(<meta ' + sel + ' content=")[^"]*(")');
     html = html.replace(re, "$1" + txt(clave) + "$2");
   };
-  meta('name="description"',            "meta.desc");
+  meta('name="description"',            op.desc);
   meta('property="og:title"',           "meta.og.titulo");
   meta('property="og:description"',     "meta.og.desc");
   meta('property="og:locale"',          "meta.og.locale");
   meta('property="og:image:alt"',       "meta.og.imgalt");
-  html = html.replace('<link rel="canonical" href="https://ianerastudio.com/">',
-                      '<link rel="canonical" href="https://ianerastudio.com/en/">');
-  html = html.replace('<meta property="og:url" content="https://ianerastudio.com/">',
-                      '<meta property="og:url" content="https://ianerastudio.com/en/">');
+  if(op.canonical){
+    html = html.replace('<link rel="canonical" href="https://ianerastudio.com/">',
+                        '<link rel="canonical" href="' + op.canonical + '">');
+    html = html.replace('<meta property="og:url" content="https://ianerastudio.com/">',
+                        '<meta property="og:url" content="' + op.canonical + '">');
+  }
 
   /* rutas: en/index.html vive un nivel más abajo */
   html = html.replace(/(href|src)="(css|js|img)\//g, '$1="../$2/');
@@ -136,10 +150,12 @@ function ingles(html, T){
     'srcset="' + v.replace(/(^|,\s*)(css|js|img)\//g, '$1../$2/') + '"');
   html = html.replace('js/textos-es.js', 'js/textos-en.js');
   html = html.replace('<a class="idi" id="idi" href="/en/"', '<a class="idi" id="idi" href="/"');
+  /* los enlaces a la portada tienen que quedarse dentro del idioma */
+  html = html.replace(/href="\/"/g, 'href="' + op.inicio + '"');
 
   const dir = path.join(RAIZ,"en");
   if(!fs.existsSync(dir)) fs.mkdirSync(dir);
-  fs.writeFileSync(path.join(dir,"index.html"), html);
+  fs.writeFileSync(path.join(dir, op.salida), html);
   if(faltan.length) console.log("  ojo, claves sin traducir:", [...new Set(faltan)].join(", "));
 }
 
