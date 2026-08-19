@@ -192,6 +192,7 @@ function pintar(){
       <div class="fila2">${campo("Título",p.t,`proyectos.${i}.t`)}${campo("Artista",p.a,`proyectos.${i}.a`)}</div>
       <div class="fila3">${campo("Año",p.y,`proyectos.${i}.y`)}${campo("ID del vídeo",p.video,`proyectos.${i}.video`,"Bw8bwS2JOoo")}${campo("Captura",p.captura,`proyectos.${i}.captura`,"img/ses-blessings.jpg")}</div>
       <div class="fila3">${campo("BPM",p.bpm,`proyectos.${i}.bpm`,"128")}${campo("Tonalidad",p.tono,`proyectos.${i}.tono`,"E min")}${campo("Pistas",p.pistas,`proyectos.${i}.pistas`,"71")}</div>
+      <div class="fila2">${campo("Tarjeta",p.portada,`proyectos.${i}.portada`,"img/card-blessings.jpg")}${campo("Audio del fragmento",p.audio,`proyectos.${i}.audio`,"audio/blessings.mp3")}</div>
     </div>`).join("");
 
   $("#videos").innerHTML = D.videos.map((v,i)=>`

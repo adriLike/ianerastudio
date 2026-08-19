@@ -556,3 +556,42 @@ footer{background:var(--n1);border-top:1px solid var(--linea);
   *{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
 }
+
+/* ---------------------------------------------------------------
+   Fragmento de audio del proyecto
+   Controles propios: el reproductor nativo es gris y azul y aquí
+   no hay más color que el de las fotos.
+   --------------------------------------------------------------- */
+.oir{display:flex;align-items:center;gap:16px;
+  margin:clamp(26px,3.4vw,36px) 0 0;padding:14px 18px;
+  border:1px solid var(--linea);background:var(--n2)}
+.oir audio{display:none}
+
+.oir-b{flex:0 0 auto;width:42px;height:42px;padding:0;cursor:pointer;
+  display:grid;place-items:center;border:1px solid var(--linea);
+  background:transparent;color:var(--tinta);border-radius:50%;
+  transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.oir-b:hover{background:var(--tinta);color:var(--n1);border-color:var(--tinta)}
+.oir-b svg{width:17px;height:17px;margin-left:2px}
+.oir .i-pausa{display:none}
+.oir.sonando .i-play{display:none}
+.oir.sonando .i-pausa{display:block}
+.oir.sonando .oir-b svg{margin-left:0}
+
+.oir-barra{flex:1 1 auto;height:3px;background:var(--linea);cursor:pointer;position:relative}
+/* zona de clic más alta que la línea, para poder buscar con el dedo */
+.oir-barra::before{content:"";position:absolute;inset:-15px 0}
+.oir-va{display:block;height:100%;width:0;background:var(--tinta);
+  transition:width .1s linear}
+
+.oir-t{flex:0 0 auto;min-width:78px;text-align:right;color:var(--tinta45);
+  font-size:12px;letter-spacing:.04em}
+
+.oir-pie{margin:10px 0 0;color:var(--tinta45);font-size:12px;letter-spacing:.06em}
+
+@media (max-width:520px){
+  .oir{gap:12px;padding:12px 14px}
+  .oir-t{min-width:64px;font-size:11px}
+}
+/* mientras no se sabe la duración no se puede buscar */
+.oir.sinlargo .oir-barra{cursor:default;opacity:.5}

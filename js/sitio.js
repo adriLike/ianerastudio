@@ -330,6 +330,25 @@ function abrir(i, desdeUrl){
           '</button></div>'
       : '')+
 
+    /* Un fragmento del tema, para quien prefiere oír antes que mirar — y la
+       única prueba que hay mientras un proyecto todavía no tiene vídeo.
+       preload="none" es lo que importa: el MP3 no se descarga hasta que se
+       pulsa, así que no cuesta nada a quien solo pasa por aquí. */
+    (p.audio
+      ? '<div class="oir" data-oir>'+
+          '<button class="oir-b" type="button" aria-label="Escuchar el fragmento">'+
+            '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+
+              '<path class="i-play" d="M8 5v14l11-7z"/>'+
+              '<path class="i-pausa" d="M6 5h4v14H6zM14 5h4v14h-4z"/>'+
+            '</svg>'+
+          '</button>'+
+          '<div class="oir-barra" role="presentation"><span class="oir-va"></span></div>'+
+          '<span class="oir-t et">0:00</span>'+
+          '<audio preload="none" src="'+p.audio+'"></audio>'+
+        '</div>'+
+        '<p class="oir-pie et">Fragmento del tema · así suena la sesión terminada</p>'
+      : '')+
+
     specs(p)+
     '<ul class="dentro">'+
       '<li><i>01</i><div><b>El arreglo completo.</b> De la intro al último compás, con las pistas nombradas y agrupadas tal y como las tengo yo.</div></li>'+
@@ -358,6 +377,8 @@ function cerrar(desdeUrl){
      vivo en el DOM y se sigue oyendo con la web ya cerrada. */
   var marco = pin.querySelector("iframe");
   if(marco) marco.remove();
+  var son = pin.querySelector("audio");
+  if(son){ son.pause(); son.remove(); }
 
   velo.classList.remove("on"); panel.classList.remove("on");
   if(!desdeUrl && location.hash) history.pushState(null, "", location.pathname);
@@ -380,6 +401,8 @@ pin.addEventListener("click",function(e){
   var b = e.target.closest("[data-play]");
   if(!b) return;
   var id = b.getAttribute("data-play");
+  var son = pin.querySelector("audio");
+  if(son) son.pause();          /* que no suenen el fragmento y el vídeo a la vez */
   var caja = b.parentElement;
   caja.classList.add("cargado");
   /* modestbranding quita el logotipo grande; rel=0 limita los sugeridos al
@@ -388,6 +411,50 @@ pin.addEventListener("click",function(e){
     '?autoplay=1&rel=0&modestbranding=1" title="Vídeo del proyecto" '+
     'allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" '+
     'allowfullscreen></iframe>';
+});
+
+/* ---------------------------------------------------------------
+   Reproductor del fragmento. Nativo por dentro (<audio> de verdad),
+   con los controles pintados a mano para que no desentone con el
+   resto: el player del navegador es gris y azul, y aquí no hay más
+   color que el de las fotos.
+   --------------------------------------------------------------- */
+function reloj(s){
+  if(!isFinite(s) || s < 0) s = 0;
+  var m = Math.floor(s/60), r = Math.floor(s%60);
+  return m + ":" + (r<10 ? "0" : "") + r;
+}
+pin.addEventListener("click",function(e){
+  var caja = e.target.closest("[data-oir]");
+  if(!caja) return;
+  var son = caja.querySelector("audio");
+  if(!son) return;
+
+  if(e.target.closest(".oir-b")){
+    if(son.paused) son.play(); else son.pause();
+    return;
+  }
+  var barra = e.target.closest(".oir-barra");
+  if(barra && isFinite(son.duration) && son.duration > 0){
+    var r = barra.getBoundingClientRect();
+    son.currentTime = son.duration * Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+  }
+});
+/* Los eventos de <audio> no burbujean, así que se escuchan en captura. */
+["play","pause","ended","timeupdate","loadedmetadata"].forEach(function(ev){
+  pin.addEventListener(ev, function(e){
+    var son = e.target;
+    if(!son || son.tagName !== "AUDIO") return;
+    var caja = son.closest("[data-oir]");
+    if(!caja) return;
+    caja.classList.toggle("sonando", !son.paused && !son.ended);
+    /* duration es Infinity hasta que el navegador sabe cuánto dura. Mientras
+       tanto no hay barra que pintar ni sitio al que saltar. */
+    var t = son.currentTime, d = son.duration, largo = isFinite(d) && d > 0;
+    caja.classList.toggle("sinlargo", !largo);
+    caja.querySelector(".oir-va").style.width = (largo ? (t/d)*100 : 0) + "%";
+    caja.querySelector(".oir-t").textContent = reloj(t) + (largo ? " / " + reloj(d) : "");
+  }, true);
 });
 
 /* ---------------------------------------------------------------
