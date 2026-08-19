@@ -300,7 +300,9 @@ function specs(p){
   var d=[];
   if(p.bpm)    d.push('<div><b>'+p.bpm+'</b><span class="et">BPM</span></div>');
   if(p.tono)   d.push('<div><b>'+p.tono+'</b><span class="et">Tonalidad</span></div>');
-  if(p.pistas) d.push('<div><b>'+p.pistas+'</b><span class="et">Pistas</span></div>');
+  /* El número solo asusta; con los grupos al lado dice «grande y ordenado». */
+  if(p.pistas) d.push('<div><b>'+p.pistas+'</b><span class="et">Pistas'+
+    (p.grupos ? ' en '+p.grupos+' grupos' : '')+'</span></div>');
   if(!d.length) return '<p class="formato et">Archivo .als · Proyecto de Ableton Live</p>';
   d.push('<div><b>.als</b><span class="et">Proyecto de Live</span></div>');
   return '<div class="specs">'+d.join("")+'</div>';

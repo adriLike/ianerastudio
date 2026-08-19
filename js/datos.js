@@ -37,10 +37,11 @@ var PROYECTOS = [
     "captura": "img/ses-riseagain.jpg",
     "bpm": "128",
     "tono": "E maj",
-    "pistas": null,
+    "pistas": "164",
     "portada": "img/card-riseagain.jpg",
     "audio": "audio/riseagain.mp3",
-    "insignia": "Nuevo"
+    "insignia": "Nuevo",
+    "grupos": "8"
   },
   {
     "id": "takemethere",
@@ -54,7 +55,8 @@ var PROYECTOS = [
     "pistas": null,
     "portada": "img/card-takemethere.jpg",
     "audio": "audio/takemethere.mp3",
-    "insignia": "+20.000 en YouTube"
+    "insignia": "+20.000 en YouTube",
+    "grupos": null
   },
   {
     "id": "blessings",
@@ -68,7 +70,8 @@ var PROYECTOS = [
     "pistas": null,
     "portada": "img/card-blessings.jpg",
     "audio": "audio/blessings.mp3",
-    "insignia": null
+    "insignia": null,
+    "grupos": null
   },
   {
     "id": "harmony",
@@ -82,7 +85,8 @@ var PROYECTOS = [
     "pistas": null,
     "portada": "img/card-harmony.jpg",
     "audio": "audio/harmony.mp3",
-    "insignia": null
+    "insignia": null,
+    "grupos": null
   },
   {
     "id": "caramelle",
@@ -96,7 +100,8 @@ var PROYECTOS = [
     "pistas": null,
     "portada": "img/card-caramelle.jpg",
     "audio": "audio/caramelle.mp3",
-    "insignia": null
+    "insignia": null,
+    "grupos": null
   }
 ];
 
@@ -133,7 +138,7 @@ var FAQ = [
   },
   {
     "p": "¿Necesito plugins de pago?",
-    "r": "Los proyectos están hechos en Ableton Live 12.4.3, y todo lo que es de Ableton va dentro: el arreglo, el MIDI, las automatizaciones y las cadenas de efectos completas. En los sintetizadores uso Serum, Sylenth1 y Nexus; para procesar, FabFilter y ShaperBox. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: el arreglo entero sigue en su sitio."
+    "r": "Los proyectos están hechos en Ableton Live 12.4.3, y todo lo que es de Ableton va dentro: el arreglo, el MIDI, las automatizaciones y las cadenas de efectos completas. Buena parte del procesado son dispositivos de serie de Live. En los sintetizadores uso Serum, Sylenth1 y Nexus, y para procesar FabFilter y ShaperBox — algunos de los que uso, como OTT o Tape Stop, son gratuitos. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: el arreglo entero sigue en su sitio."
   },
   {
     "p": "¿Cómo lo recibo?",
