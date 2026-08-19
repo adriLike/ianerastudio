@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup · Por dentro</title>
+<link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/estilo.css">
+<style>
+ body{padding-bottom:120px}
+ .rotulo{position:sticky;top:0;z-index:9;background:rgba(0,0,0,.94);backdrop-filter:blur(12px);
+   border-bottom:1px solid var(--linea);padding:16px var(--lat);display:flex;gap:16px;align-items:baseline}
+ .rotulo b{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.02em}
+ .rotulo span{color:var(--tinta45);font-size:12px}
+ .veredicto{max-width:60ch;color:var(--tinta70);font-size:13.5px;line-height:1.7;
+   border-left:1px solid var(--linea);padding-left:16px;margin:22px 0 0}
+ .veredicto b{color:var(--tinta);font-weight:400}
+
+ /* ---------- B · carril con degradado lateral ---------- */
+ .carril-cap{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;
+   padding-bottom:8px;scrollbar-width:none}
+ .carril-cap::-webkit-scrollbar{display:none}
+ .carril-cap figure{margin:0;flex:0 0 min(960px,86vw);scroll-snap-align:start}
+ .carril-cap img{width:100%;height:auto;display:block}
+ .lados img{-webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);
+            mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+ .carril-cap figcaption{margin-top:14px;color:var(--tinta45)}
+
+ /* ---------- C · carril con degradado arriba y abajo ---------- */
+ .arribabajo img{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent);
+                 mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent)}
+
+ /* ---------- D · apilado con degradado suave por los cuatro lados ---------- */
+ .suave{margin:0 0 clamp(26px,3.6vw,48px)}
+ .suave img{width:100%;max-width:960px;height:auto;display:block;
+   -webkit-mask-image:linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent),
+                      linear-gradient(to right,transparent,#000 4%,#000 96%,transparent);
+           mask-image:linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent),
+                      linear-gradient(to right,transparent,#000 4%,#000 96%,transparent);
+   -webkit-mask-composite:source-in;mask-composite:intersect}
+ .suave figcaption{margin-top:14px;color:var(--tinta45);max-width:960px}
+</style></head><body>
+
+<!-- ============ A · COMO ESTÁ AHORA ============ -->
+<div class="rotulo"><b>A</b><span>Como está ahora — apilado, borde limpio, cada una con su pie</span></div>
+<section class="bl bg2"><div class="wrap">
+  <figure class="cap"><img src="../img/ses-arreglo.jpg" alt="">
+    <figcaption class="et">01 — El arreglo completo, con las pistas nombradas y agrupadas</figcaption></figure>
+  <figure class="cap"><img src="../img/ses-serum.jpg" alt="">
+    <figcaption class="et">02 — Los racks y las cadenas de efectos, editables</figcaption></figure>
+  <p class="veredicto"><b>Se lee entero de un scroll.</b> Los tres pies se ven a la vez,
+    así que la sección cuenta una historia: arreglo → racks → automatización.
+    A cambio ocupa mucho alto.</p>
+</div></section>
+
+<!-- ============ B · CARRIL CON DEGRADADO A LOS LADOS ============ -->
+<div class="rotulo"><b>B</b><span>Carril horizontal + degradado lateral — lo que propones</span></div>
+<section class="bl bg1"><div class="wrap">
+  <div class="carril-cap lados">
+    <figure><img src="../img/ses-arreglo.jpg" alt="">
+      <figcaption class="et">01 — El arreglo completo</figcaption></figure>
+    <figure><img src="../img/ses-serum.jpg" alt="">
+      <figcaption class="et">02 — Los racks y las cadenas</figcaption></figure>
+    <figure><img src="../img/ses-midi.jpg" alt="">
+      <figcaption class="et">03 — El MIDI y la automatización</figcaption></figure>
+  </div>
+  <p class="veredicto">Compacta mucho y quita el aire de recorte.
+    <b>Pero el degradado se come justo los bordes que prueban el contenido</b>:
+    a la izquierda el navegador de plugins, a la derecha la lista de pistas con
+    los nombres. Y solo se ve un pie a la vez.</p>
+</div></section>
+
+<!-- ============ C · CARRIL CON DEGRADADO ARRIBA Y ABAJO ============ -->
+<div class="rotulo"><b>C</b><span>Carril + degradado solo arriba y abajo — los lados intactos</span></div>
+<section class="bl bg2"><div class="wrap">
+  <div class="carril-cap arribabajo">
+    <figure><img src="../img/ses-arreglo.jpg" alt="">
+      <figcaption class="et">01 — El arreglo completo</figcaption></figure>
+    <figure><img src="../img/ses-serum.jpg" alt="">
+      <figcaption class="et">02 — Los racks y las cadenas</figcaption></figure>
+    <figure><img src="../img/ses-midi.jpg" alt="">
+      <figcaption class="et">03 — El MIDI y la automatización</figcaption></figure>
+  </div>
+  <p class="veredicto">Quita el corte duro <b>sin tocar la información útil</b>:
+    arriba está la barra de transporte y abajo la línea de tiempo, que se pueden
+    difuminar sin perder nada. Compacto y honesto.</p>
+</div></section>
+
+<!-- ============ D · APILADO CON DEGRADADO SUAVE ============ -->
+<div class="rotulo"><b>D</b><span>Apilado + degradado suave — sin carrusel</span></div>
+<section class="bl bg1"><div class="wrap">
+  <figure class="suave"><img src="../img/ses-arreglo.jpg" alt="">
+    <figcaption class="et">01 — El arreglo completo, con las pistas nombradas y agrupadas</figcaption></figure>
+  <figure class="suave"><img src="../img/ses-serum.jpg" alt="">
+    <figcaption class="et">02 — Los racks y las cadenas de efectos, editables</figcaption></figure>
+  <p class="veredicto">Mantiene los tres pies visibles y quita el aire de captura pegada.
+    <b>Sigue siendo largo</b>, que es lo que querías arreglar.</p>
+</div></section>
+
+</body></html>

@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
      o quien ya haya visitado la web seguirá viendo la versión antigua. -->
-<link rel="stylesheet" href="css/estilo.css?v=42">
+<link rel="stylesheet" href="css/estilo.css?v=43">
 </head>
 <body>
 
@@ -118,8 +118,10 @@
      repetía la misma foto que ya están el héroe y la bio. -->
 <div class="foto banda"><img src="img/mesa.jpg" srcset="img/mesa-960.jpg 960w, img/mesa.jpg 1920w" sizes="100vw" alt="" loading="lazy" decoding="async" width="1920" height="1071"></div>
 
-<!-- 6 · POR DENTRO — las capturas, contenidas y con pie.
-     Una captura es un rectángulo con su ventana: a sangre parece un error. -->
+<!-- 6 · POR DENTRO — carrusel de capturas.
+     Los pies van FUERA del carril y hacen de índice: así se compacta sin
+     perder la secuencia arreglo → racks → automatización, que es lo que
+     un carrusel se lleva por delante. -->
 <section class="bl bg2" id="dentro">
   <div class="wrap">
     <div class="cab">
@@ -127,20 +129,28 @@
       <span class="et n rv">Sesión real</span>
     </div>
 
-    <figure class="cap rv">
-      <img src="img/ses-arreglo.jpg" srcset="img/ses-arreglo-960.jpg 960w, img/ses-arreglo.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Arrangement completo de una sesión de Ableton Live" loading="lazy" decoding="async" width="1920" height="996">
-      <figcaption class="et">01 — El arreglo completo, con las pistas nombradas y agrupadas</figcaption>
-    </figure>
+    <div class="caps-caja rv">
+      <div class="caps" id="caps" role="group" aria-label="Capturas de la sesión">
+        <figure>
+          <img src="img/ses-arreglo.jpg" srcset="img/ses-arreglo-960.jpg 960w, img/ses-arreglo.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Arrangement completo de una sesión de Ableton Live" loading="lazy" decoding="async" width="1920" height="996">
+        </figure>
+        <figure>
+          <img src="img/ses-serum.jpg" srcset="img/ses-serum-960.jpg 960w, img/ses-serum.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Cadena de sonido con Serum abierto sobre el mezclador" loading="lazy" decoding="async" width="1920" height="995">
+        </figure>
+        <figure>
+          <img src="img/ses-midi.jpg" srcset="img/ses-midi-960.jpg 960w, img/ses-midi.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Edición MIDI de un pad con su automatización de velocidad" loading="lazy" decoding="async" width="1920" height="996">
+        </figure>
+      </div>
+    </div>
 
-    <figure class="cap rv">
-      <img src="img/ses-serum.jpg" srcset="img/ses-serum-960.jpg 960w, img/ses-serum.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Cadena de sonido con Serum abierto sobre el mezclador" loading="lazy" decoding="async" width="1920" height="995">
-      <figcaption class="et">02 — Los racks y las cadenas de efectos, editables</figcaption>
-    </figure>
-
-    <figure class="cap rv">
-      <img src="img/ses-midi.jpg" srcset="img/ses-midi-960.jpg 960w, img/ses-midi.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Edición MIDI de un pad con su automatización de velocidad" loading="lazy" decoding="async" width="1920" height="996">
-      <figcaption class="et">03 — El MIDI y la automatización de cada parte</figcaption>
-    </figure>
+    <div class="caps-nav rv" id="caps-nav">
+      <button type="button" data-i="0" aria-current="true">
+        <span class="et n">01</span><span>El arreglo completo, con las pistas nombradas y agrupadas</span></button>
+      <button type="button" data-i="1">
+        <span class="et n">02</span><span>Los racks y las cadenas de efectos, editables</span></button>
+      <button type="button" data-i="2">
+        <span class="et n">03</span><span>El MIDI y la automatización de cada parte</span></button>
+    </div>
 
     <p class="cap-nota rv">Capturas de una sesión de verdad, sin montaje.
       Esto es exactamente lo que se abre al descargar el <b>.als</b>.</p>
@@ -239,7 +249,7 @@
 
 
 <script src="https://gumroad.com/js/gumroad.js" defer></script>
-<script src="js/datos.js?v=42"></script>
-<script src="js/sitio.js?v=42"></script>
+<script src="js/datos.js?v=43"></script>
+<script src="js/sitio.js?v=43"></script>
 </body>
 </html>

@@ -140,6 +140,40 @@ if(PRODUCTOS.gratis){
 $("#catalogo-lista").innerHTML = filas.join("");
 
 /* ---------------------------------------------------------------
+   Capturas: el índice de abajo y el carrusel se siguen el uno al otro.
+   Pulsar un pie lleva a su captura; desplazar el carrusel marca el pie.
+   --------------------------------------------------------------- */
+var caps = $("#caps"), capsNav = $("#caps-nav");
+if(caps && capsNav){
+  var botones = [].slice.call(capsNav.querySelectorAll("button"));
+
+  capsNav.addEventListener("click", function(e){
+    var b = e.target.closest("button"); if(!b) return;
+    var f = caps.children[+b.dataset.i];
+    if(f) caps.scrollTo({ left: f.offsetLeft - caps.offsetLeft, behavior:"smooth" });
+  });
+
+  function marcarCaptura(){
+    /* la que más cerca esté del borde izquierdo del carril */
+    var mejor = 0, min = Infinity;
+    for(var i=0;i<caps.children.length;i++){
+      var d = Math.abs(caps.children[i].offsetLeft - caps.offsetLeft - caps.scrollLeft);
+      if(d < min){ min = d; mejor = i; }
+    }
+    botones.forEach(function(b,i){
+      if(i===mejor) b.setAttribute("aria-current","true");
+      else b.removeAttribute("aria-current");
+    });
+  }
+  var tic2 = false;
+  caps.addEventListener("scroll", function(){
+    if(tic2) return; tic2 = true;
+    requestAnimationFrame(function(){ marcarCaptura(); tic2 = false; });
+  }, {passive:true});
+  marcarCaptura();
+}
+
+/* ---------------------------------------------------------------
    Dudas y contacto. Solo se pinta lo que tiene respuesta de verdad.
    --------------------------------------------------------------- */
 var faqCaja = $("#faq-lista");

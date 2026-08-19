@@ -114,20 +114,45 @@ nav.top a sup{font-size:8px;margin-left:2px}
 .foto.banda::before{top:0;background:linear-gradient(rgba(0,0,0,.85),transparent)}
 .foto.banda::after{bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.85))}
 
-/* ---------- capturas de sesión, contenidas ----------
-   NO van a sangre: una captura es un rectángulo con su propia ventana, y
-   cortarla contra el borde de la pantalla parece un fallo. Enmarcada y con
-   pie deja de ser decoración y pasa a ser la prueba de lo que vendes. */
-.cap{margin:0 0 clamp(26px,3.6vw,48px)}
-/* Las capturas miden 1920 px. A 1180 de ancho en pantalla retina harían falta
-   2360: se ampliaban un 23 % y el texto de Ableton salía blando. Topadas a 960
-   son 1920 px reales en retina, o sea nítidas exactas. En móvil no cambia nada
-   porque ahí ya sobraba resolución. */
-.cap img{display:block;width:100%;max-width:960px;height:auto;
-         border:1px solid var(--linea);
-         filter:var(--grado) brightness(.9) contrast(1.02)}
-.cap figcaption{max-width:960px;margin-top:14px;color:var(--tinta45);line-height:1.6}
-.cap-nota{margin:clamp(10px,2vw,20px) 0 0;color:var(--tinta45);font-size:13px;line-height:1.75}
+/* ---------- capturas de sesión ----------
+   Carrusel horizontal, y los pies FUERA haciendo de índice: se compacta la
+   sección sin perder la secuencia (arreglo → racks → automatización), que es
+   lo único que un carrusel se lleva por delante.
+
+   El degradado va SOLO arriba y abajo. Por los lados se comería el navegador
+   de plugins y la lista de pistas, que es justo lo que prueba que la sesión
+   es real. Arriba está el transporte y abajo la línea de tiempo: eso sí se
+   puede desvanecer sin perder nada. */
+.caps-caja{position:relative}
+.caps{display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;overflow-y:hidden;
+      scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:4px;
+      scrollbar-width:none;-ms-overflow-style:none}
+.caps::-webkit-scrollbar{display:none}
+.caps figure{margin:0;flex:0 0 min(960px,88vw);scroll-snap-align:start}
+.caps img{width:100%;height:auto;display:block;
+  filter:var(--grado) brightness(.92) contrast(1.02);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 93%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 93%,transparent 100%)}
+
+/* Los pies: índice fijo y navegable. Pulsar uno lleva a su captura. */
+.caps-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+          background:var(--linea);border-top:1px solid var(--linea);margin-top:clamp(20px,2.6vw,30px)}
+.caps-nav button{display:flex;flex-direction:column;gap:9px;align-items:flex-start;text-align:left;
+  background:var(--n2);border:0;padding:clamp(16px,2vw,22px) clamp(14px,1.8vw,20px);
+  cursor:pointer;font:inherit;color:var(--tinta45);
+  border-top:1px solid transparent;margin-top:-1px;
+  transition:color .3s ease,background .3s ease,border-color .3s ease}
+.caps-nav button:hover{color:var(--tinta70);background:var(--n3)}
+.caps-nav button[aria-current="true"]{color:var(--tinta);border-top-color:var(--tinta);background:var(--n3)}
+.caps-nav .n{color:inherit;opacity:.65}
+.caps-nav button[aria-current="true"] .n{opacity:1}
+.caps-nav button span:last-child{font-size:13px;line-height:1.5}
+@media(max-width:760px){
+  .caps-nav{grid-template-columns:1fr}
+  .caps-nav button{flex-direction:row;align-items:baseline;gap:14px}
+}
+
+.cap-nota{margin:clamp(18px,2.4vw,26px) 0 0;color:var(--tinta45);font-size:13px;line-height:1.75}
 .cap-nota b{color:var(--tinta70);font-weight:400}
 
 .hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--n2)}
