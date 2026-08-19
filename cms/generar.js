@@ -84,14 +84,15 @@ var RESENAS = ${JSON.stringify(c.resenas,null,2)};
       salida: "index.html",
       titulo: "meta.titulo", desc: "meta.desc",
       canonical: "https://ianerastudio.com/en/",
-      inicio: "/"
+      inicio: "/", idi: "/"
     });
     /* La página de gracias es la que ven los compradores, y la mayoría son
        de habla inglesa: se traduce igual que la portada. */
     let gr = fs.readFileSync(path.join(RAIZ,"gracias.html"),"utf8");
     gr = gr.replace(/\?v=\d+/g, "?v=" + nuevo);
     fs.writeFileSync(path.join(RAIZ,"gracias.html"), gr);
-    ingles(gr, TX, { salida: "gracias.html", titulo: "gr.titulo", desc: "gr.desc", inicio: "/en/" });
+    ingles(gr, TX, { salida: "gracias.html", titulo: "gr.titulo", desc: "gr.desc",
+        inicio: "/en/", idi: "/gracias.html" });
     return nuevo;
   }
   return null;
@@ -149,7 +150,8 @@ function ingles(html, T, op){
   html = html.replace(/srcset="([^"]+)"/g, (todo, v) =>
     'srcset="' + v.replace(/(^|,\s*)(css|js|img)\//g, '$1../$2/') + '"');
   html = html.replace('js/textos-es.js', 'js/textos-en.js');
-  html = html.replace('<a class="idi" id="idi" href="/en/"', '<a class="idi" id="idi" href="/"');
+  /* el selector apunta siempre al MISMO documento en el otro idioma */
+  html = html.replace(/(<a class="idi" id="idi" href=")[^"]*(")/, '$1' + op.idi + '$2');
   /* los enlaces a la portada tienen que quedarse dentro del idioma */
   html = html.replace(/href="\/"/g, 'href="' + op.inicio + '"');
 

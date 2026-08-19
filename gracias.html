@@ -11,10 +11,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilo.css?v=75">
+<link rel="stylesheet" href="css/estilo.css?v=77">
 <style>
   .gr{max-width:760px;margin:0 auto;padding:clamp(90px,12vw,150px) var(--lat) clamp(70px,9vw,110px)}
-  .gr .mk{line-height:0;margin-bottom:clamp(30px,4vw,44px)}
+  /* el logo va centrado; el selector de idioma se saca del flujo para que
+     no lo desplace ni un píxel */
+  .gr-top{position:relative;display:flex;justify-content:center;
+          margin-bottom:clamp(30px,4vw,44px)}
+  .gr .mk{line-height:0}
+  .gr-top .idi{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+  @media(max-width:520px){ .gr-top .idi{top:0;transform:none} }
   .gr h1{margin:0 0 22px}
   .gr .entrada{margin:0 0 clamp(40px,5vw,64px);color:var(--tinta70);
                font-size:clamp(15px,1.9vw,17px);line-height:1.75;max-width:56ch}
@@ -43,9 +49,12 @@
 </svg>
 
 <main class="gr">
-  <a class="mk" href="/" data-ta="aria-label:nav.inicio" aria-label="Ian Era Studio — inicio">
-    <svg width="40" height="34" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
-  </a>
+  <div class="gr-top">
+    <a class="mk" href="/" data-ta="aria-label:nav.inicio" aria-label="Ian Era Studio — inicio">
+      <svg width="40" height="34" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
+    </a>
+    <a class="idi" id="idi" href="/en/gracias.html" data-t="idioma.otro" data-ta="aria-label:idioma.aria" aria-label="Ver esta página en inglés">EN</a>
+  </div>
 
   <h1 class="dp h-dec" data-t="gr.h1">Ya es tuyo. Gracias.</h1>
   <p class="entrada" data-t="gr.entrada">El archivo te llega al correo desde Gumroad, y también lo tienes
