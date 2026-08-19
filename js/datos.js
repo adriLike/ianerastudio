@@ -18,7 +18,7 @@ var CANAL   = "https://www.youtube.com/@IanEraStudio";
 var REDES = {"youtube":"https://www.youtube.com/@IanEraStudio","instagram":"https://instagram.com/ianerastudio","soundcloud":null,"spotify":null};
 
 /* Un null manda al catálogo entero en vez de a una ficha que no existe. */
-var PRODUCTOS = {"blessings":"https://ianerastudio.gumroad.com/l/calvin-harris-blessings","takemethere":"https://ianerastudio.gumroad.com/l/take-me-there-project","harmony":"https://ianerastudio.gumroad.com/l/harmony","caramelle":"https://ianerastudio.gumroad.com/l/caramelle","bundle":null,"gratis":"https://ianerastudio.gumroad.com/l/welcome-sample-pack"};
+var PRODUCTOS = {"riseagain":"https://ianerastudio.gumroad.com/l/raiseagain","takemethere":"https://ianerastudio.gumroad.com/l/take-me-there-project","blessings":"https://ianerastudio.gumroad.com/l/calvin-harris-blessings","harmony":"https://ianerastudio.gumroad.com/l/harmony","caramelle":"https://ianerastudio.gumroad.com/l/caramelle","bundle":null,"gratis":"https://ianerastudio.gumroad.com/l/welcome-sample-pack"};
 
 var PRECIO = "8,99 €";
 var BUNDLE = {"precio":"24 €","antes":"35,96 €"};
@@ -29,16 +29,16 @@ var BUNDLE = {"precio":"24 €","antes":"35,96 €"};
    para leerla. bpm/tono/pistas a null no se pintan. */
 var PROYECTOS = [
   {
-    "id": "blessings",
-    "t": "Blessings",
-    "a": "Calvin Harris",
+    "id": "riseagain",
+    "t": "Rise Again",
+    "a": "DubVision",
     "y": "2026",
-    "video": "Bw8bwS2JOoo",
-    "captura": "img/ses-blessings.jpg",
-    "bpm": "130",
-    "tono": "B min",
+    "video": null,
+    "captura": "img/ses-riseagain.jpg",
+    "bpm": "128",
+    "tono": "E maj",
     "pistas": null,
-    "portada": "img/card-blessings.jpg"
+    "portada": "img/card-riseagain.jpg"
   },
   {
     "id": "takemethere",
@@ -51,6 +51,18 @@ var PROYECTOS = [
     "tono": "B♭ maj",
     "pistas": null,
     "portada": "img/card-takemethere.jpg"
+  },
+  {
+    "id": "blessings",
+    "t": "Blessings",
+    "a": "Calvin Harris",
+    "y": "2026",
+    "video": "Bw8bwS2JOoo",
+    "captura": "img/ses-blessings.jpg",
+    "bpm": "130",
+    "tono": "B min",
+    "pistas": null,
+    "portada": "img/card-blessings.jpg"
   },
   {
     "id": "harmony",

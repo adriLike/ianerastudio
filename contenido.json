@@ -9,8 +9,9 @@
     "spotify": null
   },
   "productos": {
-    "blessings": "https://ianerastudio.gumroad.com/l/calvin-harris-blessings",
+    "riseagain": "https://ianerastudio.gumroad.com/l/raiseagain",
     "takemethere": "https://ianerastudio.gumroad.com/l/take-me-there-project",
+    "blessings": "https://ianerastudio.gumroad.com/l/calvin-harris-blessings",
     "harmony": "https://ianerastudio.gumroad.com/l/harmony",
     "caramelle": "https://ianerastudio.gumroad.com/l/caramelle",
     "bundle": null,
@@ -23,16 +24,16 @@
   },
   "proyectos": [
     {
-      "id": "blessings",
-      "t": "Blessings",
-      "a": "Calvin Harris",
+      "id": "riseagain",
+      "t": "Rise Again",
+      "a": "DubVision",
       "y": "2026",
-      "video": "Bw8bwS2JOoo",
-      "captura": "img/ses-blessings.jpg",
-      "bpm": "130",
-      "tono": "B min",
+      "video": null,
+      "captura": "img/ses-riseagain.jpg",
+      "bpm": "128",
+      "tono": "E maj",
       "pistas": null,
-      "portada": "img/card-blessings.jpg"
+      "portada": "img/card-riseagain.jpg"
     },
     {
       "id": "takemethere",
@@ -45,6 +46,18 @@
       "tono": "B♭ maj",
       "pistas": null,
       "portada": "img/card-takemethere.jpg"
+    },
+    {
+      "id": "blessings",
+      "t": "Blessings",
+      "a": "Calvin Harris",
+      "y": "2026",
+      "video": "Bw8bwS2JOoo",
+      "captura": "img/ses-blessings.jpg",
+      "bpm": "130",
+      "tono": "B min",
+      "pistas": null,
+      "portada": "img/card-blessings.jpg"
     },
     {
       "id": "harmony",
