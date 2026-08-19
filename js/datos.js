@@ -32,9 +32,9 @@ var PROYECTOS = [
     "a": "Calvin Harris",
     "y": "2026",
     "video": "Bw8bwS2JOoo",
-    "captura": null,
-    "bpm": null,
-    "tono": null,
+    "captura": "img/ses-blessings.jpg",
+    "bpm": "130",
+    "tono": "B min",
     "pistas": null
   },
   {
