@@ -10,7 +10,8 @@ Después: ./herramientas/publicar.sh "plugins de X"
 import re, gzip, json, sys, os, collections
 
 # Nombre que se ve en Ableton -> (nombre limpio, fabricante, estado, alternativa)
-# estado: "gratis" | "alt" (hay equivalente gratis) | "sin" (no hay equivalente claro)
+# estado: "gratis" (ya lo es) | "alt" (equivalente gratuito) |
+#         "pago" (hay sustituto, pero de pago) | "sin" (no hay equivalente)
 CANON = {
  "Pro-Q 3":("FabFilter Pro-Q 3","FabFilter","alt","TDR Nova · EQ Eight de Ableton"),
  "FabFilter Pro-Q 3":("FabFilter Pro-Q 3","FabFilter","alt","TDR Nova · EQ Eight de Ableton"),
@@ -66,7 +67,7 @@ CANON = {
  "Kontakt 7":("Kontakt 7","Native Instruments","alt","Kontakt Player, gratis"),
  "Kontakt 8":("Kontakt 8","Native Instruments","alt","Kontakt Player, gratis"),
  "BBC Symphony Orchestra":("BBC Symphony Orchestra","Spitfire","alt","BBC Symphony Discover, gratis"),
- "Analog Lab V":("Analog Lab V","Arturia","sin",""),
+ "Analog Lab V":("Analog Lab V","Arturia","pago","Nexus"),
  "Ozone 12 Imager":("Ozone 12 Imager","iZotope","alt","Ozone Imager, gratis"),
  "iZotope Ozone 5 Imager":("Ozone 5 Imager","iZotope","alt","Ozone Imager, gratis"),
  "iZotope Ozone 5 Dynamics":("Ozone 5 Dynamics","iZotope","alt","Multiband Dynamics de Ableton"),

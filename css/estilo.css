@@ -675,3 +675,6 @@ footer{background:var(--n1);border-top:1px solid var(--linea);
   .terc .tf{min-width:0}
 }
 .terc .nada{flex:1 1 auto;color:var(--tinta45)}
+/* sustituto que existe pero no es gratis: no puede leerse como si lo fuera */
+.terc .sust{flex:1 1 auto;color:var(--tinta70)}
+.terc .sust::before{content:"En su lugar: ";color:var(--tinta45)}

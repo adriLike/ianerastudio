@@ -314,11 +314,13 @@ function conQue(p){
   if(mas > 0) serie += '<span class="chip chip-mas">y '+mas+' más</span>';
 
   var terc = g.terceros.map(function(x){
+    /* Decir siempre algo es mejor que dejar la fila a medias: quien lo lea sabe
+       que ahí pierde ese sonido, no que se me olvidó rellenarlo. Y un sustituto
+       de pago no se anuncia como gratis. */
     var nota = x.e === "gratis" ? '<span class="lib">Es gratuito</span>'
-             : x.a             ? '<span class="alt">'+x.a+'</span>'
-             /* decirlo es mejor que dejar la fila a medias: quien lo lea sabe
-                que le falta ese sonido y no que se me olvidó rellenarlo */
-             :                   '<span class="nada">Sin equivalente gratuito</span>';
+             : !x.a             ? '<span class="nada">Sin equivalente gratuito</span>'
+             : x.e === "pago"   ? '<span class="sust">'+x.a+'</span>'
+             :                    '<span class="alt">'+x.a+'</span>';
     return '<li><span class="tn">'+x.n+'</span>'+
            '<span class="tf">'+x.f+'</span>'+ nota +'</li>';
   }).join("");
@@ -327,8 +329,8 @@ function conQue(p){
     '<button class="hecho-p" type="button" aria-expanded="false">'+
       '<span class="hecho-t"><b>Con qué está hecho</b>'+
         '<span class="sub">El '+g.pct+'&nbsp;% de las cadenas son dispositivos que Live ya trae '+
-        'puestos. Lo demás son plugins de terceros — y aquí tienes cuáles y con qué '+
-        'sustituirlos.</span></span>'+
+        'puestos. Lo demás son plugins de terceros — y aquí tienes cuáles, por si no '+
+        'los tienes.</span></span>'+
       '<span class="qa-mas" aria-hidden="true"></span>'+
     '</button>'+
     '<div class="hecho-c"><div class="hecho-in"><div class="hecho-pad">'+

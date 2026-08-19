@@ -209,8 +209,8 @@ var PROYECTOS = [
           "n": "Analog Lab V",
           "f": "Arturia",
           "c": 9,
-          "e": "sin",
-          "a": ""
+          "e": "pago",
+          "a": "Nexus"
         },
         {
           "n": "ShaperBox 3",
