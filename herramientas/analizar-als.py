@@ -109,16 +109,23 @@ def analizar(ruta):
     ver = re.search(r'Creator="Ableton Live ([^"]*)"', s)
 
     # pistas y bloques: TrackGroupId -1 = está en la raíz
-    tr = list(re.finditer(r'<(MidiTrack|AudioTrack|GroupTrack)\b[^>]*>', s))
-    pistas = raiz = grupos = 0
+    tr = list(re.finditer(r'<(MidiTrack|AudioTrack|GroupTrack)\b[^>]*Id="(\d+)"[^>]*>', s))
+    pila = []
     for i, m in enumerate(tr):
         fin = tr[i+1].start() if i+1 < len(tr) else len(s)
         g = re.search(r'<TrackGroupId Value="(-?\d+)"', s[m.start():fin])
-        if not g: continue
-        pistas += 1
-        if g.group(1) == "-1":
-            raiz += 1
-            if m.group(1) == "GroupTrack": grupos += 1
+        if g: pila.append((m.group(1), m.group(2), g.group(1)))
+    pistas = len(pila)
+
+    # Si todo el proyecto cuelga de un único grupo envoltorio, ese grupo no
+    # informa de nada: los bloques que cuentan son los de dentro.
+    nivel = "-1"
+    raices = [x for x in pila if x[2] == "-1"]
+    if len(raices) == 1 and raices[0][0] == "GroupTrack":
+        nivel = raices[0][1]
+        raices = [x for x in pila if x[2] == nivel]
+    raiz = len(raices)
+    grupos = sum(1 for x in raices if x[0] == "GroupTrack")
 
     # VST2 -> <PlugName>. VST3 y AU -> <Name .../> seguido de <Uid>
     bruto = collections.Counter()

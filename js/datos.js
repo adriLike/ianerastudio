@@ -904,7 +904,7 @@ var PROYECTOS = [
     "portada": "img/card-harmony.jpg",
     "audio": "audio/harmony.mp3",
     "insignia": null,
-    "grupos": "1",
+    "grupos": "12",
     "plugins": {
       "pct": 61,
       "serie": [
