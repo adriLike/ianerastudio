@@ -318,6 +318,7 @@ function conQue(p){
        que ahí pierde ese sonido, no que se me olvidó rellenarlo. Y un sustituto
        de pago no se anuncia como gratis. */
     var nota = x.e === "gratis" ? '<span class="lib">Es gratuito</span>'
+             : x.e === "sin"    ? '<span class="nada">'+(x.a || "Sin equivalente gratuito")+'</span>'
              : !x.a             ? '<span class="nada">Sin equivalente gratuito</span>'
              : x.e === "pago"   ? '<span class="sust">'+x.a+'</span>'
              :                    '<span class="alt">'+x.a+'</span>';
