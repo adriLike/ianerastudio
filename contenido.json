@@ -133,7 +133,7 @@
     },
     {
       "p": "¿Necesito plugins de pago?",
-      "r": "Los proyectos están hechos en Ableton Live 12.4.3, y todo lo que es de Ableton va dentro: el arreglo, el MIDI, las automatizaciones y las cadenas de efectos completas. Buena parte del procesado son dispositivos de serie de Live. En los sintetizadores uso Serum, Sylenth1 y Nexus, y para procesar FabFilter y ShaperBox — algunos de los que uso, como OTT o Tape Stop, son gratuitos. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: el arreglo entero sigue en su sitio."
+      "r": "Casi la mitad del procesado son dispositivos de serie de Live: EQ Eight, Compressor, Saturator, Auto Filter, Glue Compressor, Delay y Utility salen por todas partes, con los ajustes tal y como los dejé. En los sintetizadores uso Serum, Sylenth1, Nexus y Analog Lab, y para procesar FabFilter, Valhalla y ShaperBox — algunos, como OTT o Tape Stop, son gratuitos. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: no pierdes el arreglo. Y es un buen sitio para descubrir hasta dónde llega lo que Live ya trae puesto."
     },
     {
       "p": "¿Cómo lo recibo?",
