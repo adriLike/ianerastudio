@@ -296,6 +296,52 @@ if(cCaja){
    --------------------------------------------------------------- */
 var velo=$("#velo"), panel=$("#panel"), pin=$("#pin"), cerrarBtn=$("#cerrar"), previo=null;
 
+/* ---------------------------------------------------------------
+   «Con qué está hecho». Sale de leer el .als, no de memoria.
+   El objetivo aquí no es lucir la lista: es que quien no tenga un
+   plugin sepa, ANTES de pagar, que no se queda con un archivo roto.
+   Por eso abre con lo que ya trae Live y cierra con qué pasa si
+   falta algo. Va plegado para no alejar el precio.
+   --------------------------------------------------------------- */
+function conQue(p){
+  var g = p.plugins;
+  if(!g || !g.terceros || !g.terceros.length) return "";
+
+  var serie = (g.serie||[]).slice(0,14).map(function(x){
+    return '<span class="chip">'+x.n+'</span>';
+  }).join("");
+  var mas = (g.serie||[]).length - 14;
+  if(mas > 0) serie += '<span class="chip chip-mas">y '+mas+' más</span>';
+
+  var terc = g.terceros.map(function(x){
+    var nota = x.e === "gratis" ? '<span class="lib">Es gratuito</span>'
+             : x.a             ? '<span class="alt">'+x.a+'</span>'
+             /* decirlo es mejor que dejar la fila a medias: quien lo lea sabe
+                que le falta ese sonido y no que se me olvidó rellenarlo */
+             :                   '<span class="nada">Sin equivalente gratuito</span>';
+    return '<li><span class="tn">'+x.n+'</span>'+
+           '<span class="tf">'+x.f+'</span>'+ nota +'</li>';
+  }).join("");
+
+  return '<div class="hecho'+(g.pct >= 50 ? ' mitad' : '')+'">'+
+    '<button class="hecho-p" type="button" aria-expanded="false">'+
+      '<span class="hecho-t"><b>Con qué está hecho</b>'+
+        '<span class="sub">El '+g.pct+'&nbsp;% de las cadenas son dispositivos que Live ya trae '+
+        'puestos. Lo demás son plugins de terceros — y aquí tienes cuáles y con qué '+
+        'sustituirlos.</span></span>'+
+      '<span class="qa-mas" aria-hidden="true"></span>'+
+    '</button>'+
+    '<div class="hecho-c"><div class="hecho-in"><div class="hecho-pad">'+
+      '<p class="et">Esto ya lo tienes · de serie en Live</p>'+
+      '<div class="chips">'+serie+'</div>'+
+      '<p class="et">De terceros</p>'+
+      '<ul class="terc">'+terc+'</ul>'+
+      '<p class="hecho-pie">Si te falta alguno, el proyecto se abre igual y Live solo marca ese '+
+        'dispositivo: el arreglo, el MIDI y las automatizaciones siguen en su sitio.</p>'+
+    '</div></div></div>'+
+  '</div>';
+}
+
 function specs(p){
   var d=[];
   if(p.bpm)    d.push('<div><b>'+p.bpm+'</b><span class="et">BPM</span></div>');
@@ -366,6 +412,7 @@ function abrir(i, desdeUrl){
       '<li><i>03</i><div><b>Todas las automatizaciones.</b> Filtros, envíos y volúmenes, en su sitio — la mitad de por qué el tema respira.</div></li>'+
       '<li><i>04</i><div><b>El MIDI de cada parte.</b> Cambia las notas y ya es tuyo.</div></li>'+
     '</ul>'+
+    conQue(p)+
     '<div class="compra"><span class="pr">'+PRECIO+'</span>'+
       botonCompra(p.id,"Conseguir el proyecto","btn")+
       '<span class="nota">Descarga inmediata. Pago seguro gestionado por Gumroad.</span></div>'+
@@ -421,6 +468,14 @@ pin.addEventListener("click",function(e){
     '?autoplay=1&rel=0&modestbranding=1" title="Vídeo del proyecto" '+
     'allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" '+
     'allowfullscreen></iframe>';
+});
+
+pin.addEventListener("click",function(e){
+  var b = e.target.closest(".hecho-p");
+  if(!b) return;
+  var abierto = b.getAttribute("aria-expanded") === "true";
+  b.setAttribute("aria-expanded", abierto ? "false" : "true");
+  b.parentElement.classList.toggle("on", !abierto);
 });
 
 /* ---------------------------------------------------------------
