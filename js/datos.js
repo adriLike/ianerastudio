@@ -23,8 +23,10 @@ var PRODUCTOS = {"blessings":"https://ianerastudio.gumroad.com/l/calvin-harris-b
 var PRECIO = "8,99 €";
 var BUNDLE = {"precio":"24 €","antes":"35,96 €"};
 
-/* captura: si existe, sustituye a la miniatura de YouTube en la tarjeta y en
-   la carátula del vídeo. bpm/tono/pistas a null no se pintan. */
+/* portada: la imagen de la TARJETA. Es la miniatura del vídeo, que está
+   pensada para leerse pequeña y distingue un proyecto de otro de un vistazo.
+   captura: la imagen del PANEL y de la carátula del vídeo, donde hay sitio
+   para leerla. bpm/tono/pistas a null no se pintan. */
 var PROYECTOS = [
   {
     "id": "blessings",
@@ -35,7 +37,8 @@ var PROYECTOS = [
     "captura": "img/ses-blessings.jpg",
     "bpm": "130",
     "tono": "B min",
-    "pistas": null
+    "pistas": null,
+    "portada": "img/card-blessings.jpg"
   },
   {
     "id": "takemethere",
@@ -46,7 +49,8 @@ var PROYECTOS = [
     "captura": "img/ses-takemethere.jpg",
     "bpm": "130",
     "tono": "C maj",
-    "pistas": null
+    "pistas": null,
+    "portada": "img/card-takemethere.jpg"
   },
   {
     "id": "harmony",
@@ -57,7 +61,8 @@ var PROYECTOS = [
     "captura": "img/ses-harmony.jpg",
     "bpm": "130",
     "tono": "C maj",
-    "pistas": null
+    "pistas": null,
+    "portada": "img/card-harmony.jpg"
   },
   {
     "id": "caramelle",
@@ -68,7 +73,8 @@ var PROYECTOS = [
     "captura": "img/ses-caramelle.jpg",
     "bpm": "128",
     "tono": "C maj",
-    "pistas": null
+    "pistas": null,
+    "portada": "img/card-caramelle.jpg"
   }
 ];
 

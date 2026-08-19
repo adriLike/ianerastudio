@@ -8,11 +8,11 @@
 function $(s){ return document.querySelector(s); }
 function url(id){ return PRODUCTOS[id] || TIENDA; }
 function yt(id){ return "https://www.youtube.com/watch?v=" + id; }
-/* Miniatura de la tarjeta: primero tu captura, y si no la hay, la del vídeo
-   de YouTube.
-   AVISO: hoy esas miniaturas son la PORTADA DEL DISCO ORIGINAL con el logo de
-   Ableton encima — arte de otros artistas y fuera de paleta. En cuanto pongas
-   `captura` en un proyecto, la suya se sustituye sola. */
+/* Cada imagen en el sitio donde se lee mejor:
+   TARJETA  → `portada` (la miniatura del vídeo). Cuatro capturas de Ableton a
+              340 px son cuatro rectángulos grises indistinguibles; la portada
+              del tema hace que se reconozca cada proyecto sin leer el título.
+   PANEL y CARÁTULA → `captura`, que ahí se ve a 960 px y se puede leer. */
 function miniatura(id){
   /* maxresdefault es la miniatura tal cual la subes: 1280x720 y 16:9 exacto.
      hqdefault son 480x360 en 4:3, así que recorta o mete bandas negras.
@@ -60,7 +60,7 @@ $("#rail").innerHTML = Object.keys(ICONOS).filter(function(k){ return REDES[k]; 
 var carril = $("#carril");
 carril.innerHTML = PROYECTOS.map(function(p,i){
   var n = String(i+1).padStart(2,"0");
-  var img = p.captura || (p.video ? miniatura(p.video) : null);
+  var img = p.portada || p.captura || (p.video ? miniatura(p.video) : null);
   var mini = img
     ? '<div class="mini"><img src="'+img+'" alt="" loading="lazy"'+
       (p.captura ? '' : ' onerror="this.onerror=null;this.src=\''+miniaturaFallback(p.video)+'\'"')+'>'+

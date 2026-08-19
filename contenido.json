@@ -31,7 +31,8 @@
       "captura": "img/ses-blessings.jpg",
       "bpm": "130",
       "tono": "B min",
-      "pistas": null
+      "pistas": null,
+      "portada": "img/card-blessings.jpg"
     },
     {
       "id": "takemethere",
@@ -42,7 +43,8 @@
       "captura": "img/ses-takemethere.jpg",
       "bpm": "130",
       "tono": "C maj",
-      "pistas": null
+      "pistas": null,
+      "portada": "img/card-takemethere.jpg"
     },
     {
       "id": "harmony",
@@ -53,7 +55,8 @@
       "captura": "img/ses-harmony.jpg",
       "bpm": "130",
       "tono": "C maj",
-      "pistas": null
+      "pistas": null,
+      "portada": "img/card-harmony.jpg"
     },
     {
       "id": "caramelle",
@@ -64,7 +67,8 @@
       "captura": "img/ses-caramelle.jpg",
       "bpm": "128",
       "tono": "C maj",
-      "pistas": null
+      "pistas": null,
+      "portada": "img/card-caramelle.jpg"
     }
   ],
   "videos": [

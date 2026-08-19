@@ -35,8 +35,10 @@ var PRODUCTOS = ${j(c.productos)};
 var PRECIO = ${j(c.precio)};
 var BUNDLE = ${j(c.bundle)};
 
-/* captura: si existe, sustituye a la miniatura de YouTube en la tarjeta y en
-   la carátula del vídeo. bpm/tono/pistas a null no se pintan. */
+/* portada: la imagen de la TARJETA. Es la miniatura del vídeo, que está
+   pensada para leerse pequeña y distingue un proyecto de otro de un vistazo.
+   captura: la imagen del PANEL y de la carátula del vídeo, donde hay sitio
+   para leerla. bpm/tono/pistas a null no se pintan. */
 var PROYECTOS = ${JSON.stringify(c.proyectos,null,2)};
 
 var VIDEOS = ${JSON.stringify(c.videos,null,2)};
