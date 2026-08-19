@@ -48,7 +48,7 @@ var PROYECTOS = [
     "video": "_4fbpisfeiM",
     "captura": "img/ses-takemethere.jpg",
     "bpm": "130",
-    "tono": "C maj",
+    "tono": "B♭ maj",
     "pistas": null,
     "portada": "img/card-takemethere.jpg"
   },
@@ -60,7 +60,7 @@ var PROYECTOS = [
     "video": "oZLm6RlccBc",
     "captura": "img/ses-harmony.jpg",
     "bpm": "130",
-    "tono": "C maj",
+    "tono": "F min",
     "pistas": null,
     "portada": "img/card-harmony.jpg"
   },
@@ -72,7 +72,7 @@ var PROYECTOS = [
     "video": "qOChu1JnFwk",
     "captura": "img/ses-caramelle.jpg",
     "bpm": "128",
-    "tono": "C maj",
+    "tono": "E♭ maj",
     "pistas": null,
     "portada": "img/card-caramelle.jpg"
   }
