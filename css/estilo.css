@@ -603,7 +603,8 @@ footer{background:var(--n1);border-top:1px solid var(--linea);
    pastilla de color deja de ser un dato y pasa a ser un reclamo.
    --------------------------------------------------------------- */
 .marca{
-  position:absolute;top:12px;left:12px;z-index:2;
+  /* a la derecha: la portada lleva el título en la mitad izquierda y ahí lo tapaba */
+  position:absolute;top:12px;right:12px;z-index:2;
   padding:5px 9px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--tinta);border:1px solid rgba(255,255,255,.55);
   background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
@@ -613,7 +614,7 @@ footer{background:var(--n1);border-top:1px solid var(--linea);
 
 /* en el catálogo va en línea, detrás del título */
 .fila-marca{
-  position:static;display:inline-block;margin-left:12px;vertical-align:2px;
+  position:static;right:auto;display:inline-block;margin-left:12px;vertical-align:2px;
   background:transparent;backdrop-filter:none;
   border-color:var(--linea);color:var(--tinta45);
 }
