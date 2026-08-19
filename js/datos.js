@@ -129,11 +129,11 @@ var CONTACTO = {"instagram":"https://instagram.com/ianerastudio","correo":null};
 var FAQ = [
   {
     "p": "¿Qué versión de Ableton Live necesito?",
-    "r": null
+    "r": "Live 12. Los proyectos están guardados con la 12.4.3."
   },
   {
     "p": "¿Necesito plugins de pago?",
-    "r": null
+    "r": "Los proyectos están hechos en Ableton Live 12.4.3, y todo lo que es de Ableton va dentro: el arreglo, el MIDI, las automatizaciones y las cadenas de efectos completas. En los sintetizadores uso Serum, Sylenth1 y Nexus; para procesar, FabFilter y ShaperBox. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: el arreglo entero sigue en su sitio."
   },
   {
     "p": "¿Cómo lo recibo?",
