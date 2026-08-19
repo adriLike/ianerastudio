@@ -1,0 +1,37 @@
+<!-- ============================================================
+     Snippet para Gumroad · Settings → Advanced → Third-party analytics
+       Nombre     : Guía de apertura
+       Products   : All products
+       Location   : Receipt        <-- se ejecuta TRAS la compra
+     Pega el bloque entero, con las etiquetas <script>.
+
+     Qué hace: añade una barra abajo con el enlace a la guía. No redirige
+     ni tapa nada — el comprador sigue teniendo sus archivos delante.
+     Si algo falla, no pasa nada: no aparece la barra y ya está.
+     ============================================================ -->
+<script>
+(function(){
+  var URL_GUIA = "https://ianerastudio.com/gracias.html";
+
+  function pon(){
+    if(document.getElementById("ianera-guia")) return;   /* que no salga dos veces */
+    var a = document.createElement("a");
+    a.id = "ianera-guia";
+    a.href = URL_GUIA;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = "Antes de abrirlo — cómo descomprimirlo para que no salgan pistas en silencio ↗";
+    a.style.cssText = [
+      "position:fixed","left:0","right:0","bottom:0","z-index:2147483647",
+      "display:block","box-sizing:border-box","padding:15px 18px",
+      "background:#101010","color:#ffffff","text-align:center","text-decoration:none",
+      "font:400 14px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace",
+      "border-top:1px solid rgba(255,255,255,.18)"
+    ].join(";");
+    document.body.appendChild(a);
+  }
+
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", pon);
+  else pon();
+})();
+</script>
