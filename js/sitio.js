@@ -68,7 +68,11 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
         '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
       '</span></div>'
     : '<div class="mini vacia" aria-hidden="true"><b>'+n+'</b></div>';
-  return '<button class="tarjeta" type="button" data-i="'+i+'">'+ mini +
+  /* Una sola insignia por tarjeta, y solo si dice algo comprobable: qué es
+     lo último o cuánta gente lo ha visto. Nada de reclamos que no se puedan
+     verificar en un clic. */
+  var marca = p.insignia ? '<span class="marca et">'+p.insignia+'</span>' : '';
+  return '<button class="tarjeta" type="button" data-i="'+i+'">'+ mini + marca +
     '<div class="cuerpo">'+
       '<div class="top et"><span>'+n+'</span><span class="yr">'+p.y+'</span></div>'+
       '<h3>'+p.t+'</h3>'+
@@ -113,7 +117,9 @@ $("#videos-lista").innerHTML = VIDEOS.map(function(v){
 var filas = PROYECTOS.map(function(p,i){
   return '<div class="fila">'+
     '<span class="fch et">'+String(i+1).padStart(2,"0")+' · '+p.y+'</span>'+
-    '<span><span class="tit">'+p.t+'</span><span class="meta">'+p.a+'</span></span>'+
+    '<span><span class="tit">'+p.t+
+      (p.insignia ? '<span class="marca fila-marca et">'+p.insignia+'</span>' : '')+
+    '</span><span class="meta">'+p.a+'</span></span>'+
     /* Sin precio: ya está en el detalle, y repetirlo cuatro veces con el
        mismo número no informa. La fila invita a abrir, no a decidir. */
     '<span class="der">'+
