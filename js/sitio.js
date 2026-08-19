@@ -307,7 +307,9 @@ function fondoInerte(v){ fondo.forEach(function(el){ el.inert = v; }); }
 function abrir(i, desdeUrl){
   var p = PROYECTOS[i];
   pin.innerHTML =
-    (p.captura ? '<div class="pmini"><img src="'+p.captura+'" alt="Arrangement de '+p.t+'"></div>' : '')+
+    /* Sin cabecera de imagen: la misma captura ya sale justo debajo como
+       fondo de la carátula del vídeo. Repetirla no aportaba nada y alejaba
+       el precio y el botón de compra. */
     '<div class="pcab et"><span>Proyecto '+String(i+1).padStart(2,"0")+'</span>'+
       '<span class="yr">'+p.y+'</span></div>'+
     '<h3 id="p-tit">'+p.t+'</h3><p class="part">'+p.a+'</p>'+
