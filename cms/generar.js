@@ -54,6 +54,23 @@ var RESENAS = ${JSON.stringify(c.resenas,null,2)};
 
   fs.writeFileSync(path.join(RAIZ,"js/datos.js"), salida);
 
+  /* Un archivo de textos por idioma. Solo las claves js.*: las del HTML se
+     aplican al generar en/index.html y no hacen falta en el navegador. */
+  const T = JSON.parse(fs.readFileSync(path.join(RAIZ,"textos.json"),"utf8"));
+  const soloJs = idioma => {
+    const o = {};
+    for(const k of Object.keys(T)){
+      if(k.startsWith("js.")) o[k.slice(3)] = T[k][idioma];
+    }
+    return o;
+  };
+  for(const idioma of ["es","en"]){
+    fs.writeFileSync(path.join(RAIZ,"js/textos-"+idioma+".js"),
+      "/* TEXTOS — GENERADO. No editar: se escribe desde textos.json. */\n" +
+      "var LANG = " + j(idioma) + ";\n" +
+      "var T = " + JSON.stringify(soloJs(idioma), null, 2) + ";\n");
+  }
+
   /* sube el ?v= del index para que nadie vea la versión cacheada */
   const idx = path.join(RAIZ,"index.html");
   let html = fs.readFileSync(idx,"utf8");
@@ -62,9 +79,68 @@ var RESENAS = ${JSON.stringify(c.resenas,null,2)};
     const nuevo = parseInt(m[1],10) + 1;
     html = html.replace(/\?v=\d+/g, "?v=" + nuevo);
     fs.writeFileSync(idx, html);
+    ingles(html, JSON.parse(fs.readFileSync(path.join(RAIZ,"textos.json"),"utf8")));
     return nuevo;
   }
   return null;
+}
+
+/* ---------------------------------------------------------------
+   en/index.html sale de index.html, no es un archivo aparte que
+   mantener. El castellano es el original; si tocas el HTML, el
+   inglés se rehace solo en la siguiente publicación.
+   --------------------------------------------------------------- */
+function ingles(html, T){
+  const txt = (k) => (T[k] && T[k].en !== undefined) ? T[k].en : null;
+  const faltan = [];
+
+  /* contenido de los elementos con data-t */
+  html = html.replace(/<([a-z0-9]+)([^>]*\sdata-t="([^"]+)"[^>]*)>([\s\S]*?)<\/\1>/g,
+    (todo, tag, attrs, clave, dentro) => {
+      const v = txt(clave);
+      if(v === null){ faltan.push(clave); return todo; }
+      return "<" + tag + attrs + ">" + v + "</" + tag + ">";
+    });
+
+  /* atributos con data-ta="atributo:clave" */
+  html = html.replace(/data-ta="([a-z-]+):([^"]+)"/g, (todo, attr, clave) => {
+    const v = txt(clave);
+    if(v === null){ faltan.push(clave); return todo; }
+    return "data-ta=\"" + attr + ":" + clave + "\" data-tv=\"" + attr + "\"";
+  });
+  /* ...y ahora sí, se escribe el valor en el atributo marcado */
+  html = html.replace(/data-ta="([a-z-]+):([^"]+)" data-tv="[a-z-]+"([^>]*?)\1="[^"]*"/g,
+    (todo, attr, clave, medio) => 'data-ta="'+attr+':'+clave+'"'+medio+attr+'="'+txt(clave)+'"');
+
+  /* cabecera */
+  html = html.replace('<html lang="es">', '<html lang="en">');
+  html = html.replace(/<title>[^<]*<\/title>/, "<title>" + txt("meta.titulo") + "</title>");
+  const meta = (sel, clave) => {
+    const re = new RegExp('(<meta ' + sel + ' content=")[^"]*(")');
+    html = html.replace(re, "$1" + txt(clave) + "$2");
+  };
+  meta('name="description"',            "meta.desc");
+  meta('property="og:title"',           "meta.og.titulo");
+  meta('property="og:description"',     "meta.og.desc");
+  meta('property="og:locale"',          "meta.og.locale");
+  meta('property="og:image:alt"',       "meta.og.imgalt");
+  html = html.replace('<link rel="canonical" href="https://ianerastudio.com/">',
+                      '<link rel="canonical" href="https://ianerastudio.com/en/">');
+  html = html.replace('<meta property="og:url" content="https://ianerastudio.com/">',
+                      '<meta property="og:url" content="https://ianerastudio.com/en/">');
+
+  /* rutas: en/index.html vive un nivel más abajo */
+  html = html.replace(/(href|src)="(css|js|img)\//g, '$1="../$2/');
+  /* srcset lleva varias rutas separadas por comas y no lo pilla lo de arriba */
+  html = html.replace(/srcset="([^"]+)"/g, (todo, v) =>
+    'srcset="' + v.replace(/(^|,\s*)(css|js|img)\//g, '$1../$2/') + '"');
+  html = html.replace('js/textos-es.js', 'js/textos-en.js');
+  html = html.replace('<a class="idi" id="idi" href="/en/"', '<a class="idi" id="idi" href="/"');
+
+  const dir = path.join(RAIZ,"en");
+  if(!fs.existsSync(dir)) fs.mkdirSync(dir);
+  fs.writeFileSync(path.join(dir,"index.html"), html);
+  if(faltan.length) console.log("  ojo, claves sin traducir:", [...new Set(faltan)].join(", "));
 }
 
 module.exports = { generar };

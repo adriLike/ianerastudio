@@ -6,6 +6,29 @@
 "use strict";
 
 function $(s){ return document.querySelector(s); }
+
+/* ---------------------------------------------------------------
+   Idioma. Los textos de plantilla vienen de js/textos-<idioma>.js;
+   los de contenido.json llevan el inglés en <campo>_en.
+   --------------------------------------------------------------- */
+/* Rellena los huecos {asi}: el orden de las palabras cambia entre
+   idiomas, así que no vale concatenar trozos sueltos. */
+function ins(txt, vals){
+  return String(txt).replace(/\{(\w+)\}/g, function(_, k){
+    return vals[k] !== undefined ? vals[k] : "{" + k + "}";
+  });
+}
+function tr(obj, campo){
+  return (LANG === "en" && obj[campo + "_en"]) ? obj[campo + "_en"] : obj[campo];
+}
+function trAlt(x){ return tr(x, "a"); }
+
+/* Las rutas de datos.js («img/…», «audio/…») son relativas a la página, y
+   /en/ cuelga un nivel más abajo. Sin esto, en inglés no carga ni una imagen. */
+var BASE = (LANG === "en") ? "../" : "";
+function ruta(r){
+  return (r && !/^(https?:)?\/\//.test(r) && r.charAt(0) !== "/") ? BASE + r : r;
+}
 function url(id){ return PRODUCTOS[id] || TIENDA; }
 function yt(id){ return "https://www.youtube.com/watch?v=" + id; }
 /* Cada imagen en el sitio donde se lee mejor:
@@ -62,7 +85,7 @@ $("#rail").innerHTML = Object.keys(ICONOS).filter(function(k){ return REDES[k]; 
 var carril = $("#carril");
 carril.innerHTML = PROYECTOS.map(function(p,i){
   var n = String(i+1).padStart(2,"0");
-  var img = p.portada || p.captura || (p.video ? miniatura(p.video) : null);
+  var img = ruta(p.portada || p.captura) || (p.video ? miniatura(p.video) : null);
   var mini = img
     ? '<div class="mini"><img src="'+img+'" alt="" loading="lazy"'+
       (p.captura ? '' : ' onerror="this.onerror=null;this.src=\''+miniaturaFallback(p.video)+'\'"')+'>'+
@@ -79,7 +102,7 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
       '<div class="top et"><span>'+n+'</span><span class="yr">'+p.y+'</span></div>'+
       '<h3>'+p.t+'</h3>'+
       '<p class="art">'+p.a+'</p>'+
-      '<div class="pie et"><span class="ab">Ver ↗</span></div>'+
+      '<div class="pie et"><span class="ab">'+T.ver+'</span></div>'+
     '</div></button>';
 }).join("");
 $("#proy-n").textContent = String(PROYECTOS.length).padStart(2,"0");
@@ -107,9 +130,9 @@ estadoFlechas();
 var vn=document.getElementById("vid-n"); if(vn) vn.textContent=String(VIDEOS.length).padStart(2,"0");
 $("#videos-lista").innerHTML = VIDEOS.map(function(v){
   return '<a class="fila fila-video" href="'+yt(v.id)+'" target="_blank" rel="noopener">'+
-    '<span class="fch et">'+v.f+'</span>'+
-    '<span class="tit">'+v.t+'</span>'+
-    '<span class="acc et">Ver en YouTube ↗</span></a>';
+    '<span class="fch et">'+tr(v,"f")+'</span>'+
+    '<span class="tit">'+tr(v,"t")+'</span>'+
+    '<span class="acc et">'+T.verYoutube+'</span></a>';
 }).join("");
 
 /* ---------------------------------------------------------------
@@ -125,25 +148,25 @@ var filas = PROYECTOS.map(function(p,i){
     /* Sin precio: ya está en el detalle, y repetirlo cuatro veces con el
        mismo número no informa. La fila invita a abrir, no a decidir. */
     '<span class="der">'+
-      '<button class="acc et" type="button" data-i="'+i+'">Ver ↗</button>'+
+      '<button class="acc et" type="button" data-i="'+i+'">'+T.ver+'</button>'+
     '</span></div>';
 });
 
 if(PRODUCTOS.bundle){
   filas.push('<div class="fila destacada">'+
-    '<span class="fch et">Pack</span>'+
-    '<span><span class="tit">Los 4 proyectos</span>'+
-      '<span class="meta">Los cuatro completos, en vez de '+BUNDLE.antes+'</span></span>'+
+    '<span class="fch et">'+T.pack+'</span>'+
+    '<span><span class="tit">'+T.packTit+'</span>'+
+      '<span class="meta">'+ins(T.packSub,{antes:BUNDLE.antes})+'</span></span>'+
     '<span class="der"><span class="pr">'+BUNDLE.precio+'</span>'+
-      botonCompra("bundle","Comprar ↗","acc et")+'</span></div>');
+      botonCompra("bundle",T.comprar,"acc et")+'</span></div>');
 }
 if(PRODUCTOS.gratis){
   filas.push('<div class="fila destacada">'+
-    '<span class="fch et">Gratis</span>'+
+    '<span class="fch et">'+T.gratis+'</span>'+
     '<span><span class="tit">Welcome Sample Pack</span>'+
-      '<span class="meta">Sonidos de progressive house para empezar</span></span>'+
+      '<span class="meta">'+T.gratisSub+'</span></span>'+
     '<span class="der"><span class="pr">0 €</span>'+
-      botonCompra("gratis","Descargar ↗","acc et")+'</span></div>');
+      botonCompra("gratis",T.descargar,"acc et")+'</span></div>');
 }
 $("#catalogo-lista").innerHTML = filas.join("");
 
@@ -192,10 +215,10 @@ if(faqCaja){
     return '<div class="qa">'+
       '<button class="qa-p" type="button" aria-expanded="false" aria-controls="qa-'+i+'">'+
         '<span class="qa-n et">'+n+'</span>'+
-        '<span class="qa-t">'+f.p+'</span>'+
+        '<span class="qa-t">'+tr(f,"p")+'</span>'+
         '<span class="qa-mas" aria-hidden="true"></span>'+
       '</button>'+
-      '<div class="qa-c" id="qa-'+i+'" role="region"><div class="qa-i"><p>'+f.r+'</p></div></div>'+
+      '<div class="qa-c" id="qa-'+i+'" role="region"><div class="qa-i"><p>'+tr(f,"r")+'</p></div></div>'+
     '</div>';
   }).join("");
 
@@ -244,8 +267,8 @@ if(cCaja){
   if(CONTACTO.instagram) vias.push('<a href="'+CONTACTO.instagram+'" target="_blank" rel="noopener">Instagram ↗</a>');
   if(CONTACTO.correo)    vias.push('<a href="mailto:'+CONTACTO.correo+'">'+CONTACTO.correo+'</a>');
   cCaja.innerHTML = vias.length
-    ? '<p class="et">¿Alguna duda antes de comprar?</p><p class="vias">'+vias.join('<span class="sep">·</span>')+'</p>'+
-      '<p class="cont-nota">Pregunta lo que quieras. Contesto yo, no un formulario.</p>'
+    ? '<p class="et">'+T.contactoTit+'</p><p class="vias">'+vias.join('<span class="sep">·</span>')+'</p>'+
+      '<p class="cont-nota">'+T.contactoNota+'</p>'
     : '';
 }
 
@@ -271,9 +294,8 @@ if(cCaja){
       return {
         "@type":"Product",
         "@id": base+"#"+p.id,
-        "name": p.t+" — Proyecto completo de Ableton Live",
-        "description":"Mi recreación de «"+p.t+"» de "+limpio+" como sesión de "+
-                      "Ableton Live: el arreglo completo, los racks y la automatización.",
+        "name": ins(T.ldName,{t:p.t}),
+        "description": ins(T.ldDesc,{t:p.t, a:limpio}),
         "brand":{ "@type":"Brand", "name":"Ian Era Studio" },
         "url": base+"#"+p.id,
         "offers":{
@@ -311,49 +333,47 @@ function conQue(p){
     return '<span class="chip">'+x.n+'</span>';
   }).join("");
   var mas = (g.serie||[]).length - 14;
-  if(mas > 0) serie += '<span class="chip chip-mas">y '+mas+' más</span>';
+  if(mas > 0) serie += '<span class="chip chip-mas">'+ins(T.hechoMas,{n:mas})+'</span>';
 
   var terc = g.terceros.map(function(x){
     /* Decir siempre algo es mejor que dejar la fila a medias: quien lo lea sabe
        que ahí pierde ese sonido, no que se me olvidó rellenarlo. Y un sustituto
        de pago no se anuncia como gratis. */
-    var nota = x.e === "gratis" ? '<span class="lib">Es gratuito</span>'
-             : x.e === "sin"    ? '<span class="nada">'+(x.a || "Sin equivalente gratuito")+'</span>'
-             : !x.a             ? '<span class="nada">Sin equivalente gratuito</span>'
-             : x.e === "pago"   ? '<span class="sust">'+x.a+'</span>'
-             :                    '<span class="alt">'+x.a+'</span>';
+    var nota = x.e === "gratis" ? '<span class="lib">'+T.esGratuito+'</span>'
+             : x.e === "sin"    ? '<span class="nada">'+(trAlt(x) || T.sinEquivalente)+'</span>'
+             : !x.a             ? '<span class="nada">'+T.sinEquivalente+'</span>'
+             : x.e === "pago"   ? '<span class="sust">'+trAlt(x)+'</span>'
+             :                    '<span class="alt">'+trAlt(x)+'</span>';
     return '<li><span class="tn">'+x.n+'</span>'+
            '<span class="tf">'+x.f+'</span>'+ nota +'</li>';
   }).join("");
 
   return '<div class="hecho'+(g.pct >= 50 ? ' mitad' : '')+'">'+
     '<button class="hecho-p" type="button" aria-expanded="false">'+
-      '<span class="hecho-t"><b>Con qué está hecho</b>'+
-        '<span class="sub">El '+g.pct+'&nbsp;% de las cadenas son dispositivos que Live ya trae '+
-        'puestos. Lo demás son plugins de terceros — y aquí tienes cuáles, por si no '+
-        'los tienes.</span></span>'+
+      '<span class="hecho-t"><b>'+T.hechoTit+'</b>'+
+        '<span class="sub">'+ins(T.hechoSub,{pct:g.pct})+
+        '</span></span>'+
       '<span class="qa-mas" aria-hidden="true"></span>'+
     '</button>'+
     '<div class="hecho-c"><div class="hecho-in"><div class="hecho-pad">'+
-      '<p class="et">Esto ya lo tienes · de serie en Live</p>'+
+      '<p class="et">'+T.hechoSerie+'</p>'+
       '<div class="chips">'+serie+'</div>'+
-      '<p class="et">De terceros</p>'+
+      '<p class="et">'+T.hechoTerceros+'</p>'+
       '<ul class="terc">'+terc+'</ul>'+
-      '<p class="hecho-pie">Si te falta alguno, el proyecto se abre igual y Live solo marca ese '+
-        'dispositivo: el arreglo, el MIDI y las automatizaciones siguen en su sitio.</p>'+
+      '<p class="hecho-pie">'+T.hechoPie+'</p>'+
     '</div></div></div>'+
   '</div>';
 }
 
 function specs(p){
   var d=[];
-  if(p.bpm)    d.push('<div><b>'+p.bpm+'</b><span class="et">BPM</span></div>');
-  if(p.tono)   d.push('<div><b>'+p.tono+'</b><span class="et">Tonalidad</span></div>');
+  if(p.bpm)    d.push('<div><b>'+p.bpm+'</b><span class="et">'+T.bpm+'</span></div>');
+  if(p.tono)   d.push('<div><b>'+p.tono+'</b><span class="et">'+T.tono+'</span></div>');
   /* El número solo asusta; con los grupos al lado dice «grande y ordenado». */
-  if(p.pistas) d.push('<div><b>'+p.pistas+'</b><span class="et">Pistas'+
-    (p.grupos ? ' en '+p.grupos+' grupos' : '')+'</span></div>');
+  if(p.pistas) d.push('<div><b>'+p.pistas+'</b><span class="et">'+T.pistas+
+    (p.grupos ? ins(T.enGrupos,{n:p.grupos}) : '')+'</span></div>');
   if(!d.length) return '<p class="formato et">Archivo .als · Proyecto de Ableton Live</p>';
-  d.push('<div><b>.als</b><span class="et">Proyecto de Live</span></div>');
+  d.push('<div><b>.als</b><span class="et">'+T.formato+'</span></div>');
   return '<div class="specs">'+d.join("")+'</div>';
 }
 
@@ -369,7 +389,7 @@ function abrir(i, desdeUrl){
     /* Sin cabecera de imagen: la misma captura ya sale justo debajo como
        fondo de la carátula del vídeo. Repetirla no aportaba nada y alejaba
        el precio y el botón de compra. */
-    '<div class="pcab et"><span>Proyecto '+String(i+1).padStart(2,"0")+'</span>'+
+    '<div class="pcab et"><span>'+T.proyecto+' '+String(i+1).padStart(2,"0")+'</span>'+
       '<span class="yr">'+p.y+'</span></div>'+
     '<h3 id="p-tit">'+p.t+'</h3><p class="part">'+p.a+'</p>'+
 
@@ -380,12 +400,12 @@ function abrir(i, desdeUrl){
     (p.video
       ? '<div class="previa" data-video="'+p.video+'">'+
           '<button class="previa-cara'+(p.captura ? ' nitida' : '')+'" type="button" data-play="'+p.video+'">'+
-            '<img src="'+(p.captura || miniatura(p.video))+'" alt="" loading="lazy">'+
+            '<img src="'+(ruta(p.captura) || miniatura(p.video))+'" alt="" loading="lazy">'+
             '<span class="play" aria-hidden="true">'+
               '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
             '</span>'+
-            '<span class="previa-txt"><b>Míralo por dentro antes de descargar</b>'+
-            '<span class="sub">Abro esta sesión y te enseño cómo está montada</span></span>'+
+            '<span class="previa-txt"><b>'+T.previaTit+'</b>'+
+            '<span class="sub">'+T.previaSub+'</span></span>'+
           '</button></div>'
       : '')+
 
@@ -395,7 +415,7 @@ function abrir(i, desdeUrl){
        pulsa, así que no cuesta nada a quien solo pasa por aquí. */
     (p.audio
       ? '<div class="oir" data-oir>'+
-          '<button class="oir-b" type="button" aria-label="Escuchar el fragmento">'+
+          '<button class="oir-b" type="button" aria-label="'+T.oirAria+'">'+
             '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+
               '<path class="i-play" d="M8 5v14l11-7z"/>'+
               '<path class="i-pausa" d="M6 5h4v14H6zM14 5h4v14h-4z"/>'+
@@ -403,25 +423,23 @@ function abrir(i, desdeUrl){
           '</button>'+
           '<div class="oir-barra" role="presentation"><span class="oir-va"></span></div>'+
           '<span class="oir-t et">0:00</span>'+
-          '<audio preload="none" src="'+p.audio+'"></audio>'+
+          '<audio preload="none" src="'+ruta(p.audio)+'"></audio>'+
         '</div>'+
-        '<p class="oir-pie et">Fragmento del tema · así suena la sesión terminada</p>'
+        '<p class="oir-pie et">'+T.oirPie+'</p>'
       : '')+
 
     specs(p)+
     '<ul class="dentro">'+
-      '<li><i>01</i><div><b>El arreglo completo.</b> De la intro al último compás, con las pistas nombradas y agrupadas tal y como las tengo yo.</div></li>'+
-      '<li><i>02</i><div><b>Todos los racks y cadenas de efectos.</b> Cada dispositivo en su orden y con sus ajustes. Desactiva uno y oye qué aportaba.</div></li>'+
-      '<li><i>03</i><div><b>Todas las automatizaciones.</b> Filtros, envíos y volúmenes, en su sitio — la mitad de por qué el tema respira.</div></li>'+
-      '<li><i>04</i><div><b>El MIDI de cada parte.</b> Cambia las notas y ya es tuyo.</div></li>'+
+      '<li><i>01</i><div><b>'+T.d1t+'</b> '+T.d1+'</div></li>'+
+      '<li><i>02</i><div><b>'+T.d2t+'</b> '+T.d2+'</div></li>'+
+      '<li><i>03</i><div><b>'+T.d3t+'</b> '+T.d3+'</div></li>'+
+      '<li><i>04</i><div><b>'+T.d4t+'</b> '+T.d4+'</div></li>'+
     '</ul>'+
     conQue(p)+
     '<div class="compra"><span class="pr">'+PRECIO+'</span>'+
-      botonCompra(p.id,"Conseguir el proyecto","btn")+
-      '<span class="nota">Descarga inmediata. Pago seguro gestionado por Gumroad.</span></div>'+
-    '<p class="legal">Es mi propia recreación, hecha de oído. No contiene audio, samples ni '+
-      'material del lanzamiento original. Puedes publicar lo que hagas con ella; no puedes '+
-      'revender ni redistribuir el archivo del proyecto.</p>';
+      botonCompra(p.id,T.conseguir,"btn")+
+      '<span class="nota">'+T.compraNota+'</span></div>'+
+    '<p class="legal">'+T.legal+'</p>';
 
   if(!desdeUrl && location.hash !== "#"+p.id) history.pushState({p:p.id}, "", "#"+p.id);
 

@@ -11,6 +11,9 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon-180.png">
 
 <link rel="canonical" href="https://ianerastudio.com/">
+<link rel="alternate" hreflang="es" href="https://ianerastudio.com/">
+<link rel="alternate" hreflang="en" href="https://ianerastudio.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://ianerastudio.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ian Era Studio">
 <meta property="og:locale" content="es_ES">
@@ -31,7 +34,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
      o quien ya haya visitado la web seguirá viendo la versión antigua. -->
-<link rel="stylesheet" href="css/estilo.css?v=68">
+<link rel="stylesheet" href="css/estilo.css?v=73">
 </head>
 <body>
 
@@ -45,48 +48,49 @@
 </svg>
 
 <header class="bar" id="bar">
-  <a class="lock" href="#top" aria-label="Ian Era Studio — inicio">
+  <a class="lock" href="#top" data-ta="aria-label:nav.inicio" aria-label="Ian Era Studio — inicio">
     <svg width="36" height="30" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
     <span>Ian&nbsp;Era</span>
   </a>
-  <nav class="top et" aria-label="Principal">
-    <a href="#proyectos" data-sec>Proyectos</a>
-    <a href="#videos" data-sec>Vídeos</a>
-    <a href="#catalogo" data-sec>Catálogo</a>
-    <a href="#dudas" data-sec>Dudas</a>
-    <a href="#bio" data-sec>Bio</a>
+  <nav class="top et" data-ta="aria-label:nav.principal" aria-label="Principal">
+    <a href="#proyectos" data-sec data-t="nav.proyectos">Proyectos</a>
+    <a href="#videos" data-sec data-t="nav.videos">Vídeos</a>
+    <a href="#catalogo" data-sec data-t="nav.catalogo">Catálogo</a>
+    <a href="#dudas" data-sec data-t="nav.dudas">Dudas</a>
+    <a href="#bio" data-sec data-t="nav.bio">Bio</a>
     <a href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">YouTube<sup>↗</sup></a>
+    <a class="idi" id="idi" href="/en/" data-t="idioma.otro" data-ta="aria-label:idioma.aria" aria-label="Ver esta página en inglés">EN</a>
   </nav>
 </header>
 
-<nav class="rail" id="rail" aria-label="Redes"></nav>
+<nav class="rail" id="rail" data-ta="aria-label:nav.redes" aria-label="Redes"></nav>
 
 <span id="top"></span>
 
 <!-- 1 · HÉROE — foto a sangre, sin una palabra -->
 <section class="hero">
-  <img src="img/hero.jpg" alt="Ian Era en el estudio" fetchpriority="high" width="1480" height="704">
+  <img src="img/hero.jpg" data-ta="alt:hero.alt" alt="Ian Era en el estudio" fetchpriority="high" width="1480" height="704">
   <div class="fund"></div>
-  <div class="cue et" aria-hidden="true"><i></i><span>Baja</span></div>
+  <div class="cue et" aria-hidden="true"><i></i><span data-t="hero.baja">Baja</span></div>
 </section>
 
 <!-- 2 · PROYECTOS — carril horizontal -->
 <section class="bl bg2" id="proyectos">
   <div class="wrap">
     <div class="cab">
-      <h2 class="dp h-sec rv">Proyectos</h2>
+      <h2 class="dp h-sec rv" data-t="nav.proyectos">Proyectos</h2>
       <span class="et n rv" id="proy-n">04</span>
     </div>
   </div>
   <div class="wrap">
     <div class="carril-caja rv">
-      <div class="carril" id="carril" role="group" aria-label="Proyectos — desplaza para ver más"></div>
+      <div class="carril" id="carril" role="group" data-ta="aria-label:car.aria" aria-label="Proyectos — desplaza para ver más"></div>
     </div>
     <div class="flechas rv">
-      <button id="car-antes" type="button" aria-label="Proyecto anterior">
+      <button id="car-antes" type="button" data-ta="aria-label:car.antes" aria-label="Proyecto anterior">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
-      <button id="car-luego" type="button" aria-label="Proyecto siguiente">
+      <button id="car-luego" type="button" data-ta="aria-label:car.luego" aria-label="Proyecto siguiente">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
       </button>
     </div>
@@ -97,7 +101,7 @@
 <section class="bl bg1" id="videos">
   <div class="wrap">
     <div class="cab">
-      <h2 class="dp h-sec rv">Vídeos</h2>
+      <h2 class="dp h-sec rv" data-t="nav.videos">Vídeos</h2>
       <span class="et n rv" id="vid-n">04</span>
     </div>
     <div class="lista rv" id="videos-lista"></div>
@@ -107,8 +111,8 @@
 <!-- 4 · DECLARACIÓN -->
 <section class="bl bg3">
   <div class="wrap">
-    <p class="dp h-dec dec rv">Lo que hay dentro es lo que suena.</p>
-    <p class="dec-sub rv">Sesiones completas de Ableton Live: cada pista, cada dispositivo, cada línea
+    <p class="dp h-dec dec rv" data-t="dec.titulo">Lo que hay dentro es lo que suena.</p>
+    <p class="dec-sub rv" data-t="dec.sub">Sesiones completas de Ableton Live: cada pista, cada dispositivo, cada línea
       de automatización, tal y como se construyeron. Sin limpiar y sin maquillar para la foto.</p>
   </div>
 </section>
@@ -125,34 +129,34 @@
 <section class="bl bg2" id="dentro">
   <div class="wrap">
     <div class="cab">
-      <h2 class="dp h-sec rv">Por dentro</h2>
-      <span class="et n rv">Sesión real</span>
+      <h2 class="dp h-sec rv" data-t="dentro.titulo">Por dentro</h2>
+      <span class="et n rv" data-t="dentro.et">Sesión real</span>
     </div>
 
     <div class="caps-caja rv">
-      <div class="caps" id="caps" role="group" aria-label="Capturas de la sesión">
+      <div class="caps" id="caps" role="group" data-ta="aria-label:dentro.aria" aria-label="Capturas de la sesión">
         <figure>
-          <img src="img/ses-arreglo.jpg" srcset="img/ses-arreglo-960.jpg 960w, img/ses-arreglo.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Arrangement completo de una sesión de Ableton Live" loading="lazy" decoding="async" width="1920" height="996">
+          <img src="img/ses-arreglo.jpg" srcset="img/ses-arreglo-960.jpg 960w, img/ses-arreglo.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" data-ta="alt:dentro.alt1" alt="Arrangement completo de una sesión de Ableton Live" loading="lazy" decoding="async" width="1920" height="996">
         </figure>
         <figure>
-          <img src="img/ses-serum.jpg" srcset="img/ses-serum-960.jpg 960w, img/ses-serum.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Cadena de sonido con Serum abierto sobre el mezclador" loading="lazy" decoding="async" width="1920" height="995">
+          <img src="img/ses-serum.jpg" srcset="img/ses-serum-960.jpg 960w, img/ses-serum.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" data-ta="alt:dentro.alt2" alt="Cadena de sonido con Serum abierto sobre el mezclador" loading="lazy" decoding="async" width="1920" height="995">
         </figure>
         <figure>
-          <img src="img/ses-midi.jpg" srcset="img/ses-midi-960.jpg 960w, img/ses-midi.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" alt="Edición MIDI de un pad con su automatización de velocidad" loading="lazy" decoding="async" width="1920" height="996">
+          <img src="img/ses-midi.jpg" srcset="img/ses-midi-960.jpg 960w, img/ses-midi.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" data-ta="alt:dentro.alt3" alt="Edición MIDI de un pad con su automatización de velocidad" loading="lazy" decoding="async" width="1920" height="996">
         </figure>
       </div>
     </div>
 
     <div class="caps-nav rv" id="caps-nav">
       <button type="button" data-i="0" aria-current="true">
-        <span class="et n">01</span><span>El arreglo completo, con las pistas nombradas y agrupadas</span></button>
+        <span class="et n">01</span><span data-t="dentro.pie1">El arreglo completo, con las pistas nombradas y agrupadas</span></button>
       <button type="button" data-i="1">
-        <span class="et n">02</span><span>Los racks y las cadenas de efectos, editables</span></button>
+        <span class="et n">02</span><span data-t="dentro.pie2">Los racks y las cadenas de efectos, editables</span></button>
       <button type="button" data-i="2">
-        <span class="et n">03</span><span>El MIDI y la automatización de cada parte</span></button>
+        <span class="et n">03</span><span data-t="dentro.pie3">El MIDI y la automatización de cada parte</span></button>
     </div>
 
-    <p class="cap-nota rv">Capturas de una sesión de verdad, sin montaje.
+    <p class="cap-nota rv" data-t="dentro.nota">Capturas de una sesión de verdad, sin montaje.
       Esto es exactamente lo que se abre al descargar el <b>.als</b>.</p>
   </div>
 </section>
@@ -161,11 +165,11 @@
 <section class="bl bg2" id="catalogo">
   <div class="wrap">
     <div class="cab">
-      <h2 class="dp h-sec rv">Catálogo</h2>
-      <span class="et n rv">Descarga inmediata</span>
+      <h2 class="dp h-sec rv" data-t="cat.titulo">Catálogo</h2>
+      <span class="et n rv" data-t="cat.et">Descarga inmediata</span>
     </div>
     <div class="lista rv" id="catalogo-lista"></div>
-    <p class="cat-nota rv">Pago y entrega gestionados por Gumroad.
+    <p class="cat-nota rv" data-t="cat.nota">Pago y entrega gestionados por Gumroad.
       Archivos <b>.als</b> de Ableton Live.</p>
   </div>
 </section>
@@ -173,7 +177,7 @@
 <!-- 10 bis · RESEÑAS — vacía hasta que existan de verdad; el JS la borra. -->
 <section class="bl bg1" id="resenas">
   <div class="wrap">
-    <div class="cab"><h2 class="dp h-sec rv">Reseñas</h2></div>
+    <div class="cab"><h2 class="dp h-sec rv" data-t="res.titulo">Reseñas</h2></div>
     <div class="resenas rv" id="resenas-lista"></div>
   </div>
 </section>
@@ -182,7 +186,7 @@
      y una salida para preguntar antes de pagar. -->
 <section class="bl bg2" id="dudas">
   <div class="wrap">
-    <div class="cab"><h2 class="dp h-sec rv">Dudas</h2></div>
+    <div class="cab"><h2 class="dp h-sec rv" data-t="dudas.titulo">Dudas</h2></div>
     <div class="faq rv" id="faq-lista"></div>
     <div class="contacto rv" id="contacto"></div>
   </div>
@@ -191,19 +195,19 @@
 <!-- 10 · BIO -->
 <section class="bl bg1" id="bio">
   <div class="wrap">
-    <div class="cab"><h2 class="dp h-sec rv">Bio</h2></div>
+    <div class="cab"><h2 class="dp h-sec rv" data-t="bio.titulo">Bio</h2></div>
     <div class="bio">
-      <div class="rt rv"><img src="img/retrato.jpg" alt="Retrato de Ian Era" loading="lazy" decoding="async" width="470" height="704"></div>
+      <div class="rt rv"><img src="img/retrato.jpg" data-ta="alt:bio.alt" alt="Retrato de Ian Era" loading="lazy" decoding="async" width="470" height="704"></div>
       <div>
-        <p class="rv">Recreo temas de progressive house desde cero para entender por qué funcionan.
+        <p class="rv" data-t="bio.p1">Recreo temas de progressive house desde cero para entender por qué funcionan.
           No de oído por encima: <b>nota por nota, cadena por cadena</b>, hasta que el arreglo aguanta
           al lado del original.</p>
-        <p class="rv">De ese proceso salen dos cosas. Un vídeo cada dos semanas donde abro la sesión y
+        <p class="rv" data-t="bio.p2">De ese proceso salen dos cosas. Un vídeo cada dos semanas donde abro la sesión y
           enseño las tres decisiones que sostienen el tema. Y <b>el proyecto entero</b>, por si prefieres
           abrirlo tú y trastear dentro.</p>
-        <p class="rv">No son stems ni un pack de loops. Es el archivo con el que trabajo: el arreglo
+        <p class="rv" data-t="bio.p3">No son stems ni un pack de loops. Es el archivo con el que trabajo: el arreglo
           completo, los racks enteros y la automatización en su sitio.</p>
-        <p class="rv"><a class="btn gh" href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">Ver el canal ↗</a></p>
+        <p class="rv"><a class="btn gh" href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener" data-t="bio.canal">Ver el canal ↗</a></p>
       </div>
     </div>
   </div>
@@ -214,35 +218,35 @@
     <div class="fg">
       <div class="mrc">
         <svg width="38" height="32" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
-        <blockquote class="lema">«Para romper las reglas primero hay que conocerlas»
+        <blockquote class="lema"><span data-t="pie.lema">«Para romper las reglas primero hay que conocerlas»</span>
           <cite>Axwell</cite></blockquote>
       </div>
       <div class="fcol">
-        <span class="t et">Proyectos</span>
-        <a href="#catalogo">Catálogo</a>
-        <a id="pie-bundle" href="#catalogo">Los cuatro proyectos</a>
-        <a id="pie-gratis" href="#catalogo">Sample pack gratis</a>
+        <span class="t et" data-t="pie.proyectos">Proyectos</span>
+        <a href="#catalogo" data-t="pie.catalogo">Catálogo</a>
+        <a id="pie-bundle" href="#catalogo" data-t="pie.bundle">Los proyectos completos</a>
+        <a id="pie-gratis" href="#catalogo" data-t="pie.gratis">Sample pack gratis</a>
       </div>
       <div class="fcol">
-        <span class="t et">Canal</span>
+        <span class="t et" data-t="pie.canal">Canal</span>
         <a href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">YouTube</a>
         <a href="https://tienda.ianerastudio.com" target="_blank" rel="noopener">Gumroad</a>
       </div>
     </div>
     <div class="fbot et">
       <span>© 2026 Ian Era Studio</span>
-      <span>Pago y entrega · Gumroad</span>
+      <span data-t="pie.pago">Pago y entrega · Gumroad</span>
     </div>
   </div>
 </footer>
 
 <div class="cta-fijo" id="cta-fijo">
-  <a class="btn" href="#catalogo">Ver el catálogo</a>
+  <a class="btn" href="#catalogo" data-t="cta.catalogo">Ver el catálogo</a>
 </div>
 
 <div class="velo" id="velo"></div>
 <div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="p-tit" hidden>
-  <button class="cerrar" id="cerrar" type="button" aria-label="Cerrar">
+  <button class="cerrar" id="cerrar" type="button" data-ta="aria-label:panel.cerrar" aria-label="Cerrar">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
   </button>
   <div class="pin" id="pin"></div>
@@ -250,7 +254,8 @@
 
 
 <script src="https://gumroad.com/js/gumroad.js" defer></script>
-<script src="js/datos.js?v=68"></script>
-<script src="js/sitio.js?v=68"></script>
+<script src="js/textos-es.js?v=73"></script>
+<script src="js/datos.js?v=73"></script>
+<script src="js/sitio.js?v=73"></script>
 </body>
 </html>

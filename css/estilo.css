@@ -678,3 +678,7 @@ footer{background:var(--n1);border-top:1px solid var(--linea);
 /* sustituto que existe pero no es gratis: no puede leerse como si lo fuera */
 .terc .sust{flex:1 1 auto;color:var(--tinta70)}
 .terc .sust::before{content:"En su lugar: ";color:var(--tinta45)}
+
+/* cambio de idioma: un dato más de la barra, no un botón */
+.top .idi{margin-left:2px;padding:2px 7px;border:1px solid var(--linea)}
+.top .idi:hover{border-color:var(--tinta)}

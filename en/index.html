@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ian Era Studio — Ableton Live Projects</title>
+<meta name="description" content="I rebuild progressive house tracks in Ableton Live and sell the whole session: every track, every device, every automation lane.">
+
+<link rel="icon" href="../img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="../img/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon-180.png">
+
+<link rel="canonical" href="https://ianerastudio.com/en/">
+<link rel="alternate" hreflang="es" href="https://ianerastudio.com/">
+<link rel="alternate" hreflang="en" href="https://ianerastudio.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://ianerastudio.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ian Era Studio">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://ianerastudio.com/en/">
+<meta property="og:title" content="Ian Era Studio — Ableton Live Projects">
+<meta property="og:description" content="I rebuild progressive house tracks and sell the whole session: the arrangement, the racks and the automation.">
+<!-- ABSOLUTA a propósito: con una ruta relativa, ni WhatsApp ni Instagram ni
+     Discord muestran la vista previa al compartir el enlace. -->
+<meta property="og:image" content="https://ianerastudio.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ian Era in the studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<!-- El ?v= es control de caché: SÚBELO cada vez que cambies el CSS o el JS,
+     o quien ya haya visitado la web seguirá viendo la versión antigua. -->
+<link rel="stylesheet" href="../css/estilo.css?v=73">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="mk" viewBox="0 0 76 64">
+    <rect x="0" y="0" width="11" height="64" fill="currentColor"/>
+    <rect x="20" y="0" width="56" height="13" fill="currentColor"/>
+    <rect x="20" y="25.5" width="35" height="13" fill="currentColor"/>
+    <rect x="20" y="51" width="46" height="13" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<header class="bar" id="bar">
+  <a class="lock" href="#top" data-ta="aria-label:nav.inicio" aria-label="Ian Era Studio — home">
+    <svg width="36" height="30" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
+    <span>Ian&nbsp;Era</span>
+  </a>
+  <nav class="top et" data-ta="aria-label:nav.principal" aria-label="Main">
+    <a href="#proyectos" data-sec data-t="nav.proyectos">Projects</a>
+    <a href="#videos" data-sec data-t="nav.videos">Videos</a>
+    <a href="#catalogo" data-sec data-t="nav.catalogo">Catalog</a>
+    <a href="#dudas" data-sec data-t="nav.dudas">Questions</a>
+    <a href="#bio" data-sec data-t="nav.bio">Bio</a>
+    <a href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">YouTube<sup>↗</sup></a>
+    <a class="idi" id="idi" href="/" data-t="idioma.otro" data-ta="aria-label:idioma.aria" aria-label="View this page in Spanish">ES</a>
+  </nav>
+</header>
+
+<nav class="rail" id="rail" data-ta="aria-label:nav.redes" aria-label="Social"></nav>
+
+<span id="top"></span>
+
+<!-- 1 · HÉROE — foto a sangre, sin una palabra -->
+<section class="hero">
+  <img src="../img/hero.jpg" data-ta="alt:hero.alt" alt="Ian Era in the studio" fetchpriority="high" width="1480" height="704">
+  <div class="fund"></div>
+  <div class="cue et" aria-hidden="true"><i></i><span data-t="hero.baja">Scroll</span></div>
+</section>
+
+<!-- 2 · PROYECTOS — carril horizontal -->
+<section class="bl bg2" id="proyectos">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv" data-t="nav.proyectos">Projects</h2>
+      <span class="et n rv" id="proy-n">04</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="carril-caja rv">
+      <div class="carril" id="carril" role="group" data-ta="aria-label:car.aria" aria-label="Projects — scroll for more"></div>
+    </div>
+    <div class="flechas rv">
+      <button id="car-antes" type="button" data-ta="aria-label:car.antes" aria-label="Previous project">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button id="car-luego" type="button" data-ta="aria-label:car.luego" aria-label="Next project">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · VÍDEOS -->
+<section class="bl bg1" id="videos">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv" data-t="nav.videos">Videos</h2>
+      <span class="et n rv" id="vid-n">04</span>
+    </div>
+    <div class="lista rv" id="videos-lista"></div>
+  </div>
+</section>
+
+<!-- 4 · DECLARACIÓN -->
+<section class="bl bg3">
+  <div class="wrap">
+    <p class="dp h-dec dec rv" data-t="dec.titulo">What's inside is what you hear.</p>
+    <p class="dec-sub rv" data-t="dec.sub">Complete Ableton Live sessions: every track, every device, every automation lane, exactly as they were built. Not cleaned up, not dressed for the photo.</p>
+  </div>
+</section>
+
+<!-- 5 · Una sola foto a sangre, la del estudio. Antes había tres bandas más
+     y no aportaban: la del directo salía negra entera, y la del retrato
+     repetía la misma foto que ya están el héroe y la bio. -->
+<div class="foto banda"><img src="../img/mesa.jpg" srcset="../img/mesa-960.jpg 960w, ../img/mesa.jpg 1920w" sizes="100vw" alt="" loading="lazy" decoding="async" width="1920" height="1071"></div>
+
+<!-- 6 · POR DENTRO — carrusel de capturas.
+     Los pies van FUERA del carril y hacen de índice: así se compacta sin
+     perder la secuencia arreglo → racks → automatización, que es lo que
+     un carrusel se lleva por delante. -->
+<section class="bl bg2" id="dentro">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv" data-t="dentro.titulo">Inside</h2>
+      <span class="et n rv" data-t="dentro.et">Real session</span>
+    </div>
+
+    <div class="caps-caja rv">
+      <div class="caps" id="caps" role="group" data-ta="aria-label:dentro.aria" aria-label="Session screenshots">
+        <figure>
+          <img src="../img/ses-arreglo.jpg" srcset="../img/ses-arreglo-960.jpg 960w, ../img/ses-arreglo.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" data-ta="alt:dentro.alt1" alt="Full arrangement of an Ableton Live session" loading="lazy" decoding="async" width="1920" height="996">
+        </figure>
+        <figure>
+          <img src="../img/ses-serum.jpg" srcset="../img/ses-serum-960.jpg 960w, ../img/ses-serum.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" data-ta="alt:dentro.alt2" alt="Sound chain with Serum open over the mixer" loading="lazy" decoding="async" width="1920" height="995">
+        </figure>
+        <figure>
+          <img src="../img/ses-midi.jpg" srcset="../img/ses-midi-960.jpg 960w, ../img/ses-midi.jpg 1920w" sizes="(min-width:1088px) 960px, calc(100vw - 40px)" data-ta="alt:dentro.alt3" alt="MIDI editing of a pad with its velocity automation" loading="lazy" decoding="async" width="1920" height="996">
+        </figure>
+      </div>
+    </div>
+
+    <div class="caps-nav rv" id="caps-nav">
+      <button type="button" data-i="0" aria-current="true">
+        <span class="et n">01</span><span data-t="dentro.pie1">The full arrangement, with tracks named and grouped</span></button>
+      <button type="button" data-i="1">
+        <span class="et n">02</span><span data-t="dentro.pie2">The racks and effect chains, all editable</span></button>
+      <button type="button" data-i="2">
+        <span class="et n">03</span><span data-t="dentro.pie3">The MIDI and automation of every part</span></button>
+    </div>
+
+    <p class="cap-nota rv" data-t="dentro.nota">Screenshots of a real session, nothing staged. This is exactly what opens when you download the <b>.als</b>.</p>
+  </div>
+</section>
+
+<!-- 9 · CATÁLOGO — todo junto, con precio y compra directa -->
+<section class="bl bg2" id="catalogo">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="dp h-sec rv" data-t="cat.titulo">Catalog</h2>
+      <span class="et n rv" data-t="cat.et">Instant download</span>
+    </div>
+    <div class="lista rv" id="catalogo-lista"></div>
+    <p class="cat-nota rv" data-t="cat.nota">Payment and delivery handled by Gumroad. Ableton Live <b>.als</b> files.</p>
+  </div>
+</section>
+
+<!-- 10 bis · RESEÑAS — vacía hasta que existan de verdad; el JS la borra. -->
+<section class="bl bg1" id="resenas">
+  <div class="wrap">
+    <div class="cab"><h2 class="dp h-sec rv" data-t="res.titulo">Reviews</h2></div>
+    <div class="resenas rv" id="resenas-lista"></div>
+  </div>
+</section>
+
+<!-- 11 · DUDAS + CONTACTO — las objeciones que frenan la compra,
+     y una salida para preguntar antes de pagar. -->
+<section class="bl bg2" id="dudas">
+  <div class="wrap">
+    <div class="cab"><h2 class="dp h-sec rv" data-t="dudas.titulo">Questions</h2></div>
+    <div class="faq rv" id="faq-lista"></div>
+    <div class="contacto rv" id="contacto"></div>
+  </div>
+</section>
+
+<!-- 10 · BIO -->
+<section class="bl bg1" id="bio">
+  <div class="wrap">
+    <div class="cab"><h2 class="dp h-sec rv" data-t="bio.titulo">Bio</h2></div>
+    <div class="bio">
+      <div class="rt rv"><img src="../img/retrato.jpg" data-ta="alt:bio.alt" alt="Portrait of Ian Era" loading="lazy" decoding="async" width="470" height="704"></div>
+      <div>
+        <p class="rv" data-t="bio.p1">I rebuild progressive house tracks from scratch to understand why they work. Not roughly by ear: <b>note by note, chain by chain</b>, until the arrangement holds up next to the original.</p>
+        <p class="rv" data-t="bio.p2">Two things come out of that. A video every two weeks where I open the session and show the three decisions the track stands on. And <b>the whole project</b>, in case you'd rather open it yourself and dig around.</p>
+        <p class="rv" data-t="bio.p3">These aren't stems or a loop pack. It's the file I work in: the full arrangement, the racks intact and the automation where it belongs.</p>
+        <p class="rv"><a class="btn gh" href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener" data-t="bio.canal">Visit the channel ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div class="mrc">
+        <svg width="38" height="32" viewBox="0 0 76 64" aria-hidden="true"><use href="#mk"/></svg>
+        <blockquote class="lema"><span data-t="pie.lema">“You have to know the rules before you can break them”</span>
+          <cite>Axwell</cite></blockquote>
+      </div>
+      <div class="fcol">
+        <span class="t et" data-t="pie.proyectos">Projects</span>
+        <a href="#catalogo" data-t="pie.catalogo">Catalog</a>
+        <a id="pie-bundle" href="#catalogo" data-t="pie.bundle">All the projects</a>
+        <a id="pie-gratis" href="#catalogo" data-t="pie.gratis">Free sample pack</a>
+      </div>
+      <div class="fcol">
+        <span class="t et" data-t="pie.canal">Channel</span>
+        <a href="https://www.youtube.com/@IanEraStudio" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://tienda.ianerastudio.com" target="_blank" rel="noopener">Gumroad</a>
+      </div>
+    </div>
+    <div class="fbot et">
+      <span>© 2026 Ian Era Studio</span>
+      <span data-t="pie.pago">Payment and delivery · Gumroad</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cta-fijo" id="cta-fijo">
+  <a class="btn" href="#catalogo" data-t="cta.catalogo">See the catalog</a>
+</div>
+
+<div class="velo" id="velo"></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="p-tit" hidden>
+  <button class="cerrar" id="cerrar" type="button" data-ta="aria-label:panel.cerrar" aria-label="Close">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="pin" id="pin"></div>
+</div>
+
+
+<script src="https://gumroad.com/js/gumroad.js" defer></script>
+<script src="../js/textos-en.js?v=73"></script>
+<script src="../js/datos.js?v=73"></script>
+<script src="../js/sitio.js?v=73"></script>
+</body>
+</html>

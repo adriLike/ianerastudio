@@ -1,0 +1,395 @@
+{
+  "_": "Todos los textos de la web en los dos idiomas. El castellano es el original: si cambias algo aquí, cambia también index.html si ese texto está en el HTML. Lo genera todo cms/generar.js.",
+  "meta.titulo": {
+    "es": "Ian Era Studio — Sesiones de Ableton Live",
+    "en": "Ian Era Studio — Ableton Live Projects"
+  },
+  "meta.desc": {
+    "es": "Recreo temas de progressive house en Ableton Live y vendo la sesión completa: cada pista, cada dispositivo, cada línea de automatización.",
+    "en": "I rebuild progressive house tracks in Ableton Live and sell the whole session: every track, every device, every automation lane."
+  },
+  "meta.og.titulo": {
+    "es": "Ian Era Studio — Proyectos de Ableton Live",
+    "en": "Ian Era Studio — Ableton Live Projects"
+  },
+  "meta.og.desc": {
+    "es": "Recreo temas de progressive house y vendo la sesión completa: el arreglo, los racks y la automatización.",
+    "en": "I rebuild progressive house tracks and sell the whole session: the arrangement, the racks and the automation."
+  },
+  "meta.og.locale": {
+    "es": "es_ES",
+    "en": "en_US"
+  },
+  "meta.og.imgalt": {
+    "es": "Ian Era en el estudio",
+    "en": "Ian Era in the studio"
+  },
+  "nav.proyectos": {
+    "es": "Proyectos",
+    "en": "Projects"
+  },
+  "nav.videos": {
+    "es": "Vídeos",
+    "en": "Videos"
+  },
+  "nav.catalogo": {
+    "es": "Catálogo",
+    "en": "Catalog"
+  },
+  "nav.dudas": {
+    "es": "Dudas",
+    "en": "Questions"
+  },
+  "nav.bio": {
+    "es": "Bio",
+    "en": "Bio"
+  },
+  "nav.inicio": {
+    "es": "Ian Era Studio — inicio",
+    "en": "Ian Era Studio — home"
+  },
+  "nav.principal": {
+    "es": "Principal",
+    "en": "Main"
+  },
+  "nav.redes": {
+    "es": "Redes",
+    "en": "Social"
+  },
+  "hero.alt": {
+    "es": "Ian Era en el estudio",
+    "en": "Ian Era in the studio"
+  },
+  "hero.baja": {
+    "es": "Baja",
+    "en": "Scroll"
+  },
+  "car.aria": {
+    "es": "Proyectos — desplaza para ver más",
+    "en": "Projects — scroll for more"
+  },
+  "car.antes": {
+    "es": "Proyecto anterior",
+    "en": "Previous project"
+  },
+  "car.luego": {
+    "es": "Proyecto siguiente",
+    "en": "Next project"
+  },
+  "dec.titulo": {
+    "es": "Lo que hay dentro es lo que suena.",
+    "en": "What's inside is what you hear."
+  },
+  "dec.sub": {
+    "es": "Sesiones completas de Ableton Live: cada pista, cada dispositivo, cada línea de automatización, tal y como se construyeron. Sin limpiar y sin maquillar para la foto.",
+    "en": "Complete Ableton Live sessions: every track, every device, every automation lane, exactly as they were built. Not cleaned up, not dressed for the photo."
+  },
+  "dentro.titulo": {
+    "es": "Por dentro",
+    "en": "Inside"
+  },
+  "dentro.et": {
+    "es": "Sesión real",
+    "en": "Real session"
+  },
+  "dentro.aria": {
+    "es": "Capturas de la sesión",
+    "en": "Session screenshots"
+  },
+  "dentro.alt1": {
+    "es": "Arrangement completo de una sesión de Ableton Live",
+    "en": "Full arrangement of an Ableton Live session"
+  },
+  "dentro.alt2": {
+    "es": "Cadena de sonido con Serum abierto sobre el mezclador",
+    "en": "Sound chain with Serum open over the mixer"
+  },
+  "dentro.alt3": {
+    "es": "Edición MIDI de un pad con su automatización de velocidad",
+    "en": "MIDI editing of a pad with its velocity automation"
+  },
+  "dentro.pie1": {
+    "es": "El arreglo completo, con las pistas nombradas y agrupadas",
+    "en": "The full arrangement, with tracks named and grouped"
+  },
+  "dentro.pie2": {
+    "es": "Los racks y las cadenas de efectos, editables",
+    "en": "The racks and effect chains, all editable"
+  },
+  "dentro.pie3": {
+    "es": "El MIDI y la automatización de cada parte",
+    "en": "The MIDI and automation of every part"
+  },
+  "dentro.nota": {
+    "es": "Capturas de una sesión de verdad, sin montaje. Esto es exactamente lo que se abre al descargar el <b>.als</b>.",
+    "en": "Screenshots of a real session, nothing staged. This is exactly what opens when you download the <b>.als</b>."
+  },
+  "cat.titulo": {
+    "es": "Catálogo",
+    "en": "Catalog"
+  },
+  "cat.et": {
+    "es": "Descarga inmediata",
+    "en": "Instant download"
+  },
+  "cat.nota": {
+    "es": "Pago y entrega gestionados por Gumroad. Archivos <b>.als</b> de Ableton Live.",
+    "en": "Payment and delivery handled by Gumroad. Ableton Live <b>.als</b> files."
+  },
+  "res.titulo": {
+    "es": "Reseñas",
+    "en": "Reviews"
+  },
+  "dudas.titulo": {
+    "es": "Dudas",
+    "en": "Questions"
+  },
+  "bio.titulo": {
+    "es": "Bio",
+    "en": "Bio"
+  },
+  "bio.alt": {
+    "es": "Retrato de Ian Era",
+    "en": "Portrait of Ian Era"
+  },
+  "bio.p1": {
+    "es": "Recreo temas de progressive house desde cero para entender por qué funcionan. No de oído por encima: <b>nota por nota, cadena por cadena</b>, hasta que el arreglo aguanta al lado del original.",
+    "en": "I rebuild progressive house tracks from scratch to understand why they work. Not roughly by ear: <b>note by note, chain by chain</b>, until the arrangement holds up next to the original."
+  },
+  "bio.p2": {
+    "es": "De ese proceso salen dos cosas. Un vídeo cada dos semanas donde abro la sesión y enseño las tres decisiones que sostienen el tema. Y <b>el proyecto entero</b>, por si prefieres abrirlo tú y trastear dentro.",
+    "en": "Two things come out of that. A video every two weeks where I open the session and show the three decisions the track stands on. And <b>the whole project</b>, in case you'd rather open it yourself and dig around."
+  },
+  "bio.p3": {
+    "es": "No son stems ni un pack de loops. Es el archivo con el que trabajo: el arreglo completo, los racks enteros y la automatización en su sitio.",
+    "en": "These aren't stems or a loop pack. It's the file I work in: the full arrangement, the racks intact and the automation where it belongs."
+  },
+  "bio.canal": {
+    "es": "Ver el canal ↗",
+    "en": "Visit the channel ↗"
+  },
+  "pie.lema": {
+    "es": "«Para romper las reglas primero hay que conocerlas»",
+    "en": "“You have to know the rules before you can break them”"
+  },
+  "pie.proyectos": {
+    "es": "Proyectos",
+    "en": "Projects"
+  },
+  "pie.catalogo": {
+    "es": "Catálogo",
+    "en": "Catalog"
+  },
+  "pie.bundle": {
+    "es": "Los cuatro proyectos",
+    "en": "All the projects"
+  },
+  "pie.gratis": {
+    "es": "Sample pack gratis",
+    "en": "Free sample pack"
+  },
+  "pie.canal": {
+    "es": "Canal",
+    "en": "Channel"
+  },
+  "pie.pago": {
+    "es": "Pago y entrega · Gumroad",
+    "en": "Payment and delivery · Gumroad"
+  },
+  "cta.catalogo": {
+    "es": "Ver el catálogo",
+    "en": "See the catalog"
+  },
+  "panel.cerrar": {
+    "es": "Cerrar",
+    "en": "Close"
+  },
+  "idioma.otro": {
+    "es": "EN",
+    "en": "ES"
+  },
+  "idioma.aria": {
+    "es": "Ver esta página en inglés",
+    "en": "View this page in Spanish"
+  },
+  "js.ver": {
+    "es": "Ver ↗",
+    "en": "View ↗"
+  },
+  "js.verYoutube": {
+    "es": "Ver en YouTube ↗",
+    "en": "Watch on YouTube ↗"
+  },
+  "js.pack": {
+    "es": "Pack",
+    "en": "Bundle"
+  },
+  "js.packTit": {
+    "es": "Los proyectos completos",
+    "en": "All the projects"
+  },
+  "js.packSub": {
+    "es": "Todos completos, en vez de {antes}",
+    "en": "Every one of them, instead of {antes}"
+  },
+  "js.comprar": {
+    "es": "Comprar ↗",
+    "en": "Buy ↗"
+  },
+  "js.gratis": {
+    "es": "Gratis",
+    "en": "Free"
+  },
+  "js.gratisSub": {
+    "es": "Sonidos de progressive house para empezar",
+    "en": "Progressive house sounds to get you started"
+  },
+  "js.descargar": {
+    "es": "Descargar ↗",
+    "en": "Download ↗"
+  },
+  "js.contactoTit": {
+    "es": "¿Alguna duda antes de comprar?",
+    "en": "Anything you want to ask before buying?"
+  },
+  "js.contactoNota": {
+    "es": "Pregunta lo que quieras. Contesto yo, no un formulario.",
+    "en": "Ask me anything. You get me, not a form."
+  },
+  "js.proyecto": {
+    "es": "Proyecto",
+    "en": "Project"
+  },
+  "js.previaTit": {
+    "es": "Míralo por dentro antes de descargar",
+    "en": "See inside before you download"
+  },
+  "js.previaSub": {
+    "es": "Abro esta sesión y te enseño cómo está montada",
+    "en": "I open this session and show you how it's put together"
+  },
+  "js.oirAria": {
+    "es": "Escuchar el fragmento",
+    "en": "Play the clip"
+  },
+  "js.oirPie": {
+    "es": "Fragmento del tema · así suena la sesión terminada",
+    "en": "Clip from the track · this is how the finished session sounds"
+  },
+  "js.bpm": {
+    "es": "BPM",
+    "en": "BPM"
+  },
+  "js.tono": {
+    "es": "Tonalidad",
+    "en": "Key"
+  },
+  "js.pistas": {
+    "es": "Pistas",
+    "en": "Tracks"
+  },
+  "js.enGrupos": {
+    "es": " en {n} grupos",
+    "en": " in {n} groups"
+  },
+  "js.formato": {
+    "es": "Proyecto de Live",
+    "en": "Live project"
+  },
+  "js.formatoSolo": {
+    "es": "Archivo .als · Proyecto de Ableton Live",
+    "en": ".als file · Ableton Live project"
+  },
+  "js.d1t": {
+    "es": "El arreglo completo.",
+    "en": "The full arrangement."
+  },
+  "js.d1": {
+    "es": "De la intro al último compás, con las pistas nombradas y agrupadas tal y como las tengo yo.",
+    "en": "From the intro to the last bar, with the tracks named and grouped exactly as I keep them."
+  },
+  "js.d2t": {
+    "es": "Todos los racks y cadenas de efectos.",
+    "en": "Every rack and effect chain."
+  },
+  "js.d2": {
+    "es": "Cada dispositivo en su orden y con sus ajustes. Desactiva uno y oye qué aportaba.",
+    "en": "Every device in order and with its settings. Switch one off and hear what it was doing."
+  },
+  "js.d3t": {
+    "es": "Todas las automatizaciones.",
+    "en": "All the automation."
+  },
+  "js.d3": {
+    "es": "Filtros, envíos y volúmenes, en su sitio — la mitad de por qué el tema respira.",
+    "en": "Filters, sends and volumes, all in place — half the reason the track breathes."
+  },
+  "js.d4t": {
+    "es": "El MIDI de cada parte.",
+    "en": "The MIDI for every part."
+  },
+  "js.d4": {
+    "es": "Cambia las notas y ya es tuyo.",
+    "en": "Change the notes and it's yours."
+  },
+  "js.conseguir": {
+    "es": "Conseguir el proyecto",
+    "en": "Get the project"
+  },
+  "js.compraNota": {
+    "es": "Descarga inmediata. Pago seguro gestionado por Gumroad.",
+    "en": "Instant download. Secure payment handled by Gumroad."
+  },
+  "js.legal": {
+    "es": "Es mi propia recreación, hecha de oído. No contiene audio, samples ni material del lanzamiento original. Puedes publicar lo que hagas con ella; no puedes revender ni redistribuir el archivo del proyecto.",
+    "en": "This is my own recreation, made by ear. It contains no audio, samples or material from the original release. You can publish whatever you make with it; you can't resell or redistribute the project file."
+  },
+  "js.hechoTit": {
+    "es": "Con qué está hecho",
+    "en": "What it's built with"
+  },
+  "js.hechoSub": {
+    "es": "El {pct}&nbsp;% de las cadenas son dispositivos que Live ya trae puestos. Lo demás son plugins de terceros — y aquí tienes cuáles, por si no los tienes.",
+    "en": "{pct}&nbsp;% of the chains are devices Live already ships with. The rest are third-party plugins — and here's which, in case you don't have them."
+  },
+  "js.hechoSerie": {
+    "es": "Esto ya lo tienes · de serie en Live",
+    "en": "You already have these · stock in Live"
+  },
+  "js.hechoTerceros": {
+    "es": "De terceros",
+    "en": "Third-party"
+  },
+  "js.hechoMas": {
+    "es": "y {n} más",
+    "en": "and {n} more"
+  },
+  "js.hechoPie": {
+    "es": "Si te falta alguno, el proyecto se abre igual y Live solo marca ese dispositivo: el arreglo, el MIDI y las automatizaciones siguen en su sitio.",
+    "en": "If you're missing one, the project still opens and Live just flags that device: the arrangement, the MIDI and the automation stay where they are."
+  },
+  "js.esGratuito": {
+    "es": "Es gratuito",
+    "en": "It's free"
+  },
+  "js.sinEquivalente": {
+    "es": "Sin equivalente gratuito",
+    "en": "No free equivalent"
+  },
+  "js.prefijoGratis": {
+    "es": "Gratis: ",
+    "en": "Free: "
+  },
+  "js.prefijoSust": {
+    "es": "En su lugar: ",
+    "en": "Instead: "
+  },
+  "js.ldName": {
+    "es": "{t} — Proyecto completo de Ableton Live",
+    "en": "{t} — Complete Ableton Live project"
+  },
+  "js.ldDesc": {
+    "es": "Mi recreación de «{t}» de {a} como sesión de Ableton Live: el arreglo completo, los racks y la automatización.",
+    "en": "My recreation of “{t}” by {a} as an Ableton Live session: the full arrangement, the racks and the automation."
+  }
+}

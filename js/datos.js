@@ -140,28 +140,32 @@ var PROYECTOS = [
           "f": "FabFilter",
           "c": 111,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "Serum 2",
           "f": "Xfer",
           "c": 46,
           "e": "alt",
-          "a": "Vital"
+          "a": "Vital",
+          "a_en": "Vital"
         },
         {
           "n": "Valhalla VintageVerb",
           "f": "Valhalla",
           "c": 36,
           "e": "alt",
-          "a": "Valhalla Supermassive, del mismo fabricante"
+          "a": "Valhalla Supermassive, del mismo fabricante",
+          "a_en": "Valhalla Supermassive, from the same maker"
         },
         {
           "n": "Nexus",
           "f": "reFX",
           "c": 20,
           "e": "sin",
-          "a": "Es una ROMpler: no hay equivalente libre"
+          "a": "Es una ROMpler: no hay equivalente libre",
+          "a_en": "It's a ROMpler: there's no free equivalent"
         },
         {
           "n": "Tape Stop",
@@ -175,14 +179,16 @@ var PROYECTOS = [
           "f": "Cableguys",
           "c": 13,
           "e": "alt",
-          "a": "Compressor de Ableton en sidechain"
+          "a": "Compressor de Ableton en sidechain",
+          "a_en": "Ableton's Compressor with sidechain"
         },
         {
           "n": "SSL G-Channel",
           "f": "Waves",
           "c": 13,
           "e": "alt",
-          "a": "Glue Compressor + EQ Eight de Ableton"
+          "a": "Glue Compressor + EQ Eight de Ableton",
+          "a_en": "Ableton's Glue Compressor + EQ Eight"
         },
         {
           "n": "OTT",
@@ -196,70 +202,80 @@ var PROYECTOS = [
           "f": "FabFilter",
           "c": 11,
           "e": "alt",
-          "a": "Saturator de Ableton"
+          "a": "Saturator de Ableton",
+          "a_en": "Ableton's Saturator"
         },
         {
           "n": "FabFilter Pro-Q 4",
           "f": "FabFilter",
           "c": 10,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "Analog Lab V",
           "f": "Arturia",
           "c": 9,
           "e": "pago",
-          "a": "Nexus"
+          "a": "Nexus",
+          "a_en": "Nexus"
         },
         {
           "n": "ShaperBox 3",
           "f": "Cableguys",
           "c": 7,
           "e": "sin",
-          "a": "Auto Filter y Auto Pan cubren parte"
+          "a": "Auto Filter y Auto Pan cubren parte",
+          "a_en": "Auto Filter and Auto Pan cover part of it"
         },
         {
           "n": "StandardCLIP",
           "f": "Sonic Academy",
           "c": 7,
           "e": "alt",
-          "a": "Saturator de Ableton en modo soft clip"
+          "a": "Saturator de Ableton en modo soft clip",
+          "a_en": "Ableton's Saturator in soft clip mode"
         },
         {
           "n": "EchoBoy",
           "f": "Soundtoys",
           "c": 6,
           "e": "alt",
-          "a": "Echo de Ableton"
+          "a": "Echo de Ableton",
+          "a_en": "Ableton's Echo"
         },
         {
           "n": "Sylenth1",
           "f": "LennarDigital",
           "c": 6,
           "e": "alt",
-          "a": "Surge XT"
+          "a": "Surge XT",
+          "a_en": "Surge XT"
         },
         {
           "n": "FabFilter Pro-L 2",
           "f": "FabFilter",
           "c": 6,
           "e": "alt",
-          "a": "Limiter de Ableton"
+          "a": "Limiter de Ableton",
+          "a_en": "Ableton's Limiter"
         },
         {
           "n": "Kontakt 7",
           "f": "Native Instruments",
           "c": 4,
           "e": "alt",
-          "a": "Kontakt Player, gratis"
+          "a": "Kontakt Player, gratis",
+          "a_en": "Kontakt Player, free"
         },
         {
           "n": "Kontakt 8",
           "f": "Native Instruments",
           "c": 4,
           "e": "alt",
-          "a": "Kontakt Player, gratis"
+          "a": "Kontakt Player, gratis",
+          "a_en": "Kontakt Player, free"
         },
         {
           "n": "Maserati GTi",
@@ -273,7 +289,8 @@ var PROYECTOS = [
           "f": "Waves",
           "c": 3,
           "e": "alt",
-          "a": "Glue Compressor de Ableton"
+          "a": "Glue Compressor de Ableton",
+          "a_en": "Ableton's Glue Compressor"
         },
         {
           "n": "Valhalla FreqEcho",
@@ -301,7 +318,8 @@ var PROYECTOS = [
           "f": "Dada Life",
           "c": 2,
           "e": "alt",
-          "a": "Saturator de Ableton"
+          "a": "Saturator de Ableton",
+          "a_en": "Ableton's Saturator"
         },
         {
           "n": "Curves Resolve",
@@ -315,14 +333,16 @@ var PROYECTOS = [
           "f": "Waves",
           "c": 2,
           "e": "alt",
-          "a": "Multiband Dynamics de Ableton"
+          "a": "Multiband Dynamics de Ableton",
+          "a_en": "Ableton's Multiband Dynamics"
         },
         {
           "n": "Maag EQ4",
           "f": "Plugin Alliance",
           "c": 1,
           "e": "alt",
-          "a": "EQ Eight de Ableton"
+          "a": "EQ Eight de Ableton",
+          "a_en": "Ableton's EQ Eight"
         },
         {
           "n": "PTEq-X",
@@ -336,21 +356,24 @@ var PROYECTOS = [
           "f": "Xfer",
           "c": 1,
           "e": "alt",
-          "a": "Vital"
+          "a": "Vital",
+          "a_en": "Vital"
         },
         {
           "n": "CLA-2A",
           "f": "Waves",
           "c": 1,
           "e": "alt",
-          "a": "Compressor de Ableton"
+          "a": "Compressor de Ableton",
+          "a_en": "Ableton's Compressor"
         },
         {
           "n": "Ozone 12 Imager",
           "f": "iZotope",
           "c": 1,
           "e": "alt",
-          "a": "Ozone Imager, gratis"
+          "a": "Ozone Imager, gratis",
+          "a_en": "Ozone Imager, free"
         }
       ]
     }
@@ -463,49 +486,56 @@ var PROYECTOS = [
           "f": "FabFilter",
           "c": 49,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "Serum 2",
           "f": "Xfer",
           "c": 18,
           "e": "alt",
-          "a": "Vital"
+          "a": "Vital",
+          "a_en": "Vital"
         },
         {
           "n": "Kickstart 2",
           "f": "Cableguys",
           "c": 15,
           "e": "alt",
-          "a": "Compressor de Ableton en sidechain"
+          "a": "Compressor de Ableton en sidechain",
+          "a_en": "Ableton's Compressor with sidechain"
         },
         {
           "n": "Nexus",
           "f": "reFX",
           "c": 10,
           "e": "sin",
-          "a": "Es una ROMpler: no hay equivalente libre"
+          "a": "Es una ROMpler: no hay equivalente libre",
+          "a_en": "It's a ROMpler: there's no free equivalent"
         },
         {
           "n": "Valhalla VintageVerb",
           "f": "Valhalla",
           "c": 8,
           "e": "alt",
-          "a": "Valhalla Supermassive, del mismo fabricante"
+          "a": "Valhalla Supermassive, del mismo fabricante",
+          "a_en": "Valhalla Supermassive, from the same maker"
         },
         {
           "n": "SSL G-Channel",
           "f": "Waves",
           "c": 6,
           "e": "alt",
-          "a": "Glue Compressor + EQ Eight de Ableton"
+          "a": "Glue Compressor + EQ Eight de Ableton",
+          "a_en": "Ableton's Glue Compressor + EQ Eight"
         },
         {
           "n": "FabFilter Saturn 2",
           "f": "FabFilter",
           "c": 5,
           "e": "alt",
-          "a": "Saturator de Ableton"
+          "a": "Saturator de Ableton",
+          "a_en": "Ableton's Saturator"
         },
         {
           "n": "OTT",
@@ -519,35 +549,40 @@ var PROYECTOS = [
           "f": "FabFilter",
           "c": 4,
           "e": "alt",
-          "a": "Limiter de Ableton"
+          "a": "Limiter de Ableton",
+          "a_en": "Ableton's Limiter"
         },
         {
           "n": "Clipper",
           "f": "Kilohearts",
           "c": 3,
           "e": "alt",
-          "a": "Saturator de Ableton en modo soft clip"
+          "a": "Saturator de Ableton en modo soft clip",
+          "a_en": "Ableton's Saturator in soft clip mode"
         },
         {
           "n": "EchoBoy",
           "f": "Soundtoys",
           "c": 3,
           "e": "alt",
-          "a": "Echo de Ableton"
+          "a": "Echo de Ableton",
+          "a_en": "Ableton's Echo"
         },
         {
           "n": "Sylenth1",
           "f": "LennarDigital",
           "c": 3,
           "e": "alt",
-          "a": "Surge XT"
+          "a": "Surge XT",
+          "a_en": "Surge XT"
         },
         {
           "n": "Kontakt 7",
           "f": "Native Instruments",
           "c": 3,
           "e": "alt",
-          "a": "Kontakt Player, gratis"
+          "a": "Kontakt Player, gratis",
+          "a_en": "Kontakt Player, free"
         },
         {
           "n": "PTEq-X",
@@ -582,28 +617,32 @@ var PROYECTOS = [
           "f": "Cableguys",
           "c": 2,
           "e": "sin",
-          "a": "Auto Filter y Auto Pan cubren parte"
+          "a": "Auto Filter y Auto Pan cubren parte",
+          "a_en": "Auto Filter and Auto Pan cover part of it"
         },
         {
           "n": "SSL G-Comp",
           "f": "Waves",
           "c": 2,
           "e": "alt",
-          "a": "Glue Compressor de Ableton"
+          "a": "Glue Compressor de Ableton",
+          "a_en": "Ableton's Glue Compressor"
         },
         {
           "n": "CLA-2A",
           "f": "Waves",
           "c": 2,
           "e": "alt",
-          "a": "Compressor de Ableton"
+          "a": "Compressor de Ableton",
+          "a_en": "Ableton's Compressor"
         },
         {
           "n": "Ozone 5 Dynamics",
           "f": "iZotope",
           "c": 1,
           "e": "alt",
-          "a": "Multiband Dynamics de Ableton"
+          "a": "Multiband Dynamics de Ableton",
+          "a_en": "Ableton's Multiband Dynamics"
         },
         {
           "n": "RBass",
@@ -624,21 +663,24 @@ var PROYECTOS = [
           "f": "Spitfire",
           "c": 1,
           "e": "alt",
-          "a": "BBC Symphony Discover, gratis"
+          "a": "BBC Symphony Discover, gratis",
+          "a_en": "BBC Symphony Discover, free"
         },
         {
           "n": "Ozone 5 Imager",
           "f": "iZotope",
           "c": 1,
           "e": "alt",
-          "a": "Ozone Imager, gratis"
+          "a": "Ozone Imager, gratis",
+          "a_en": "Ozone Imager, free"
         },
         {
           "n": "FasterMaster",
           "f": "Mastering The Mix",
           "c": 1,
           "e": "alt",
-          "a": "Limiter + EQ Eight de Ableton"
+          "a": "Limiter + EQ Eight de Ableton",
+          "a_en": "Ableton's Limiter + EQ Eight"
         }
       ]
     }
@@ -767,28 +809,32 @@ var PROYECTOS = [
           "f": "Cableguys",
           "c": 11,
           "e": "alt",
-          "a": "Compressor de Ableton en sidechain"
+          "a": "Compressor de Ableton en sidechain",
+          "a_en": "Ableton's Compressor with sidechain"
         },
         {
           "n": "Serum 2",
           "f": "Xfer",
           "c": 7,
           "e": "alt",
-          "a": "Vital"
+          "a": "Vital",
+          "a_en": "Vital"
         },
         {
           "n": "FabFilter Pro-Q 4",
           "f": "FabFilter",
           "c": 7,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "Valhalla VintageVerb",
           "f": "Valhalla",
           "c": 6,
           "e": "alt",
-          "a": "Valhalla Supermassive, del mismo fabricante"
+          "a": "Valhalla Supermassive, del mismo fabricante",
+          "a_en": "Valhalla Supermassive, from the same maker"
         },
         {
           "n": "Curves Resolve",
@@ -816,77 +862,88 @@ var PROYECTOS = [
           "f": "Waves",
           "c": 1,
           "e": "alt",
-          "a": "Compressor de Ableton"
+          "a": "Compressor de Ableton",
+          "a_en": "Ableton's Compressor"
         },
         {
           "n": "Ozone 12 Imager",
           "f": "iZotope",
           "c": 1,
           "e": "alt",
-          "a": "Ozone Imager, gratis"
+          "a": "Ozone Imager, gratis",
+          "a_en": "Ozone Imager, free"
         },
         {
           "n": "SSL G-Channel",
           "f": "Waves",
           "c": 1,
           "e": "alt",
-          "a": "Glue Compressor + EQ Eight de Ableton"
+          "a": "Glue Compressor + EQ Eight de Ableton",
+          "a_en": "Ableton's Glue Compressor + EQ Eight"
         },
         {
           "n": "Kontakt 8",
           "f": "Native Instruments",
           "c": 1,
           "e": "alt",
-          "a": "Kontakt Player, gratis"
+          "a": "Kontakt Player, gratis",
+          "a_en": "Kontakt Player, free"
         },
         {
           "n": "FabFilter Saturn 2",
           "f": "FabFilter",
           "c": 1,
           "e": "alt",
-          "a": "Saturator de Ableton"
+          "a": "Saturator de Ableton",
+          "a_en": "Ableton's Saturator"
         },
         {
           "n": "EchoBoy",
           "f": "Soundtoys",
           "c": 1,
           "e": "alt",
-          "a": "Echo de Ableton"
+          "a": "Echo de Ableton",
+          "a_en": "Ableton's Echo"
         },
         {
           "n": "SSL G-Comp",
           "f": "Waves",
           "c": 1,
           "e": "alt",
-          "a": "Glue Compressor de Ableton"
+          "a": "Glue Compressor de Ableton",
+          "a_en": "Ableton's Glue Compressor"
         },
         {
           "n": "FabFilter Pro-Q 3",
           "f": "FabFilter",
           "c": 1,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "FabFilter Pro-L 2",
           "f": "FabFilter",
           "c": 1,
           "e": "alt",
-          "a": "Limiter de Ableton"
+          "a": "Limiter de Ableton",
+          "a_en": "Ableton's Limiter"
         },
         {
           "n": "FasterMaster",
           "f": "Mastering The Mix",
           "c": 1,
           "e": "alt",
-          "a": "Limiter + EQ Eight de Ableton"
+          "a": "Limiter + EQ Eight de Ableton",
+          "a_en": "Ableton's Limiter + EQ Eight"
         },
         {
           "n": "FabFilter Pro-MB",
           "f": "FabFilter",
           "c": 1,
           "e": "alt",
-          "a": "Multiband Dynamics de Ableton"
+          "a": "Multiband Dynamics de Ableton",
+          "a_en": "Ableton's Multiband Dynamics"
         }
       ]
     }
@@ -1003,21 +1060,24 @@ var PROYECTOS = [
           "f": "FabFilter",
           "c": 33,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "Kickstart 2",
           "f": "Cableguys",
           "c": 23,
           "e": "alt",
-          "a": "Compressor de Ableton en sidechain"
+          "a": "Compressor de Ableton en sidechain",
+          "a_en": "Ableton's Compressor with sidechain"
         },
         {
           "n": "Serum",
           "f": "Xfer",
           "c": 17,
           "e": "alt",
-          "a": "Vital"
+          "a": "Vital",
+          "a_en": "Vital"
         },
         {
           "n": "OTT",
@@ -1031,7 +1091,8 @@ var PROYECTOS = [
           "f": "LennarDigital",
           "c": 9,
           "e": "alt",
-          "a": "Surge XT"
+          "a": "Surge XT",
+          "a_en": "Surge XT"
         },
         {
           "n": "Gullfoss",
@@ -1045,7 +1106,8 @@ var PROYECTOS = [
           "f": "Spitfire",
           "c": 6,
           "e": "alt",
-          "a": "BBC Symphony Discover, gratis"
+          "a": "BBC Symphony Discover, gratis",
+          "a_en": "BBC Symphony Discover, free"
         },
         {
           "n": "CamelCrusher",
@@ -1059,105 +1121,120 @@ var PROYECTOS = [
           "f": "reFX",
           "c": 4,
           "e": "sin",
-          "a": "Es una ROMpler: no hay equivalente libre"
+          "a": "Es una ROMpler: no hay equivalente libre",
+          "a_en": "It's a ROMpler: there's no free equivalent"
         },
         {
           "n": "Valhalla VintageVerb",
           "f": "Valhalla",
           "c": 3,
           "e": "alt",
-          "a": "Valhalla Supermassive, del mismo fabricante"
+          "a": "Valhalla Supermassive, del mismo fabricante",
+          "a_en": "Valhalla Supermassive, from the same maker"
         },
         {
           "n": "Eos 2",
           "f": "Audio Damage",
           "c": 3,
           "e": "alt",
-          "a": "Reverb de Ableton"
+          "a": "Reverb de Ableton",
+          "a_en": "Ableton's Reverb"
         },
         {
           "n": "EchoBoy",
           "f": "Soundtoys",
           "c": 3,
           "e": "alt",
-          "a": "Echo de Ableton"
+          "a": "Echo de Ableton",
+          "a_en": "Ableton's Echo"
         },
         {
           "n": "ShaperBox 3",
           "f": "Cableguys",
           "c": 3,
           "e": "sin",
-          "a": "Auto Filter y Auto Pan cubren parte"
+          "a": "Auto Filter y Auto Pan cubren parte",
+          "a_en": "Auto Filter and Auto Pan cover part of it"
         },
         {
           "n": "Vitamin",
           "f": "Waves",
           "c": 3,
           "e": "alt",
-          "a": "Multiband Dynamics de Ableton"
+          "a": "Multiband Dynamics de Ableton",
+          "a_en": "Ableton's Multiband Dynamics"
         },
         {
           "n": "SSL G-Comp",
           "f": "Waves",
           "c": 3,
           "e": "alt",
-          "a": "Glue Compressor de Ableton"
+          "a": "Glue Compressor de Ableton",
+          "a_en": "Ableton's Glue Compressor"
         },
         {
           "n": "Sausage Fattener",
           "f": "Dada Life",
           "c": 2,
           "e": "alt",
-          "a": "Saturator de Ableton"
+          "a": "Saturator de Ableton",
+          "a_en": "Ableton's Saturator"
         },
         {
           "n": "Addictive Keys",
           "f": "XLN Audio",
           "c": 1,
           "e": "alt",
-          "a": "Los pianos de la Core Library de Live"
+          "a": "Los pianos de la Core Library de Live",
+          "a_en": "The pianos in Live's Core Library"
         },
         {
           "n": "Guitar Rig 5",
           "f": "Native Instruments",
           "c": 1,
           "e": "alt",
-          "a": "Guitar Rig Player, gratis"
+          "a": "Guitar Rig Player, gratis",
+          "a_en": "Guitar Rig Player, free"
         },
         {
           "n": "Spire",
           "f": "Reveal Sound",
           "c": 1,
           "e": "alt",
-          "a": "Surge XT"
+          "a": "Surge XT",
+          "a_en": "Surge XT"
         },
         {
           "n": "Kontakt 7",
           "f": "Native Instruments",
           "c": 1,
           "e": "alt",
-          "a": "Kontakt Player, gratis"
+          "a": "Kontakt Player, gratis",
+          "a_en": "Kontakt Player, free"
         },
         {
           "n": "Ozone 5 Imager",
           "f": "iZotope",
           "c": 1,
           "e": "alt",
-          "a": "Ozone Imager, gratis"
+          "a": "Ozone Imager, gratis",
+          "a_en": "Ozone Imager, free"
         },
         {
           "n": "FabFilter Pro-L 2",
           "f": "FabFilter",
           "c": 1,
           "e": "alt",
-          "a": "Limiter de Ableton"
+          "a": "Limiter de Ableton",
+          "a_en": "Ableton's Limiter"
         },
         {
           "n": "FasterMaster",
           "f": "Mastering The Mix",
           "c": 1,
           "e": "alt",
-          "a": "Limiter + EQ Eight de Ableton"
+          "a": "Limiter + EQ Eight de Ableton",
+          "a_en": "Ableton's Limiter + EQ Eight"
         },
         {
           "n": "SPAN",
@@ -1229,35 +1306,40 @@ var PROYECTOS = [
           "f": "FabFilter",
           "c": 8,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "Kickstart 2",
           "f": "Cableguys",
           "c": 7,
           "e": "alt",
-          "a": "Compressor de Ableton en sidechain"
+          "a": "Compressor de Ableton en sidechain",
+          "a_en": "Ableton's Compressor with sidechain"
         },
         {
           "n": "Serum 2",
           "f": "Xfer",
           "c": 4,
           "e": "alt",
-          "a": "Vital"
+          "a": "Vital",
+          "a_en": "Vital"
         },
         {
           "n": "Decapitator",
           "f": "Soundtoys",
           "c": 4,
           "e": "alt",
-          "a": "Saturator u Overdrive de Ableton"
+          "a": "Saturator u Overdrive de Ableton",
+          "a_en": "Ableton's Saturator or Overdrive"
         },
         {
           "n": "Valhalla VintageVerb",
           "f": "Valhalla",
           "c": 4,
           "e": "alt",
-          "a": "Valhalla Supermassive, del mismo fabricante"
+          "a": "Valhalla Supermassive, del mismo fabricante",
+          "a_en": "Valhalla Supermassive, from the same maker"
         },
         {
           "n": "Endless Smile",
@@ -1271,7 +1353,8 @@ var PROYECTOS = [
           "f": "FabFilter",
           "c": 2,
           "e": "alt",
-          "a": "TDR Nova · EQ Eight de Ableton"
+          "a": "TDR Nova · EQ Eight de Ableton",
+          "a_en": "TDR Nova · Ableton's EQ Eight"
         },
         {
           "n": "Ozone 12 Bass Control",
@@ -1285,14 +1368,16 @@ var PROYECTOS = [
           "f": "Soundtoys",
           "c": 1,
           "e": "alt",
-          "a": "Echo de Ableton"
+          "a": "Echo de Ableton",
+          "a_en": "Ableton's Echo"
         },
         {
           "n": "Nexus",
           "f": "reFX",
           "c": 1,
           "e": "sin",
-          "a": "Es una ROMpler: no hay equivalente libre"
+          "a": "Es una ROMpler: no hay equivalente libre",
+          "a_en": "It's a ROMpler: there's no free equivalent"
         },
         {
           "n": "Maserati GTi",
@@ -1306,35 +1391,40 @@ var PROYECTOS = [
           "f": "LennarDigital",
           "c": 1,
           "e": "alt",
-          "a": "Surge XT"
+          "a": "Surge XT",
+          "a_en": "Surge XT"
         },
         {
           "n": "FabFilter Saturn 2",
           "f": "FabFilter",
           "c": 1,
           "e": "alt",
-          "a": "Saturator de Ableton"
+          "a": "Saturator de Ableton",
+          "a_en": "Ableton's Saturator"
         },
         {
           "n": "SSL G-Comp",
           "f": "Waves",
           "c": 1,
           "e": "alt",
-          "a": "Glue Compressor de Ableton"
+          "a": "Glue Compressor de Ableton",
+          "a_en": "Ableton's Glue Compressor"
         },
         {
           "n": "FabFilter Pro-L 2",
           "f": "FabFilter",
           "c": 1,
           "e": "alt",
-          "a": "Limiter de Ableton"
+          "a": "Limiter de Ableton",
+          "a_en": "Ableton's Limiter"
         },
         {
           "n": "FasterMaster",
           "f": "Mastering The Mix",
           "c": 1,
           "e": "alt",
-          "a": "Limiter + EQ Eight de Ableton"
+          "a": "Limiter + EQ Eight de Ableton",
+          "a_en": "Ableton's Limiter + EQ Eight"
         }
       ]
     }
@@ -1345,22 +1435,30 @@ var VIDEOS = [
   {
     "f": "02 mar 2026",
     "t": "Cómo hizo Calvin Harris «Blessings»",
-    "id": "Bw8bwS2JOoo"
+    "id": "Bw8bwS2JOoo",
+    "t_en": "How Calvin Harris made “Blessings”",
+    "f_en": "Mar 02 2026"
   },
   {
     "f": "14 ene 2026",
     "t": "Cómo hizo Mesto «Caramelle»",
-    "id": "qOChu1JnFwk"
+    "id": "qOChu1JnFwk",
+    "t_en": "How Mesto made “Caramelle”",
+    "f_en": "Jan 14 2026"
   },
   {
     "f": "16 dic 2025",
     "t": "Cómo hicieron Matisse &amp; Sadko «Harmony»",
-    "id": "oZLm6RlccBc"
+    "id": "oZLm6RlccBc",
+    "t_en": "How Matisse &amp; Sadko made “Harmony”",
+    "f_en": "Dec 16 2025"
   },
   {
     "f": "06 nov 2025",
     "t": "Cómo hicieron «Take Me There»",
-    "id": "_4fbpisfeiM"
+    "id": "_4fbpisfeiM",
+    "t_en": "How Matisse &amp; Sadko and Third Party made “Take Me There”",
+    "f_en": "Nov 06 2025"
   }
 ];
 
@@ -1370,23 +1468,33 @@ var CONTACTO = {"instagram":"https://instagram.com/ianerastudio","correo":null};
 var FAQ = [
   {
     "p": "¿Qué versión de Ableton Live necesito?",
-    "r": "Live 12. Los proyectos están guardados con la 12.4.3."
+    "r": "Live 12. Los proyectos están guardados con la 12.4.3.",
+    "p_en": "Which version of Ableton Live do I need?",
+    "r_en": "Live 12. The projects are saved with 12.4.3."
   },
   {
     "p": "¿Necesito plugins de pago?",
-    "r": "Casi la mitad del procesado son dispositivos de serie de Live: EQ Eight, Compressor, Saturator, Auto Filter, Glue Compressor, Delay y Utility salen por todas partes, con los ajustes tal y como los dejé. En los sintetizadores uso Serum, Sylenth1, Nexus y Analog Lab, y para procesar FabFilter, Valhalla y ShaperBox — algunos, como OTT o Tape Stop, son gratuitos. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: no pierdes el arreglo. Y es un buen sitio para descubrir hasta dónde llega lo que Live ya trae puesto."
+    "r": "Casi la mitad del procesado son dispositivos de serie de Live: EQ Eight, Compressor, Saturator, Auto Filter, Glue Compressor, Delay y Utility salen por todas partes, con los ajustes tal y como los dejé. En los sintetizadores uso Serum, Sylenth1, Nexus y Analog Lab, y para procesar FabFilter, Valhalla y ShaperBox — algunos, como OTT o Tape Stop, son gratuitos. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: no pierdes el arreglo. Y es un buen sitio para descubrir hasta dónde llega lo que Live ya trae puesto.",
+    "p_en": "Do I need paid plugins?",
+    "r_en": "Almost half the processing is stock Live devices: EQ Eight, Compressor, Saturator, Auto Filter, Glue Compressor, Delay and Utility are everywhere, with the settings exactly as I left them. On the synths I use Serum, Sylenth1, Nexus and Analog Lab, and for processing FabFilter and ShaperBox — some of the ones I use, like OTT or Tape Stop, are free. If you're missing one, the project still opens and Live just flags that device: you don't lose the arrangement. And it's a good place to find out how far Live's own devices go."
   },
   {
     "p": "¿Cómo lo recibo?",
-    "r": "Descarga inmediata en cuanto se confirma el pago. Sin esperas y sin envíos: el pago y la entrega los gestiona Gumroad."
+    "r": "Descarga inmediata en cuanto se confirma el pago. Sin esperas y sin envíos: el pago y la entrega los gestiona Gumroad.",
+    "p_en": "How do I get it?",
+    "r_en": "Instant download as soon as the payment goes through. No waiting and no shipping: Gumroad handles the payment and the delivery."
   },
   {
     "p": "¿Puedo publicar lo que haga con el proyecto?",
-    "r": "Sí, sin pedirme permiso. Lo único que no puedes es revender ni redistribuir el archivo del proyecto tal cual."
+    "r": "Sí, sin pedirme permiso. Lo único que no puedes es revender ni redistribuir el archivo del proyecto tal cual.",
+    "p_en": "Can I release what I make with the project?",
+    "r_en": "Yes, without asking me. The only thing you can't do is resell or redistribute the project file itself."
   },
   {
     "p": "¿Y si me atasco o algo no me abre?",
-    "r": "Lo normal es que no pase nada: son archivos que abro yo a diario y salen del mismo Ableton con el que trabajo. Si aun así algo no te carga o no lo encuentras, escríbeme por Instagram y lo miramos — sé dónde pueden dar guerra y suele resolverse en un par de mensajes."
+    "r": "Lo normal es que no pase nada: son archivos que abro yo a diario y salen del mismo Ableton con el que trabajo. Si aun así algo no te carga o no lo encuentras, escríbeme por Instagram y lo miramos — sé dónde pueden dar guerra y suele resolverse en un par de mensajes.",
+    "p_en": "What if I get stuck or something won't open?",
+    "r_en": "Normally nothing goes wrong: these are files I open every day, out of the same Ableton I work in. If something still won't load or you can't find it, write me on Instagram and we'll look at it — I know where these can give trouble and it usually takes a couple of messages."
   }
 ];
 
