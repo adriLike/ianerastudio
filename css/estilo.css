@@ -767,3 +767,41 @@ a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
 @media(hover:none){
   .tarjeta .pie .ab{opacity:1;transform:none;color:var(--tinta70)}
 }
+
+/* ---------------------------------------------------------------
+   Carril de proyectos — exploración
+   --------------------------------------------------------------- */
+/* La primera tarjeta manda: cinco iguales no tienen jerarquía y el ojo no
+   sabe por dónde entrar. La destacada es la que sale primero. */
+.carril .tarjeta:first-child{flex:0 0 clamp(300px,42vw,520px)}
+
+/* Corte suave a la derecha, corto: lo justo para que no parezca recortado.
+   Largo taparía los títulos de la tarjeta del borde y sería peor. */
+@media(min-width:721px){
+  .carril-caja{
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 56px),transparent 100%);
+            mask-image:linear-gradient(to right,#000 calc(100% - 56px),transparent 100%);
+  }
+}
+
+/* al pasar el ratón, la carátula deja ver la sesión que hay dentro */
+.tarjeta .dentro-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;filter:var(--grado) brightness(.95);
+  transition:opacity .45s var(--ease)}
+.tarjeta:hover .dentro-img{opacity:1}
+.tarjeta:hover .mini img:first-child{opacity:0}
+.tarjeta .mini img:first-child{transition:transform 1.1s var(--ease),filter .45s ease,opacity .45s var(--ease)}
+
+/* arrastrar */
+.carril{cursor:grab}
+.carril.agarrando{cursor:grabbing;user-select:none}
+.carril.agarrando .tarjeta{pointer-events:none}
+
+/* barra de avance + flechas, en una sola fila */
+.car-nav{display:flex;align-items:center;gap:22px;margin-top:22px}
+.car-barra{flex:1;height:2px;background:var(--linea);position:relative;overflow:hidden}
+.car-barra i{position:absolute;top:0;bottom:0;left:var(--x,0%);width:var(--ancho,30%);
+  background:var(--tinta);transition:left .25s var(--ease),width .25s var(--ease)}
+.car-barra[hidden]{display:none}
+.flechas{margin-top:0}
+@media(hover:none){ .car-nav{gap:0} }
