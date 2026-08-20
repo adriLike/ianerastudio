@@ -378,8 +378,8 @@ var PROYECTOS = [
       ]
     },
     "midi": null,
-    "midiQue": null,
-    "midiQue_en": null
+    "midiQue": "Melodía y pad",
+    "midiQue_en": "Melody and pad"
   },
   {
     "id": "takemethere",
