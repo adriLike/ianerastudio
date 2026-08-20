@@ -1484,9 +1484,9 @@
     },
     {
       "p": "¿Necesito plugins de pago?",
-      "r": "Casi la mitad del procesado son dispositivos de serie de Live: EQ Eight, Compressor, Saturator, Auto Filter, Glue Compressor, Delay y Utility salen por todas partes, con los ajustes tal y como los dejé. En los sintetizadores uso Serum, Sylenth1, Nexus y Analog Lab, y para procesar FabFilter y ShaperBox — algunos, como OTT o Tape Stop, son gratuitos. En la ficha de cada proyecto, dentro de «Con qué está hecho», tienes la lista exacta de los plugins que lleva ese proyecto y con qué sustituir cada uno. Si te falta alguno, el proyecto se abre igual y solo se marca ese dispositivo: no pierdes el arreglo. Y es un buen sitio para descubrir hasta dónde llega lo que Live ya trae puesto.",
+      "r": "No para abrir el proyecto. Casi la mitad del procesado son dispositivos que Live ya trae, y si te falta alguno de los de pago el archivo se abre igual: Live lo marca y el arreglo sigue entero. Dentro de cada proyecto, en «Con qué está hecho», tienes la lista exacta de los que lleva y con qué sustituir cada uno.",
       "p_en": "Do I need paid plugins?",
-      "r_en": "Almost half the processing is stock Live devices: EQ Eight, Compressor, Saturator, Auto Filter, Glue Compressor, Delay and Utility are everywhere, with the settings exactly as I left them. On the synths I use Serum, Sylenth1, Nexus and Analog Lab, and for processing FabFilter and ShaperBox — some of them, like OTT or Tape Stop, are free. Every project page has the exact list of the plugins that project uses, under “What it's built with”, and what to replace each one with. If you're missing one, the project still opens and Live just flags that device: you don't lose the arrangement. And it's a good place to find out how far Live's own devices go."
+      "r_en": "Not to open the project. Almost half the processing is devices Live already ships with, and if you're missing a paid one the file still opens: Live flags it and the arrangement stays intact. Inside each project, under “What it's built with”, you'll find the exact list and what to replace each one with."
     },
     {
       "p": "¿Cómo lo recibo?",
