@@ -475,5 +475,17 @@
   "js.pieGratis": {
     "es": "Sample pack gratis",
     "en": "Free sample pack"
+  },
+  "js.midiTit": {
+    "es": "El MIDI, gratis",
+    "en": "The MIDI, free"
+  },
+  "js.midiSub": {
+    "es": "{que} de este tema, tal y como salen de la sesión. Sin pagar nada.",
+    "en": "{que} from this track, straight out of the session. No payment."
+  },
+  "js.midiBoton": {
+    "es": "Descargar el MIDI ↗",
+    "en": "Download the MIDI ↗"
   }
 }

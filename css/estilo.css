@@ -700,3 +700,26 @@ footer{background:var(--n1);border-top:1px solid var(--linea);
   border:1px solid var(--linea);transition:color .3s ease,border-color .3s ease}
 .fsoc a:hover{color:var(--tinta);border-color:var(--tinta)}
 .fsoc svg{width:18px;height:18px}
+
+/* ---------------------------------------------------------------
+   El MIDI gratis de cada proyecto
+   Discreto a propósito: es un puente para quien no compra hoy,
+   no un competidor del botón de arriba.
+   --------------------------------------------------------------- */
+.midi{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  flex-wrap:wrap;margin:clamp(22px,3vw,30px) 0 0;padding:16px 20px;
+  border:1px dashed var(--linea)}
+.midi-t{flex:1 1 240px}
+.midi-t b{display:block;font-family:var(--display);font-weight:700;font-size:14px}
+.midi-t .sub{display:block;margin-top:4px;color:var(--tinta45);font-size:12.5px;line-height:1.6}
+a.midi-b{flex:0 0 auto;font-size:10.5px;padding:11px 18px}
+a.midi-b.gumroad-button{
+  background:transparent!important;color:var(--tinta)!important;
+  border:1px solid var(--linea)!important;border-radius:0!important;
+  font-family:var(--mono)!important;font-weight:400!important;font-size:10.5px!important;
+  text-transform:uppercase!important;letter-spacing:.02em!important;
+  padding:11px 18px!important;height:auto!important;line-height:1.4!important;
+  box-shadow:none!important;text-decoration:none!important;
+}
+a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
+@media (max-width:520px){ .midi{padding:14px 16px} a.midi-b{width:100%;text-align:center} }

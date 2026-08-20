@@ -376,7 +376,10 @@ var PROYECTOS = [
           "a_en": "Ozone Imager, free"
         }
       ]
-    }
+    },
+    "midi": null,
+    "midiQue": null,
+    "midiQue_en": null
   },
   {
     "id": "takemethere",
@@ -683,7 +686,10 @@ var PROYECTOS = [
           "a_en": "Ableton's Limiter + EQ Eight"
         }
       ]
-    }
+    },
+    "midi": null,
+    "midiQue": "Acordes y melodía",
+    "midiQue_en": "Chords and melody"
   },
   {
     "id": "blessings",
@@ -946,7 +952,10 @@ var PROYECTOS = [
           "a_en": "Ableton's Multiband Dynamics"
         }
       ]
-    }
+    },
+    "midi": null,
+    "midiQue": "La guitarra",
+    "midiQue_en": "The guitar"
   },
   {
     "id": "harmony",
@@ -1244,7 +1253,10 @@ var PROYECTOS = [
           "a": ""
         }
       ]
-    }
+    },
+    "midi": null,
+    "midiQue": "Piano y pads con strings",
+    "midiQue_en": "Piano and pads with strings"
   },
   {
     "id": "caramelle",
@@ -1427,7 +1439,10 @@ var PROYECTOS = [
           "a_en": "Ableton's Limiter + EQ Eight"
         }
       ]
-    }
+    },
+    "midi": null,
+    "midiQue": "Acordes y lead",
+    "midiQue_en": "Chords and lead"
   }
 ];
 

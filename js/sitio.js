@@ -370,6 +370,25 @@ function conQue(p){
   '</div>';
 }
 
+/* ---------------------------------------------------------------
+   El MIDI gratis. Va DESPUÉS del botón de compra, no antes: quien
+   ya ha decidido pagar no se cruza con una alternativa gratuita
+   justo en el momento de decidir, y quien pasa de largo por el
+   precio sí se lo encuentra. Sin URL no se pinta nada.
+   --------------------------------------------------------------- */
+function midiGratis(p){
+  if(!p.midi) return "";
+  var que = tr(p, "midiQue");
+  var overlay = p.midi.indexOf("/l/") > -1 && p.midi.indexOf("gumroad.com") > -1;
+  return '<div class="midi">'+
+    '<div class="midi-t"><b>'+T.midiTit+'</b>'+
+      (que ? '<span class="sub">'+ins(T.midiSub,{que:que})+'</span>' : '')+
+    '</div>'+
+    '<a class="btn gh midi-b'+(overlay ? ' gumroad-button' : '')+'" href="'+p.midi+'"'+
+      (overlay ? '' : ' target="_blank" rel="noopener"')+'>'+T.midiBoton+'</a>'+
+  '</div>';
+}
+
 function specs(p){
   var d=[];
   if(p.bpm)    d.push('<div><b>'+p.bpm+'</b><span class="et">'+T.bpm+'</span></div>');
@@ -444,6 +463,7 @@ function abrir(i, desdeUrl){
     '<div class="compra"><span class="pr">'+PRECIO+'</span>'+
       botonCompra(p.id,T.conseguir,"btn")+
       '<span class="nota">'+T.compraNota+'</span></div>'+
+    midiGratis(p)+
     '<p class="legal">'+T.legal+'</p>';
 
   if(!desdeUrl && location.hash !== "#"+p.id) history.pushState({p:p.id}, "", "#"+p.id);
