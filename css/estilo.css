@@ -762,3 +762,25 @@ a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
 @media(hover:none){
   .tarjeta .pie .ab{opacity:1;transform:none;color:var(--tinta70)}
 }
+
+/* ---------------------------------------------------------------
+   Escuchar desde la tarjeta
+   El play de la miniatura ya no es un adorno: suena. Por eso es un
+   <button> de verdad y la tarjeta pasó a div[role=button] — un botón
+   no puede contener otro botón.
+   --------------------------------------------------------------- */
+.tarjeta button.lupa{padding:0;font:inherit;cursor:pointer;z-index:3}
+.tarjeta button.lupa:focus-visible{outline:1px solid var(--tinta);outline-offset:3px}
+.tarjeta .lupa .i-pausa{display:none}
+.tarjeta.sonando .lupa{background:var(--tinta);color:var(--n1);border-color:var(--tinta)}
+.tarjeta.sonando .lupa .i-play{display:none}
+.tarjeta.sonando .lupa .i-pausa{display:block}
+
+/* la línea de avance vive sobre la miniatura, no ocupa alto propio */
+.son-avance{position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:rgba(255,255,255,.16);opacity:0;transition:opacity .3s ease;z-index:2}
+.tarjeta.sonando .son-avance{opacity:1}
+.son-avance i{display:block;height:100%;width:0;background:var(--tinta)}
+
+/* la tarjeta ya no es <button>: hay que devolverle lo que traía de serie */
+.tarjeta[role="button"]{-webkit-appearance:none;appearance:none}

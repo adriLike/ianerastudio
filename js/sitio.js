@@ -94,15 +94,22 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
   var mini = img
     ? '<div class="mini"><img src="'+img+'" alt="" loading="lazy"'+
       (p.captura ? '' : ' onerror="this.onerror=null;this.src=\''+miniaturaFallback(p.video)+'\'"')+'>'+
-      '<span class="lupa" aria-hidden="true">'+
-        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
-      '</span></div>'
+      (p.audio
+        ? '<button class="lupa" type="button" data-son="'+ruta(p.audio)+'" aria-label="'+T.oirCorto+'">'+
+            '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+
+              '<path class="i-play" d="M8 5v14l11-7z"/>'+
+              '<path class="i-pausa" d="M6 5h4v14H6zM14 5h4v14h-4z"/>'+
+            '</svg></button>'+
+          '<span class="son-avance" aria-hidden="true"><i></i></span>'
+        : '<span class="lupa" aria-hidden="true">'+
+            '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
+          '</span>')+'</div>'
     : '<div class="mini vacia" aria-hidden="true"><b>'+n+'</b></div>';
   /* Una sola insignia por tarjeta, y solo si dice algo comprobable: qué es
      lo último o cuánta gente lo ha visto. Nada de reclamos que no se puedan
      verificar en un clic. */
   var marca = p.insignia ? '<span class="marca et">'+p.insignia+'</span>' : '';
-  return '<button class="tarjeta" type="button" data-i="'+i+'">'+ mini + marca +
+  return '<div class="tarjeta" role="button" tabindex="0" data-i="'+i+'">'+ mini + marca +
     '<div class="cuerpo">'+
       '<div class="top et"><span>'+n+'</span><span class="yr">'+p.y+'</span></div>'+
       '<h3>'+p.t+'</h3>'+
@@ -111,7 +118,7 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
          hace que se abra la ficha, y dentro la sesión completa es lo primero */
       '<div class="pie et">'+(p.midi ? '<span class="mg">'+T.midiTag+'</span>' : '')+
         '<span class="ab">'+T.ver+'</span></div>'+
-    '</div></button>';
+    '</div></div>';
 }).join("");
 $("#proy-n").textContent = String(PROYECTOS.length).padStart(2,"0");
 
@@ -499,10 +506,66 @@ function cerrar(desdeUrl){
 }
 /* el carril y el catálogo abren el mismo panel */
 document.addEventListener("click",function(e){
+  if(e.target.closest(".lupa[data-son]")) return;   /* eso reproduce, no abre */
   var b = e.target.closest(".tarjeta[data-i], #catalogo-lista [data-i]");
   if(!b) return;
   previo = b; abrir(+b.dataset.i);
 });
+/* la tarjeta ya no es un <button>, así que el teclado hay que atenderlo */
+carril.addEventListener("keydown",function(e){
+  if(e.key !== "Enter" && e.key !== " ") return;
+  var b = e.target.closest(".tarjeta[data-i]");
+  if(!b || e.target.closest(".lupa")) return;
+  e.preventDefault(); previo = b; abrir(+b.dataset.i);
+});
+
+/* ---------------------------------------------------------------
+   Escuchar sin entrar. Lo único del producto que se juzga en dos
+   segundos es cómo suena, así que el play de la miniatura deja de
+   ser un adorno y reproduce el fragmento ahí mismo.
+   Un solo <audio> para las cinco: así nunca suenan dos a la vez.
+   --------------------------------------------------------------- */
+(function(){
+  var son = new Audio(), activa = null;
+  son.preload = "none";
+
+  function pintar(){
+    if(!activa) return;
+    var l = activa.querySelector(".son-avance i");
+    /* duration es Infinity hasta que el navegador sabe cuánto dura: sin
+       isFinite la barra se queda clavada en cero. */
+    var d = son.duration, ok = isFinite(d) && d > 0;
+    if(l) l.style.width = (ok ? (son.currentTime/d)*100 : 0) + "%";
+  }
+  function soltar(){
+    if(activa){ activa.classList.remove("sonando"); var l = activa.querySelector(".son-avance i");
+      if(l) l.style.width = "0%"; }
+    activa = null;
+  }
+  son.addEventListener("timeupdate", pintar);
+  son.addEventListener("ended", soltar);
+
+  carril.addEventListener("click", function(e){
+    var b = e.target.closest(".lupa[data-son]");
+    if(!b) return;
+    e.stopPropagation();
+    var tarjeta = b.closest(".tarjeta");
+    if(activa === tarjeta){ son.pause(); soltar(); return; }
+    soltar();
+    son.src = b.getAttribute("data-son");
+    son.currentTime = 0;
+    son.play();
+    activa = tarjeta;
+    tarjeta.classList.add("sonando");
+  });
+
+  /* al abrir una ficha se calla: dentro hay vídeo y otro reproductor */
+  document.addEventListener("click", function(e){
+    if(e.target.closest(".tarjeta[data-i]") && !e.target.closest(".lupa[data-son]")){
+      son.pause(); soltar();
+    }
+  }, true);
+})();
 /* Cambia la carátula por el reproductor real de YouTube, ya reproduciendo. */
 pin.addEventListener("click",function(e){
   var b = e.target.closest("[data-play]");

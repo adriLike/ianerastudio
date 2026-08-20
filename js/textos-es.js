@@ -49,5 +49,6 @@ var T = {
   "midiTit": "El MIDI, gratis",
   "midiSub": "{que} de este tema, tal y como salen de la sesión. Sin pagar nada.",
   "midiBoton": "Descargar el MIDI ↗",
-  "midiTag": "MIDI gratis"
+  "midiTag": "+ MIDI gratis",
+  "oirCorto": "Escuchar un fragmento"
 };

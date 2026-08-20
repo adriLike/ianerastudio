@@ -461,8 +461,8 @@
     "en": "Download the MIDI ↗"
   },
   "js.midiTag": {
-    "es": "MIDI gratis",
-    "en": "Free MIDI"
+    "es": "+ MIDI gratis",
+    "en": "+ Free MIDI"
   },
   "pie.idioma": {
     "es": "English",
@@ -475,5 +475,9 @@
   "pie.gumroadInc": {
     "es": "Pago, facturación e IVA gestionados por Gumroad Inc.",
     "en": "Payment, invoicing and VAT handled by Gumroad Inc."
+  },
+  "js.oirCorto": {
+    "es": "Escuchar un fragmento",
+    "en": "Play a clip"
   }
 }
