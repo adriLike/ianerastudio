@@ -84,6 +84,17 @@ $("#rail").innerHTML = iconos;
 var railPie = $("#rail-pie");
 if(railPie) railPie.innerHTML = iconos;
 
+/* Una línea de datos en la tarjeta. El título y el artista hablan de la
+   canción; esto habla del producto, que es lo único que no puede poner
+   cualquiera. Además rellena el hueco muerto entre el artista y el pie. */
+function fichaCorta(p){
+  var d = [];
+  if(p.bpm)    d.push(p.bpm + " BPM");
+  if(p.tono)   d.push(p.tono);
+  if(p.pistas) d.push(p.pistas + " " + T.pistas.toLowerCase());
+  return d.length ? '<p class="esp et">' + d.join('<span class="sep">·</span>') + '</p>' : "";
+}
+
 /* ---------------------------------------------------------------
    Carril de proyectos
    --------------------------------------------------------------- */
@@ -107,6 +118,7 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
       '<div class="top et"><span>'+n+'</span><span class="yr">'+p.y+'</span></div>'+
       '<h3>'+p.t+'</h3>'+
       '<p class="art">'+p.a+'</p>'+
+      fichaCorta(p)+
       /* que se vea desde fuera que ahí dentro hay algo gratis: es lo que
          hace que se abra la ficha, y dentro la sesión completa es lo primero */
       '<div class="pie et">'+(p.midi ? '<span class="mg">'+T.midiTag+'</span>' : '')+
