@@ -403,6 +403,14 @@ a.acc.gumroad-button{
 }
 .fila:hover a.acc.gumroad-button{color:var(--tinta)!important}
 /* fuera su logotipo de dentro de nuestros botones */
+/* enlaces del pie: Gumroad les mete su tipografía a 16 px y rompían la columna */
+a.pa.gumroad-button{
+  background:transparent!important; color:inherit!important;
+  border:0!important; padding:0!important; box-shadow:none!important;
+  font-family:var(--mono)!important; font-weight:300!important; font-size:13px!important;
+  text-transform:none!important; letter-spacing:0!important;
+  height:auto!important; line-height:inherit!important; text-decoration:none!important;
+}
 .gumroad-button .logo-full,
 .gumroad-button .logo,
 .gumroad-button > svg{display:none!important}
@@ -685,3 +693,10 @@ footer{background:var(--n1);border-top:1px solid var(--linea);
      text-transform:uppercase;color:var(--tinta45);text-decoration:none}
 .idi:hover{border-color:var(--tinta);color:var(--tinta)}
 .top .idi{margin-left:2px}
+
+/* redes en el pie: la única vía en móvil, donde el raíl lateral no existe */
+.fsoc{display:flex;gap:6px;margin-top:20px}
+.fsoc a{width:38px;height:38px;display:grid;place-items:center;color:var(--tinta45);
+  border:1px solid var(--linea);transition:color .3s ease,border-color .3s ease}
+.fsoc a:hover{color:var(--tinta);border-color:var(--tinta)}
+.fsoc svg{width:18px;height:18px}

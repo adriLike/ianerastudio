@@ -45,5 +45,7 @@ var T = {
   "prefijoGratis": "Gratis: ",
   "prefijoSust": "En su lugar: ",
   "ldName": "{t} — Proyecto completo de Ableton Live",
-  "ldDesc": "Mi recreación de «{t}» de {a} como sesión de Ableton Live: el arreglo completo, los racks y la automatización."
+  "ldDesc": "Mi recreación de «{t}» de {a} como sesión de Ableton Live: el arreglo completo, los racks y la automatización.",
+  "pieBundle": "Los proyectos completos",
+  "pieGratis": "Sample pack gratis"
 };

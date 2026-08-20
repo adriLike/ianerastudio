@@ -72,12 +72,17 @@ var ICONOS = {
 };
 var NOMBRES = {youtube:"YouTube",instagram:"Instagram",soundcloud:"SoundCloud",spotify:"Spotify",tiktok:"TikTok"};
 
-$("#rail").innerHTML = Object.keys(ICONOS).filter(function(k){ return REDES[k]; })
+var iconos = Object.keys(ICONOS).filter(function(k){ return REDES[k]; })
   .map(function(k){
     return '<a href="'+REDES[k]+'" target="_blank" rel="noopener" aria-label="'+NOMBRES[k]+'">'+
       '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+
       ICONOS[k]+'</svg></a>';
   }).join("");
+$("#rail").innerHTML = iconos;
+/* El mismo juego en el pie: el raíl lateral desaparece por debajo de
+   1100 px y sin esto en móvil no se llegaba a las redes. */
+var railPie = $("#rail-pie");
+if(railPie) railPie.innerHTML = iconos;
 
 /* ---------------------------------------------------------------
    Carril de proyectos
@@ -625,12 +630,14 @@ if(PRODUCTOS.bundle){
 /* Pie: lo mismo. Y el regalo solo se anuncia si existe de verdad. */
 var pieBundle = $("#pie-bundle"), pieGratis = $("#pie-gratis");
 if(pieBundle){
+  /* la clase «pa» es la que le devuelve el aspecto del pie: sin ella,
+     Gumroad le impone su tipografía a 16 px y desentona con la columna */
   pieBundle.outerHTML = PRODUCTOS.bundle
-    ? botonCompra("bundle","Los cuatro proyectos","")
-    : '<a href="#catalogo">Los cuatro proyectos</a>';
+    ? botonCompra("bundle", T.pieBundle, "pa")
+    : '<a class="pa" href="#catalogo">'+T.pieBundle+'</a>';
 }
 if(pieGratis){
-  if(PRODUCTOS.gratis) pieGratis.outerHTML = botonCompra("gratis","Sample pack gratis","");
+  if(PRODUCTOS.gratis) pieGratis.outerHTML = botonCompra("gratis", T.pieGratis, "pa");
   else pieGratis.remove();
 }
 

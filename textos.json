@@ -467,5 +467,13 @@
   "gr.volver": {
     "es": "Volver a la web",
     "en": "Back to the site"
+  },
+  "js.pieBundle": {
+    "es": "Los proyectos completos",
+    "en": "All the projects"
+  },
+  "js.pieGratis": {
+    "es": "Sample pack gratis",
+    "en": "Free sample pack"
   }
 }
