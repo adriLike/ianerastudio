@@ -757,11 +757,6 @@ a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
 .flegal a:hover{color:var(--tinta);border-color:var(--tinta)}
 @media(max-width:640px){ .flegal{flex-direction:column;gap:6px} }
 
-/* datos del proyecto en la tarjeta */
-.tarjeta .esp{margin:12px 0 0;color:var(--tinta45);font-size:10.5px;letter-spacing:.1em;
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:0}
-.tarjeta .esp .sep{margin:0 7px;opacity:.5}
-
 /* «Ver ↗» solo aparecía al pasar el ratón: en móvil no existía ratón, así que
    la tarjeta no tenía ninguna llamada visible. */
 @media(hover:none){
