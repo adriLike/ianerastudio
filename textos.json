@@ -491,5 +491,13 @@
   "js.midiTag": {
     "es": "MIDI gratis",
     "en": "Free MIDI"
+  },
+  "pie.midi": {
+    "es": "MIDI gratis",
+    "en": "Free MIDI"
+  },
+  "pie.idioma": {
+    "es": "English",
+    "en": "Español"
   }
 }

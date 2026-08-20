@@ -405,6 +405,9 @@ a.acc.gumroad-button{
 /* fuera su logotipo de dentro de nuestros botones */
 /* enlaces del pie: Gumroad les mete su tipografía a 16 px y rompían la columna */
 a.pa.gumroad-button{
+  /* Gumroad le mete display:flex con el texto centrado y quedaba sangrado
+     respecto a los demás enlaces de la columna */
+  display:block!important; justify-content:flex-start!important; text-align:left!important;
   background:transparent!important; color:inherit!important;
   border:0!important; padding:0!important; box-shadow:none!important;
   font-family:var(--mono)!important; font-weight:300!important; font-size:13px!important;
@@ -733,3 +736,9 @@ a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
 .tarjeta:hover .mg{color:var(--tinta70);border-color:var(--tinta45)}
 .fila .meta .mg{margin-left:10px;vertical-align:1px}
 @media (max-width:640px){ .fila .meta .mg{display:none} }
+/* idioma en la línea de abajo del pie: en móvil no hay menú arriba y había
+   que subir la página entera para cambiarlo */
+.fbot .idi-pie{margin-left:auto;color:var(--tinta45);text-decoration:none;
+  border-bottom:1px solid var(--linea);padding-bottom:1px}
+.fbot .idi-pie:hover{color:var(--tinta);border-color:var(--tinta)}
+@media(max-width:640px){ .fbot .idi-pie{margin-left:0} }

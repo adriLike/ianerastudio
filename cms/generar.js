@@ -150,8 +150,13 @@ function ingles(html, T, op){
   html = html.replace(/srcset="([^"]+)"/g, (todo, v) =>
     'srcset="' + v.replace(/(^|,\s*)(css|js|img)\//g, '$1../$2/') + '"');
   html = html.replace('js/textos-es.js', 'js/textos-en.js');
-  /* el selector apunta siempre al MISMO documento en el otro idioma */
-  html = html.replace(/(<a class="idi" id="idi" href=")[^"]*(")/, '$1' + op.idi + '$2');
+  /* Todo enlace con data-idi apunta al MISMO documento en el otro idioma.
+     Se recorre etiqueta a etiqueta para no depender del orden de atributos. */
+  html = html.replace(/<a\b[^>]*>/g, function(tag){
+    return tag.indexOf("data-idi") > -1
+      ? tag.replace(/href="[^"]*"/, 'href="' + op.idi + '"')
+      : tag;
+  });
   /* los enlaces a la portada tienen que quedarse dentro del idioma */
   html = html.replace(/href="\/"/g, 'href="' + op.inicio + '"');
 
