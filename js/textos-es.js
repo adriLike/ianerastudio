@@ -50,5 +50,6 @@ var T = {
   "pieGratis": "Sample pack gratis",
   "midiTit": "El MIDI, gratis",
   "midiSub": "{que} de este tema, tal y como salen de la sesión. Sin pagar nada.",
-  "midiBoton": "Descargar el MIDI ↗"
+  "midiBoton": "Descargar el MIDI ↗",
+  "midiTag": "MIDI gratis"
 };

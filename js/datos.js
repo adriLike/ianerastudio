@@ -377,7 +377,7 @@ var PROYECTOS = [
         }
       ]
     },
-    "midi": null,
+    "midi": "https://ianerastudio.gumroad.com/l/rise-again-midi",
     "midiQue": "Melodía y pad",
     "midiQue_en": "Melody and pad"
   },
@@ -687,7 +687,7 @@ var PROYECTOS = [
         }
       ]
     },
-    "midi": null,
+    "midi": "https://ianerastudio.gumroad.com/l/take-me-there-midi",
     "midiQue": "Acordes y melodía",
     "midiQue_en": "Chords and melody"
   },
@@ -953,7 +953,7 @@ var PROYECTOS = [
         }
       ]
     },
-    "midi": null,
+    "midi": "https://ianerastudio.gumroad.com/l/blessings-midi",
     "midiQue": "La guitarra",
     "midiQue_en": "The guitar"
   },
@@ -1254,7 +1254,7 @@ var PROYECTOS = [
         }
       ]
     },
-    "midi": null,
+    "midi": "https://ianerastudio.gumroad.com/l/harmony-midi",
     "midiQue": "Piano y pads con strings",
     "midiQue_en": "Piano and pads with strings"
   },
@@ -1440,7 +1440,7 @@ var PROYECTOS = [
         }
       ]
     },
-    "midi": null,
+    "midi": "https://ianerastudio.gumroad.com/l/caramelle-midi",
     "midiQue": "Acordes y lead",
     "midiQue_en": "Chords and lead"
   }

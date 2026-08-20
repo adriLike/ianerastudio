@@ -723,3 +723,13 @@ a.midi-b.gumroad-button{
 }
 a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
 @media (max-width:520px){ .midi{padding:14px 16px} a.midi-b{width:100%;text-align:center} }
+
+/* Aviso de MIDI gratis en tarjeta y catálogo.
+   Discreto a propósito: es un motivo para abrir la ficha, no un reclamo que
+   compita con el precio. Dentro, la sesión completa va antes que el regalo. */
+.mg{display:inline-block;padding:2px 7px;border:1px solid var(--linea);
+  font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta45);
+  white-space:nowrap}
+.tarjeta:hover .mg{color:var(--tinta70);border-color:var(--tinta45)}
+.fila .meta .mg{margin-left:10px;vertical-align:1px}
+@media (max-width:640px){ .fila .meta .mg{display:none} }

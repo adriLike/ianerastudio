@@ -107,7 +107,10 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
       '<div class="top et"><span>'+n+'</span><span class="yr">'+p.y+'</span></div>'+
       '<h3>'+p.t+'</h3>'+
       '<p class="art">'+p.a+'</p>'+
-      '<div class="pie et"><span class="ab">'+T.ver+'</span></div>'+
+      /* que se vea desde fuera que ahí dentro hay algo gratis: es lo que
+         hace que se abra la ficha, y dentro la sesión completa es lo primero */
+      '<div class="pie et">'+(p.midi ? '<span class="mg">'+T.midiTag+'</span>' : '')+
+        '<span class="ab">'+T.ver+'</span></div>'+
     '</div></button>';
 }).join("");
 $("#proy-n").textContent = String(PROYECTOS.length).padStart(2,"0");
@@ -149,7 +152,8 @@ var filas = PROYECTOS.map(function(p,i){
     '<span class="fch et">'+String(i+1).padStart(2,"0")+' · '+p.y+'</span>'+
     '<span><span class="tit">'+p.t+
       (p.insignia ? '<span class="marca fila-marca et">'+p.insignia+'</span>' : '')+
-    '</span><span class="meta">'+p.a+'</span></span>'+
+    '</span><span class="meta">'+p.a+
+      (p.midi ? '<span class="mg">'+T.midiTag+'</span>' : '')+'</span></span>'+
     /* Sin precio: ya está en el detalle, y repetirlo cuatro veces con el
        mismo número no informa. La fila invita a abrir, no a decidir. */
     '<span class="der">'+
