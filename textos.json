@@ -176,10 +176,6 @@
     "es": "Canal",
     "en": "Channel"
   },
-  "pie.pago": {
-    "es": "Pago y entrega · Gumroad",
-    "en": "Payment and delivery · Gumroad"
-  },
   "cta.catalogo": {
     "es": "Ver el catálogo",
     "en": "See the catalog"
@@ -471,5 +467,13 @@
   "pie.idioma": {
     "es": "English",
     "en": "Español"
+  },
+  "pie.legal": {
+    "es": "Ian Era Studio · <a href=\"mailto:ianerastudio@gmail.com\">ianerastudio@gmail.com</a>",
+    "en": "Ian Era Studio · <a href=\"mailto:ianerastudio@gmail.com\">ianerastudio@gmail.com</a>"
+  },
+  "pie.gumroadInc": {
+    "es": "Pago, facturación e IVA gestionados por Gumroad Inc.",
+    "en": "Payment, invoicing and VAT handled by Gumroad Inc."
   }
 }

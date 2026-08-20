@@ -1477,7 +1477,7 @@ var VIDEOS = [
   }
 ];
 
-var CONTACTO = {"instagram":"https://instagram.com/ianerastudio","correo":null};
+var CONTACTO = {"instagram":"https://instagram.com/ianerastudio","correo":"ianerastudio@gmail.com"};
 
 /* Una pregunta con r:null NO se pinta. */
 var FAQ = [
