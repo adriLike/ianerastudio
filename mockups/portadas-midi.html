@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Portadas · MIDI gratis</title>
+<link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;400&family=Inter:wght@700;900&display=swap" rel="stylesheet">
+<style>
+ body{background:#111;color:#eee;font:14px/1.6 -apple-system,system-ui;padding:24px}
+ canvas{width:520px;height:293px;display:block;border:1px solid #333;margin:10px 0 24px}
+ h2{font-size:14px;margin:18px 0 0;color:#9f9}
+</style></head><body>
+<div id="salida"></div>
+<script>
+/* Portada de cada MIDI gratis. La franja de la derecha son las NOTAS REALES
+   del archivo que se descarga: se leen del .mid y se dibujan como piano roll.
+   Mismo corte diagonal que las miniaturas de YouTube para que se reconozca
+   la familia, pero con el rollo en vez de la sesión, que es lo que distingue
+   al producto gratuito del de pago. */
+const W=1280, H=720, CORTE=0.42, D=95;
+const M = [
+  {id:"riseagain",   carpeta:"Rise Again",    cover:"/herramientas/fuentes/cover-riseagain.jpg",   tit:"RISE AGAIN",    partes:"MELODY + PAD"},
+  {id:"takemethere", carpeta:"Take Me There", cover:"/herramientas/fuentes/cover-takemethere.jpg", tit:"TAKE ME THERE", partes:"CHORDS + MELODY"},
+  {id:"blessings",   carpeta:"Blessings",     cover:"/herramientas/fuentes/cover-blessings.jpg",   tit:"BLESSINGS",     partes:"GUITAR"},
+  {id:"harmony",     carpeta:"Harmony",       cover:"/herramientas/fuentes/cover-harmony.jpg",     tit:"HARMONY",       partes:"PIANO + PADS"},
+  {id:"caramelle",   carpeta:"Caramelle",     cover:"/herramientas/fuentes/cover-caramelle.jpg",   tit:"CARAMELLE",     partes:"CHORDS + LEAD"}
+];
+
+function cargar(s){return new Promise((ok,mal)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=()=>mal(new Error(s));i.src=s;});}
+function cubrir(cx,img,x,y,w,h,sesgo){
+  const r=Math.max(w/img.width,h/img.height), dw=img.width*r, dh=img.height*r;
+  cx.drawImage(img,x+(w-dw)/2+(sesgo||0),y+(h-dh)/2,dw,dh);
+}
+
+function rollo(x, pistas, zx, zy, zw, zh){
+  const todas = pistas.flatMap(p=>p.notas);
+  if(!todas.length) return;
+  const t0 = Math.min(...todas.map(n=>n.t));
+  const t1 = Math.max(...todas.map(n=>n.t+n.d));
+  const p0 = Math.min(...todas.map(n=>n.p)) - 2;
+  const p1 = Math.max(...todas.map(n=>n.p)) + 2;
+  const ex = zw/(t1-t0 || 1), ey = zh/(p1-p0 || 1);
+  const alto = Math.max(4, Math.min(16, ey*0.8));
+
+  /* rejilla de fondo, muy tenue: da lectura de "esto es un editor MIDI" */
+  x.strokeStyle="rgba(255,255,255,.07)"; x.lineWidth=1;
+  for(let i=0;i<=8;i++){ const gx=zx+zw*i/8; x.beginPath(); x.moveTo(gx,zy); x.lineTo(gx,zy+zh); x.stroke(); }
+
+  pistas.forEach((p,i)=>{
+    x.fillStyle = i===0 ? "rgba(255,255,255,.95)" : "rgba(255,255,255,.42)";
+    p.notas.forEach(n=>{
+      const bx = zx + (n.t-t0)*ex;
+      const by = zy + zh - (n.p-p0)*ey - alto/2;
+      x.fillRect(bx, by, Math.max(3, n.d*ex - 1.5), alto);
+    });
+  });
+}
+
+const hechos=[];
+(async()=>{
+  const NOTAS = await (await fetch("notas-midi.json")).json();
+  for(const m of M){
+    const c=document.createElement("canvas"); c.width=W; c.height=H;
+    const x=c.getContext("2d");
+    const cov = await cargar(m.cover);
+
+    x.fillStyle="#0a0a0a"; x.fillRect(0,0,W,H);
+
+    /* derecha: el piano roll */
+    x.save(); x.beginPath();
+    x.moveTo(W*CORTE+D,0); x.lineTo(W,0); x.lineTo(W,H); x.lineTo(W*CORTE-D,H); x.closePath(); x.clip();
+    const zx = W*CORTE+40, zw = W-zx-60;
+    rollo(x, NOTAS[m.carpeta].pistas, zx, 300, zw, 250);
+
+    /* texto */
+    x.fillStyle="#fff";
+    x.font='900 108px Inter, sans-serif';
+    x.fillText("FREE", zx, 160);
+    x.fillText("MIDI", zx, 258);
+    x.font='400 22px "Chivo Mono", monospace';
+    x.fillStyle="rgba(255,255,255,.55)";
+    x.fillText(m.partes, zx, 620);
+    x.fillText(m.tit, zx, 655);
+    x.restore();
+
+    /* izquierda: la carátula */
+    x.save(); x.beginPath();
+    x.moveTo(0,0); x.lineTo(W*CORTE+D,0); x.lineTo(W*CORTE-D,H); x.lineTo(0,H); x.closePath(); x.clip();
+    cubrir(x,cov,0,0,W*CORTE+D,H,-30);
+    x.restore();
+
+    x.strokeStyle="#fff"; x.lineWidth=13; x.lineCap="square";
+    x.beginPath(); x.moveTo(W*CORTE+D,-15); x.lineTo(W*CORTE-D,H+15); x.stroke();
+
+    const h=document.createElement("h2"); h.textContent=m.tit;
+    document.getElementById("salida").appendChild(h);
+    document.getElementById("salida").appendChild(c);
+    hechos.push({id:m.id,canvas:c});
+  }
+  for(const h of hechos){
+    await fetch("/guardar",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({nombre:"midi-"+h.id, carpeta:"portadas-midi",
+        datos:h.canvas.toDataURL("image/jpeg",0.92)})});
+  }
+  document.title = "✓ guardadas";
+})();
+</script></body></html>
