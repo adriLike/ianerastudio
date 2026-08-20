@@ -1489,9 +1489,9 @@ var FAQ = [
   },
   {
     "p": "¿Necesito plugins de pago?",
-    "r": "No para abrir el proyecto. Casi la mitad del procesado son dispositivos que Live ya trae, y si te falta alguno de los de pago el archivo se abre igual: Live lo marca y el arreglo sigue entero. Dentro de cada proyecto, en «Con qué está hecho», tienes la lista exacta de los que lleva y con qué sustituir cada uno.",
+    "r": "No para abrir el proyecto. Uso los estándar de la industria, no rarezas: si produces house, la mayoría ya los tienes. Y casi la mitad del procesado son dispositivos que Live ya trae — si te falta alguno de pago, el archivo se abre igual: Live lo marca y el arreglo sigue entero. Dentro de cada proyecto, en «Con qué está hecho», tienes la lista exacta con los plugins utilizados y una alternativa gratis a los de pago.",
     "p_en": "Do I need paid plugins?",
-    "r_en": "Not to open the project. Almost half the processing is devices Live already ships with, and if you're missing a paid one the file still opens: Live flags it and the arrangement stays intact. Inside each project, under “What it's built with”, you'll find the exact list and what to replace each one with."
+    "r_en": "Not to open the project. I use the industry standards, nothing obscure: if you produce house you'll already have most of them. And almost half the processing is devices Live ships with — if you're missing a paid one, the file still opens: Live flags it and the arrangement stays intact. Inside each project, under “What it's built with”, you'll find the exact list of plugins used and a free alternative to the paid ones."
   },
   {
     "p": "¿Cómo lo recibo?",
