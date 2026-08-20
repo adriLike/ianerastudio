@@ -102,14 +102,9 @@ var carril = $("#carril");
 carril.innerHTML = PROYECTOS.map(function(p,i){
   var n = String(i+1).padStart(2,"0");
   var img = ruta(p.portada || p.captura) || (p.video ? miniatura(p.video) : null);
-  /* La segunda imagen es la sesión de Ableton y NO se descarga hasta que
-     alguien pasa por encima: de entrada serían 5 archivos más en la portada
-     para algo que la mayoría no va a mirar. */
-  var dentro = p.captura ? ruta(p.captura.replace(/\.jpg$/, "-960.jpg")) : null;
   var mini = img
     ? '<div class="mini"><img src="'+img+'" alt="" loading="lazy"'+
       (p.captura ? '' : ' onerror="this.onerror=null;this.src=\''+miniaturaFallback(p.video)+'\'"')+'>'+
-      (dentro ? '<img class="dentro-img" data-src="'+dentro+'" alt="" aria-hidden="true">' : '')+
       '<span class="lupa" aria-hidden="true">'+
         '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
       '</span></div>'
@@ -132,82 +127,19 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
 }).join("");
 $("#proy-n").textContent = String(PROYECTOS.length).padStart(2,"0");
 
-/* Navegación del carril: flechas, barra de avance y arrastre.
-   Se mueve por ÍNDICE y no por píxeles fijos, porque la primera tarjeta es
-   más ancha que las demás y un paso fijo se desalineaba a la segunda. */
-var antes = $("#car-antes"), luego = $("#car-luego"), barra = $("#car-barra");
-
-function tarjetas(){ return [].slice.call(carril.querySelectorAll(".tarjeta")); }
-function indiceActual(){
-  var t = tarjetas(), x = carril.scrollLeft, mejor = 0, dist = Infinity;
-  for(var i=0;i<t.length;i++){
-    var d = Math.abs(t[i].offsetLeft - x);
-    if(d < dist){ dist = d; mejor = i; }
-  }
-  return mejor;
-}
-function irA(i){
-  var t = tarjetas();
-  i = Math.max(0, Math.min(t.length-1, i));
-  if(t[i]) carril.scrollTo({left: t[i].offsetLeft, behavior:"smooth"});
+/* Flechas. Avanzan una tarjeta y se apagan en los extremos. */
+var antes = $("#car-antes"), luego = $("#car-luego");
+function paso(){
+  var t = carril.querySelector(".tarjeta");
+  return t ? t.getBoundingClientRect().width + 16 : 300;
 }
 function estadoFlechas(){
   var max = carril.scrollWidth - carril.clientWidth;
   antes.disabled = carril.scrollLeft <= 2;
   luego.disabled = carril.scrollLeft >= max - 2;
-  if(barra){
-    /* La barra mide lo que se ve del carril y avanza con él: dice a la vez
-       cuánto hay y por dónde vas, que es lo que dos flechas no cuentan. */
-    var visible = carril.clientWidth / carril.scrollWidth;
-    var avance  = max > 0 ? carril.scrollLeft / max : 0;
-    barra.style.setProperty("--ancho", (visible*100) + "%");
-    barra.style.setProperty("--x", (avance * (100 - visible*100)) + "%");
-    barra.hidden = visible >= 0.999;
-  }
 }
-
-/* Arrastrar con el ratón. En escritorio, un carrusel que solo se mueve con
-   dos botones se siente antiguo. Si el puntero se ha movido, se cancela el
-   clic para no abrir una ficha al soltar. */
-(function(){
-  var pulsado = false, x0 = 0, s0 = 0, movido = 0;
-  carril.addEventListener("pointerdown", function(e){
-    if(e.pointerType === "touch") return;         /* el táctil ya arrastra solo */
-    pulsado = true; movido = 0;
-    x0 = e.clientX; s0 = carril.scrollLeft;
-    carril.style.scrollSnapType = "none";
-    carril.style.scrollBehavior = "auto";
-    carril.classList.add("agarrando");
-  });
-  addEventListener("pointermove", function(e){
-    if(!pulsado) return;
-    var d = e.clientX - x0;
-    movido = Math.max(movido, Math.abs(d));
-    carril.scrollLeft = s0 - d;
-  });
-  addEventListener("pointerup", function(){
-    if(!pulsado) return;
-    pulsado = false;
-    carril.classList.remove("agarrando");
-    carril.style.scrollBehavior = "";
-    carril.style.scrollSnapType = "";
-    if(movido > 6){ irA(indiceActual()); }        /* recolocar en la tarjeta */
-  });
-  /* si se ha arrastrado, el clic que viene detrás no debe abrir nada */
-  carril.addEventListener("click", function(e){
-    if(movido > 6){ e.stopPropagation(); e.preventDefault(); movido = 0; }
-  }, true);
-})();
-
-/* la sesión de dentro solo se descarga cuando alguien se acerca a la tarjeta */
-carril.addEventListener("pointerover", function(e){
-  var t = e.target.closest(".tarjeta");
-  if(!t) return;
-  var im = t.querySelector(".dentro-img[data-src]");
-  if(im){ im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }
-});
-antes.addEventListener("click",function(){ irA(indiceActual()-1); });
-luego.addEventListener("click",function(){ irA(indiceActual()+1); });
+antes.addEventListener("click",function(){ carril.scrollBy({left:-paso()}); });
+luego.addEventListener("click",function(){ carril.scrollBy({left: paso()}); });
 carril.addEventListener("scroll",estadoFlechas,{passive:true});
 addEventListener("resize",estadoFlechas);
 estadoFlechas();
