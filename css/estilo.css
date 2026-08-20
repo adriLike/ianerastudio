@@ -820,3 +820,17 @@ a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
   #proyectos .carril-caja .tarjeta{opacity:1}
   #proyectos .carril-caja.on .tarjeta{animation:none}
 }
+
+/* ---------------------------------------------------------------
+   Táctil: áreas de pulsación
+   Con el dedo, 34 px se falla. Y fallar el play de la tarjeta no es
+   inocuo: abre la ficha en vez de sonar. Se agranda el área sin
+   tocar el tamaño visible.
+   --------------------------------------------------------------- */
+@media(hover:none){
+  .tarjeta button.lupa::after{content:"";position:absolute;inset:-7px}   /* 34 → 48 */
+  .fsoc a{width:44px;height:44px}
+  .fbot .idi-pie{padding:10px 4px}
+  a.midi-b{padding:14px 18px}
+  .oir-barra::before{inset:-20px 0}
+}
