@@ -414,6 +414,13 @@ a.pa.gumroad-button{
   text-transform:none!important; letter-spacing:0!important;
   height:auto!important; line-height:inherit!important; text-decoration:none!important;
 }
+/* Su :hover mueve el botón entero — transform:translate(-.25rem,-.25rem) más
+   una sombra dura. No es el lenguaje de esta web, donde un enlace cambia de
+   color y un botón baja de opacidad. Se anula en todos, no solo en el del pie. */
+a.gumroad-button:hover,
+a.gumroad-button:active{ transform:none!important; box-shadow:none!important; }
+a.pa.gumroad-button:hover{ color:var(--tinta)!important; }
+
 .gumroad-button .logo-full,
 .gumroad-button .logo,
 .gumroad-button > svg{display:none!important}

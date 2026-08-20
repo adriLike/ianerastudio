@@ -46,8 +46,6 @@ var T = {
   "prefijoSust": "Instead: ",
   "ldName": "{t} — Complete Ableton Live project",
   "ldDesc": "My recreation of “{t}” by {a} as an Ableton Live session: the full arrangement, the racks and the automation.",
-  "pieBundle": "All the projects",
-  "pieGratis": "Free sample pack",
   "midiTit": "The MIDI, free",
   "midiSub": "{que} from this track, straight out of the session. No payment.",
   "midiBoton": "Download the MIDI ↗",

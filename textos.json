@@ -172,22 +172,6 @@
     "es": "«Para romper las reglas primero hay que conocerlas»",
     "en": "“You have to know the rules before you can break them”"
   },
-  "pie.proyectos": {
-    "es": "Proyectos",
-    "en": "Projects"
-  },
-  "pie.catalogo": {
-    "es": "Catálogo",
-    "en": "Catalog"
-  },
-  "pie.bundle": {
-    "es": "Los cuatro proyectos",
-    "en": "All the projects"
-  },
-  "pie.gratis": {
-    "es": "Sample pack gratis",
-    "en": "Free sample pack"
-  },
   "pie.canal": {
     "es": "Canal",
     "en": "Channel"
@@ -468,14 +452,6 @@
     "es": "Volver a la web",
     "en": "Back to the site"
   },
-  "js.pieBundle": {
-    "es": "Los proyectos completos",
-    "en": "All the projects"
-  },
-  "js.pieGratis": {
-    "es": "Sample pack gratis",
-    "en": "Free sample pack"
-  },
   "js.midiTit": {
     "es": "El MIDI, gratis",
     "en": "The MIDI, free"
@@ -489,10 +465,6 @@
     "en": "Download the MIDI ↗"
   },
   "js.midiTag": {
-    "es": "MIDI gratis",
-    "en": "Free MIDI"
-  },
-  "pie.midi": {
     "es": "MIDI gratis",
     "en": "Free MIDI"
   },

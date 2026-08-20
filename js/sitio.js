@@ -651,20 +651,6 @@ if(PRODUCTOS.bundle){
   ctaBtn.outerHTML = '<a class="btn" href="#catalogo">Ver el catálogo</a>';
 }
 
-/* Pie: lo mismo. Y el regalo solo se anuncia si existe de verdad. */
-var pieBundle = $("#pie-bundle"), pieGratis = $("#pie-gratis");
-if(pieBundle){
-  /* la clase «pa» es la que le devuelve el aspecto del pie: sin ella,
-     Gumroad le impone su tipografía a 16 px y desentona con la columna */
-  pieBundle.outerHTML = PRODUCTOS.bundle
-    ? botonCompra("bundle", T.pieBundle, "pa")
-    : '<a class="pa" href="#catalogo">'+T.pieBundle+'</a>';
-}
-if(pieGratis){
-  if(PRODUCTOS.gratis) pieGratis.outerHTML = botonCompra("gratis", T.pieGratis, "pa");
-  else pieGratis.remove();
-}
-
 /* AL FINAL DEL TODO: si se llega con #blessings, abrir esa ficha.
    Antes esto se ejecutaba a media carga, `abrir()` reventaba porque aún no
    existían las variables de la barra, y el error cancelaba el resto del
