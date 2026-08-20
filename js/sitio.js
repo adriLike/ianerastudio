@@ -109,7 +109,7 @@ carril.innerHTML = PROYECTOS.map(function(p,i){
      lo último o cuánta gente lo ha visto. Nada de reclamos que no se puedan
      verificar en un clic. */
   var marca = p.insignia ? '<span class="marca et">'+p.insignia+'</span>' : '';
-  return '<div class="tarjeta" role="button" tabindex="0" data-i="'+i+'">'+ mini + marca +
+  return '<div class="tarjeta" role="button" tabindex="0" data-i="'+i+'" style="--i:'+i+'">'+ mini + marca +
     '<div class="cuerpo">'+
       '<div class="top et"><span>'+n+'</span><span class="yr">'+p.y+'</span></div>'+
       '<h3>'+p.t+'</h3>'+

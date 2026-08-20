@@ -197,7 +197,7 @@ section.bl{padding:clamp(70px,11vw,140px) var(--lat);scroll-margin-top:76px}
         scrollbar-width:none;-ms-overflow-style:none}
 .carril::-webkit-scrollbar{display:none}
 
-.tarjeta{scroll-snap-align:start;flex:0 0 clamp(260px,31vw,360px);
+.tarjeta{scroll-snap-align:start;flex:0 0 clamp(280px,36vw,460px);
          background:var(--n1);border:1px solid var(--linea);margin:0;padding:0;
          cursor:pointer;font:inherit;color:inherit;text-align:left;
          display:flex;flex-direction:column;overflow:hidden;
@@ -784,3 +784,39 @@ a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
 
 /* la tarjeta ya no es <button>: hay que devolverle lo que traía de serie */
 .tarjeta[role="button"]{-webkit-appearance:none;appearance:none}
+
+/* ---------------------------------------------------------------
+   Proyectos: la sección que manda
+   Es la más importante de la web y hasta ahora se veía igual que
+   «Dudas» o «Bio». Tres cosas la separan del resto: su propio plano
+   de fondo, el carril saliéndose por la derecha, y las tarjetas
+   entrando escalonadas.
+   --------------------------------------------------------------- */
+/* 3 · plano propio. Las tarjetas son negras sobre este gris, así que
+   quedan hundidas en vez de flotando: al revés que en el resto. */
+.bg-proy{background:var(--n3)}
+
+/* 1 · el carril llega hasta el borde de la pantalla. El 50% es medio
+   contenedor y el 50vw media ventana: la resta es justo el margen que
+   hay que comerse. El título y la primera tarjeta siguen alineados. */
+@media(min-width:721px){
+  #proyectos .carril-caja{margin-right:calc(50% - 50vw)}
+  #proyectos .carril{padding-right:var(--lat)}
+}
+
+/* 5 · entrada escalonada. Se anima «translate», que es una propiedad
+   aparte de «transform»: si no, el desplazamiento de la animación
+   pisaría el que usa el hover de la tarjeta. */
+@keyframes tarjeta-entra{
+  from{opacity:0;translate:0 16px}
+  to  {opacity:1;translate:0 0}
+}
+#proyectos .carril-caja .tarjeta{opacity:0}
+#proyectos .carril-caja.on .tarjeta{
+  animation:tarjeta-entra .55s var(--ease) both;
+  animation-delay:calc(var(--i,0) * 75ms);
+}
+@media(prefers-reduced-motion:reduce){
+  #proyectos .carril-caja .tarjeta{opacity:1}
+  #proyectos .carril-caja.on .tarjeta{animation:none}
+}
