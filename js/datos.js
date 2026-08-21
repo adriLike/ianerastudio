@@ -33,7 +33,7 @@ var PROYECTOS = [
     "t": "Rise Again",
     "a": "DubVision",
     "y": "2026",
-    "video": null,
+    "video": "ugONaZRcYJc",
     "captura": "img/ses-riseagain.jpg",
     "bpm": "128",
     "tono": "E maj",
@@ -1447,6 +1447,13 @@ var PROYECTOS = [
 ];
 
 var VIDEOS = [
+  {
+    "f": "21 ago 2026",
+    "t": "Cómo hacer progressive house como DubVision",
+    "id": "ugONaZRcYJc",
+    "f_en": "Aug 21 2026",
+    "t_en": "How to make progressive house like DubVision"
+  },
   {
     "f": "02 mar 2026",
     "t": "Cómo hizo Calvin Harris «Blessings»",
