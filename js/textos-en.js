@@ -16,7 +16,7 @@ var T = {
   "previaTit": "See inside before you download",
   "previaSub": "I open this session and show you how it's put together",
   "oirAria": "Play the clip",
-  "oirPie": "Clip from the track · this is how the finished session sounds",
+  "oirPie": "This is how the finished session sounds",
   "bpm": "BPM",
   "tono": "Key",
   "pistas": "Tracks",

@@ -16,7 +16,7 @@ var T = {
   "previaTit": "Míralo por dentro antes de descargar",
   "previaSub": "Abro esta sesión y te enseño cómo está montada",
   "oirAria": "Escuchar el fragmento",
-  "oirPie": "Fragmento del tema · así suena la sesión terminada",
+  "oirPie": "Así suena la sesión terminada",
   "bpm": "BPM",
   "tono": "Tonalidad",
   "pistas": "Pistas",
