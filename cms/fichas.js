@@ -122,8 +122,29 @@ function pagina(p, c, T, idioma){
     <p class="fic-p">${esc(intro)}</p>
   </header>
 
-  ${p.captura ? '<figure class="fic-img"><img src="'+raiz+esc(p.captura)+'" alt="'+esc(p.t)+' — '+
-    (idioma==="en"?"the Ableton Live session":"la sesión de Ableton Live")+'" width="1920" height="1138" loading="lazy"></figure>' : ""}
+  ${p.video
+    ? '<div class="previa" data-video="'+esc(p.video)+'">'+
+        '<button class="previa-cara nitida" type="button" data-play="'+esc(p.video)+'">'+
+          '<img src="'+raiz+esc(p.captura || "")+'" alt="'+esc(p.t)+' — '+
+            (idioma==="en"?"the Ableton Live session":"la sesión de Ableton Live")+'" loading="lazy">'+
+          '<span class="play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>'+
+          '<span class="previa-txt"><b>'+T["js.previaTit"][idioma]+'</b>'+
+          '<span class="sub">'+T["js.previaSub"][idioma]+'</span></span>'+
+        '</button></div>'
+    : (p.captura ? '<figure class="fic-img"><img src="'+raiz+esc(p.captura)+'" alt="'+esc(p.t)+' — '+
+        (idioma==="en"?"the Ableton Live session":"la sesión de Ableton Live")+'" width="1920" height="1138" loading="lazy"></figure>' : "")}
+
+  ${p.audio
+    ? '<div class="oir" data-oir>'+
+        '<button class="oir-b" type="button" aria-label="'+T["js.oirAria"][idioma]+'">'+
+          '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+
+            '<path class="i-play" d="M8 5v14l11-7z"/><path class="i-pausa" d="M6 5h4v14H6zM14 5h4v14h-4z"/>'+
+          '</svg></button>'+
+        '<div class="oir-barra"><span class="oir-va"></span></div>'+
+        '<span class="oir-t et">0:00</span>'+
+        '<audio preload="none" src="'+raiz+esc(p.audio)+'"></audio>'+
+      '</div><p class="oir-pie et">'+T["js.oirPie"][idioma]+'</p>'
+    : ""}
 
   ${specs(p, T, idioma)}
 
@@ -154,6 +175,42 @@ function pagina(p, c, T, idioma){
   </nav>
 </main>
 <script src="https://gumroad.com/js/gumroad.js" defer></script>
+<script>
+/* La ficha no carga sitio.js: solo necesita estas dos cosas. */
+(function(){
+  var v = document.querySelector("[data-play]");
+  if(v) v.addEventListener("click", function(){
+    var caja = v.parentElement;
+    caja.classList.add("cargado");
+    caja.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v.dataset.play +
+      '?autoplay=1&rel=0&modestbranding=1" title="v" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+  });
+
+  var caja = document.querySelector("[data-oir]");
+  if(!caja) return;
+  var son = caja.querySelector("audio"), bar = caja.querySelector(".oir-barra"),
+      va = caja.querySelector(".oir-va"), t = caja.querySelector(".oir-t");
+  function reloj(s){ if(!isFinite(s)||s<0) s=0;
+    var m=Math.floor(s/60), r=Math.floor(s%60); return m+":"+(r<10?"0":"")+r; }
+  caja.querySelector(".oir-b").addEventListener("click", function(){
+    if(son.paused) son.play(); else son.pause();
+  });
+  bar.addEventListener("click", function(e){
+    if(!isFinite(son.duration) || !son.duration) return;
+    var r = bar.getBoundingClientRect();
+    son.currentTime = son.duration * Math.min(1, Math.max(0, (e.clientX-r.left)/r.width));
+  });
+  ["play","pause","ended","timeupdate","loadedmetadata"].forEach(function(ev){
+    son.addEventListener(ev, function(){
+      caja.classList.toggle("sonando", !son.paused && !son.ended);
+      var d=son.duration, ok=isFinite(d)&&d>0;
+      caja.classList.toggle("sinlargo", !ok);
+      va.style.width = (ok ? (son.currentTime/d)*100 : 0) + "%";
+      t.textContent = reloj(son.currentTime) + (ok ? " / " + reloj(d) : "");
+    });
+  });
+})();
+</script>
 </body>
 </html>`;
 }
