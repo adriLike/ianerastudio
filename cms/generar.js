@@ -165,6 +165,8 @@ function ingles(html, T, op){
   });
   /* los enlaces a la portada tienen que quedarse dentro del idioma */
   html = html.replace(/href="\/"/g, 'href="' + op.inicio + '"');
+  /* dentro de esta función siempre estamos generando el inglés */
+  html = html.replace('href="/plugins/"', 'href="/en/plugins/"');
 
   const dir = path.join(RAIZ,"en");
   if(!fs.existsSync(dir)) fs.mkdirSync(dir);

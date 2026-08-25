@@ -182,6 +182,7 @@ function pagina(p, c, T, idioma){
     <span class="et">${idioma==="en" ? "Other projects" : "Otros proyectos"}</span>
     ${c.proyectos.filter(o => o.id !== p.id).map(o =>
       '<a href="'+(idioma==="en" ? "/en/projects/" : "/proyectos/")+SLUG[o.id]+'/">'+esc(o.t)+'</a>').join("")}
+    <a href="${idioma==="en" ? "/en/plugins/" : "/plugins/"}">${T["pie.plugins"][idioma]} →</a>
   </nav>
 </main>
 <script src="https://gumroad.com/js/gumroad.js" defer></script>

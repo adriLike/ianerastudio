@@ -487,5 +487,9 @@
   "js.fichaEnlace": {
     "es": "Ver la ficha completa de este proyecto ↗",
     "en": "See the full page for this project ↗"
+  },
+  "pie.plugins": {
+    "es": "Todos los plugins que uso",
+    "en": "Every plugin I use"
   }
 }
