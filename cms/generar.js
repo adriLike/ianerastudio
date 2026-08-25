@@ -4,6 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const RAIZ = path.join(__dirname, "..");
+const fichas = require("./fichas");
 
 function j(v){ return JSON.stringify(v); }
 
@@ -93,6 +94,11 @@ var RESENAS = ${JSON.stringify(c.resenas,null,2)};
     fs.writeFileSync(path.join(RAIZ,"gracias.html"), gr);
     ingles(gr, TX, { salida: "gracias.html", titulo: "gr.titulo", desc: "gr.desc",
         inicio: "/en/", idi: "/gracias.html" });
+
+    /* Una página real por proyecto y por idioma. Los enlaces con #hash de la
+       portada siguen funcionando: estas URLs se suman, no sustituyen. */
+    const urls = fichas.generar(c, TX, nuevo);
+    sitemap(urls);
     return nuevo;
   }
   return null;
@@ -164,6 +170,33 @@ function ingles(html, T, op){
   if(!fs.existsSync(dir)) fs.mkdirSync(dir);
   fs.writeFileSync(path.join(dir, op.salida), html);
   if(faltan.length) console.log("  ojo, claves sin traducir:", [...new Set(faltan)].join(", "));
+}
+
+/* El sitemap se rehace entero: si se añade un proyecto, entra solo. */
+function sitemap(fichas){
+  const alt = (es,en) =>
+    '    <xhtml:link rel="alternate" hreflang="es" href="'+es+'"/>\n'+
+    '    <xhtml:link rel="alternate" hreflang="en" href="'+en+'"/>\n'+
+    '    <xhtml:link rel="alternate" hreflang="x-default" href="'+es+'"/>\n';
+  let x = '<?xml version="1.0" encoding="UTF-8"?>\n'+
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'+
+    '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n';
+  x += '  <url>\n    <loc>https://ianerastudio.com/</loc>\n'+
+       alt("https://ianerastudio.com/","https://ianerastudio.com/en/")+
+       '    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n';
+  x += '  <url>\n    <loc>https://ianerastudio.com/en/</loc>\n'+
+       alt("https://ianerastudio.com/","https://ianerastudio.com/en/")+
+       '    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n';
+  for(let i=0;i<fichas.length;i+=2){
+    const es=fichas[i], en=fichas[i+1];
+    for(const u of [es,en])
+      x += '  <url>\n    <loc>'+u+'</loc>\n'+alt(es,en)+
+           '    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n';
+  }
+  x += '  <url>\n    <loc>https://ianerastudio.com/gracias.html</loc>\n'+
+       '    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n';
+  x += '</urlset>\n';
+  fs.writeFileSync(path.join(RAIZ,"sitemap.xml"), x);
 }
 
 module.exports = { generar };
