@@ -834,3 +834,10 @@ a.midi-b.gumroad-button:hover{border-color:var(--tinta)!important}
   a.midi-b{padding:14px 18px}
   .oir-barra::before{inset:-20px 0}
 }
+
+/* El héroe es una foto sin una palabra y así debe quedarse, pero una página
+   sin <h1> no la entiende ni un buscador ni un lector de pantalla. Este está
+   ahí para los dos, sin pintarse. No es texto oculto para engañar: dice
+   exactamente lo mismo que la página. */
+.solo-lectores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}

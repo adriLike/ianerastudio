@@ -1,12 +1,12 @@
 {
   "_": "Todos los textos de la web en los dos idiomas. El castellano es el original: si cambias algo aquí, cambia también index.html si ese texto está en el HTML. Lo genera todo cms/generar.js.",
   "meta.titulo": {
-    "es": "Ian Era Studio — Sesiones de Ableton Live",
-    "en": "Ian Era Studio — Ableton Live Projects"
+    "es": "Remakes de progressive house en Ableton | Ian Era Studio",
+    "en": "Progressive house Ableton remakes | Ian Era Studio"
   },
   "meta.desc": {
-    "es": "Recreo temas de progressive house en Ableton Live y vendo la sesión completa: cada pista, cada dispositivo, cada línea de automatización.",
-    "en": "I rebuild progressive house tracks in Ableton Live and sell the whole session: every track, every device, every automation lane."
+    "es": "Recreo temas de progressive house de DubVision, Martin Garrix, Matisse & Sadko o Calvin Harris en Ableton Live y vendo la sesión completa: el arreglo, los racks, la automatización y el MIDI de cada parte. Con MIDI gratis de cada tema.",
+    "en": "I rebuild progressive house tracks by DubVision, Martin Garrix, Matisse & Sadko and Calvin Harris in Ableton Live and sell the whole session: the arrangement, the racks, the automation and the MIDI for every part. Free MIDI from every track."
   },
   "meta.og.titulo": {
     "es": "Ian Era Studio — Proyectos de Ableton Live",
@@ -479,5 +479,9 @@
   "js.oirCorto": {
     "es": "Escuchar un fragmento",
     "en": "Play a clip"
+  },
+  "hero.h1": {
+    "es": "Remakes completos de progressive house en Ableton Live",
+    "en": "Complete progressive house remakes in Ableton Live"
   }
 }
