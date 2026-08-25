@@ -68,9 +68,11 @@ function pagina(p, c, T, idioma){
     : p.t + " — " + arte + " | Proyecto completo de Ableton Live";
   const desc = idioma === "en"
     ? "My recreation of “"+p.t+"” by "+arte+" in Ableton Live: "+p.pistas+" tracks in "+p.grupos+
-      " groups at "+p.bpm+" BPM, every rack and effect chain, all the automation and the MIDI for every part."
+      " groups at "+p.bpm+" BPM, every rack and effect chain, all the automation and the MIDI for every part."+
+      (p.midi ? " Free MIDI from this track." : "")
     : "Mi recreación de «"+p.t+"» de "+arte+" en Ableton Live: "+p.pistas+" pistas en "+p.grupos+
-      " grupos a "+p.bpm+" BPM, cada rack y cada cadena de efectos, todas las automatizaciones y el MIDI de cada parte.";
+      " grupos a "+p.bpm+" BPM, cada rack y cada cadena de efectos, todas las automatizaciones y el MIDI de cada parte."+
+      (p.midi ? " Con el MIDI del tema gratis." : "");
   const intro = idioma === "en"
     ? "Built from scratch by ear. Not stems and not a loop pack — the session file I work in."
     : "Hecha desde cero y de oído. No son stems ni un pack de loops: es el archivo con el que trabajo.";

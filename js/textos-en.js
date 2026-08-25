@@ -50,5 +50,6 @@ var T = {
   "midiSub": "{que} from this track, straight out of the session. No payment.",
   "midiBoton": "Download the MIDI ↗",
   "midiTag": "+ Free MIDI",
-  "oirCorto": "Play a clip"
+  "oirCorto": "Play a clip",
+  "fichaEnlace": "See the full page for this project ↗"
 };

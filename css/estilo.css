@@ -871,3 +871,9 @@ body.ficha .compra{margin-top:clamp(36px,5vw,52px)}
 .fic-otros a{color:var(--tinta70);text-decoration:none;font-size:13px;
   border-bottom:1px solid var(--linea)}
 .fic-otros a:hover{color:var(--tinta);border-color:var(--tinta)}
+/* enlace del panel a la ficha con URL propia */
+.p-ficha{margin:18px 0 0;font-size:12.5px}
+.p-ficha a{color:var(--tinta45);text-decoration:none;border-bottom:1px solid var(--linea)}
+.p-ficha a:hover{color:var(--tinta);border-color:var(--tinta)}
+.fila .tit a{color:inherit;text-decoration:none}
+.fila:hover .tit a{text-decoration:underline;text-underline-offset:3px}

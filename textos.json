@@ -483,5 +483,9 @@
   "hero.h1": {
     "es": "Remakes completos de progressive house en Ableton Live",
     "en": "Complete progressive house remakes in Ableton Live"
+  },
+  "js.fichaEnlace": {
+    "es": "Ver la ficha completa de este proyecto ↗",
+    "en": "See the full page for this project ↗"
   }
 }

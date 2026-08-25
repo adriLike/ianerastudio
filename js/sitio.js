@@ -23,6 +23,16 @@ function tr(obj, campo){
 }
 function trAlt(x){ return tr(x, "a"); }
 
+/* Las fichas con URL propia. Enlazarlas desde aquí es lo que las saca de
+   ser páginas huérfanas: sin enlaces internos, Google las encuentra por el
+   sitemap pero no les da peso. */
+var SLUG = {riseagain:"rise-again", takemethere:"take-me-there",
+            blessings:"blessings", harmony:"harmony", caramelle:"caramelle"};
+function ficha(p){
+  if(!SLUG[p.id]) return null;
+  return (LANG === "en" ? "/en/projects/" : "/proyectos/") + SLUG[p.id] + "/";
+}
+
 /* Las rutas de datos.js («img/…», «audio/…») son relativas a la página, y
    /en/ cuelga un nivel más abajo. Sin esto, en inglés no carga ni una imagen. */
 var BASE = (LANG === "en") ? "../" : "";
@@ -157,7 +167,8 @@ $("#videos-lista").innerHTML = VIDEOS.map(function(v){
 var filas = PROYECTOS.map(function(p,i){
   return '<div class="fila">'+
     '<span class="fch et">'+String(i+1).padStart(2,"0")+' · '+p.y+'</span>'+
-    '<span><span class="tit">'+p.t+
+    '<span><span class="tit">'+
+      (ficha(p) ? '<a href="'+ficha(p)+'">'+p.t+'</a>' : p.t)+
       (p.insignia ? '<span class="marca fila-marca et">'+p.insignia+'</span>' : '')+
     '</span><span class="meta">'+p.a+
       (p.midi ? '<span class="mg">'+T.midiTag+'</span>' : '')+'</span></span>'+
@@ -475,6 +486,7 @@ function abrir(i, desdeUrl){
       botonCompra(p.id,T.conseguir,"btn")+
       '<span class="nota">'+T.compraNota+'</span></div>'+
     midiGratis(p)+
+    (ficha(p) ? '<p class="p-ficha"><a href="'+ficha(p)+'">'+T.fichaEnlace+'</a></p>' : '')+
     '<p class="legal">'+T.legal+'</p>';
 
   if(!desdeUrl && location.hash !== "#"+p.id) history.pushState({p:p.id}, "", "#"+p.id);
