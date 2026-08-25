@@ -46,11 +46,21 @@ function plugins(p, T, idioma){
                :                    '<span class="alt">'+esc(alt)+'</span>';
     return '<li><span class="tn">'+esc(x.n)+'</span><span class="tf">'+esc(x.f)+'</span>'+nota+'</li>';
   }).join("");
-  return '<h2>'+T["js.hechoTit"][idioma]+'</h2>'+
-    '<p class="fic-p">'+T["js.hechoSub"][idioma].replace("{pct}", g.pct)+'</p>'+
-    '<p class="et">'+T["js.hechoSerie"][idioma]+'</p><div class="chips">'+serie+'</div>'+
-    '<p class="et">'+T["js.hechoTerceros"][idioma]+'</p><ul class="terc">'+terc+'</ul>'+
-    '<p class="fic-p">'+T["js.hechoPie"][idioma]+'</p>';
+  /* Plegado de entrada. Son 31 filas: desplegadas empujan el precio muy
+     abajo, y aquí el resumen de la cabecera ya tranquiliza sin abrirlo.
+     Google indexa igual lo que hay dentro de un acordeón. */
+  return '<div class="hecho">'+
+    '<button class="hecho-p" type="button" aria-expanded="false">'+
+      '<span class="hecho-t"><b>'+T["js.hechoTit"][idioma]+'</b>'+
+        '<span class="sub">'+T["js.hechoSub"][idioma].replace("{pct}", g.pct)+'</span></span>'+
+      '<span class="qa-mas" aria-hidden="true"></span>'+
+    '</button>'+
+    '<div class="hecho-c"><div class="hecho-in"><div class="hecho-pad">'+
+      '<p class="et">'+T["js.hechoSerie"][idioma]+'</p><div class="chips">'+serie+'</div>'+
+      '<p class="et">'+T["js.hechoTerceros"][idioma]+'</p><ul class="terc">'+terc+'</ul>'+
+      '<p class="hecho-pie">'+T["js.hechoPie"][idioma]+'</p>'+
+    '</div></div></div>'+
+  '</div>';
 }
 
 function pagina(p, c, T, idioma){
@@ -151,6 +161,8 @@ function pagina(p, c, T, idioma){
   <h2>${idioma==="en" ? "What's inside" : "Lo que hay dentro"}</h2>
   <ul class="dentro">${dentro}</ul>
 
+  ${plugins(p, T, idioma)}
+
   <div class="compra">
     <span class="pr">${esc(c.precio)}</span>
     <a class="btn${overlay ? " gumroad-button" : ""}" href="${esc(url)}"${overlay ? "" : ' target="_blank" rel="noopener"'}>${T["js.conseguir"][idioma]}</a>
@@ -160,8 +172,6 @@ function pagina(p, c, T, idioma){
   ${p.midi ? '<div class="midi"><div class="midi-t"><b>'+T["js.midiTit"][idioma]+'</b>'+
     (tr(p,"midiQue",idioma) ? '<span class="sub">'+T["js.midiSub"][idioma].replace("{que}", esc(tr(p,"midiQue",idioma)))+'</span>' : "")+
     '</div><a class="btn gh midi-b gumroad-button" href="'+esc(p.midi)+'">'+T["js.midiBoton"][idioma]+'</a></div>' : ""}
-
-  ${plugins(p, T, idioma)}
 
   ${p.video ? '<p class="fic-p"><a href="https://www.youtube.com/watch?v='+esc(p.video)+'" target="_blank" rel="noopener">'+
     (idioma==="en" ? "Watch the full breakdown on YouTube ↗" : "Ver el despiece completo en YouTube ↗")+'</a></p>' : ""}
@@ -184,6 +194,13 @@ function pagina(p, c, T, idioma){
     caja.classList.add("cargado");
     caja.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v.dataset.play +
       '?autoplay=1&rel=0&modestbranding=1" title="v" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+  });
+
+  var h = document.querySelector(".hecho-p");
+  if(h) h.addEventListener("click", function(){
+    var abierto = h.getAttribute("aria-expanded") === "true";
+    h.setAttribute("aria-expanded", abierto ? "false" : "true");
+    h.parentElement.classList.toggle("on", !abierto);
   });
 
   var caja = document.querySelector("[data-oir]");
