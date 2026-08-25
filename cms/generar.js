@@ -200,8 +200,6 @@ function sitemap(fichas){
       x += '  <url>\n    <loc>'+u+'</loc>\n'+alt(es,en)+
            '    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n';
   }
-  x += '  <url>\n    <loc>https://ianerastudio.com/gracias.html</loc>\n'+
-       '    <changefreq>yearly</changefreq>\n    <priority>0.3</priority>\n  </url>\n';
   x += '</urlset>\n';
   fs.writeFileSync(path.join(RAIZ,"sitemap.xml"), x);
 }
