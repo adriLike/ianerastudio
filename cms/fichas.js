@@ -125,13 +125,13 @@ function pagina(p, c, T, idioma){
   ${p.video
     ? '<div class="previa" data-video="'+esc(p.video)+'">'+
         '<button class="previa-cara nitida" type="button" data-play="'+esc(p.video)+'">'+
-          '<img src="'+raiz+esc(p.captura || "")+'" alt="'+esc(p.t)+' — '+
+          '<img src="/'+esc(p.captura || "")+'" alt="'+esc(p.t)+' — '+
             (idioma==="en"?"the Ableton Live session":"la sesión de Ableton Live")+'" loading="lazy">'+
           '<span class="play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>'+
           '<span class="previa-txt"><b>'+T["js.previaTit"][idioma]+'</b>'+
           '<span class="sub">'+T["js.previaSub"][idioma]+'</span></span>'+
         '</button></div>'
-    : (p.captura ? '<figure class="fic-img"><img src="'+raiz+esc(p.captura)+'" alt="'+esc(p.t)+' — '+
+    : (p.captura ? '<figure class="fic-img"><img src="/'+esc(p.captura)+'" alt="'+esc(p.t)+' — '+
         (idioma==="en"?"the Ableton Live session":"la sesión de Ableton Live")+'" width="1920" height="1138" loading="lazy"></figure>' : "")}
 
   ${p.audio
@@ -142,7 +142,7 @@ function pagina(p, c, T, idioma){
           '</svg></button>'+
         '<div class="oir-barra"><span class="oir-va"></span></div>'+
         '<span class="oir-t et">0:00</span>'+
-        '<audio preload="none" src="'+raiz+esc(p.audio)+'"></audio>'+
+        '<audio preload="none" src="/'+esc(p.audio)+'"></audio>'+
       '</div><p class="oir-pie et">'+T["js.oirPie"][idioma]+'</p>'
     : ""}
 
@@ -150,8 +150,6 @@ function pagina(p, c, T, idioma){
 
   <h2>${idioma==="en" ? "What's inside" : "Lo que hay dentro"}</h2>
   <ul class="dentro">${dentro}</ul>
-
-  ${plugins(p, T, idioma)}
 
   <div class="compra">
     <span class="pr">${esc(c.precio)}</span>
@@ -162,6 +160,8 @@ function pagina(p, c, T, idioma){
   ${p.midi ? '<div class="midi"><div class="midi-t"><b>'+T["js.midiTit"][idioma]+'</b>'+
     (tr(p,"midiQue",idioma) ? '<span class="sub">'+T["js.midiSub"][idioma].replace("{que}", esc(tr(p,"midiQue",idioma)))+'</span>' : "")+
     '</div><a class="btn gh midi-b gumroad-button" href="'+esc(p.midi)+'">'+T["js.midiBoton"][idioma]+'</a></div>' : ""}
+
+  ${plugins(p, T, idioma)}
 
   ${p.video ? '<p class="fic-p"><a href="https://www.youtube.com/watch?v='+esc(p.video)+'" target="_blank" rel="noopener">'+
     (idioma==="en" ? "Watch the full breakdown on YouTube ↗" : "Ver el despiece completo en YouTube ↗")+'</a></p>' : ""}

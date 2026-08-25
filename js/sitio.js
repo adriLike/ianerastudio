@@ -340,88 +340,12 @@ if(cCaja){
   document.head.appendChild(e);
 })();
 
+
 /* ---------------------------------------------------------------
-   Panel de proyecto
+   Panel de proyecto. El contenido lo trae la ficha; aquí solo vive
+   el comportamiento: abrir, cerrar, foco e historial.
    --------------------------------------------------------------- */
 var velo=$("#velo"), panel=$("#panel"), pin=$("#pin"), cerrarBtn=$("#cerrar"), previo=null;
-
-/* ---------------------------------------------------------------
-   «Con qué está hecho». Sale de leer el .als, no de memoria.
-   El objetivo aquí no es lucir la lista: es que quien no tenga un
-   plugin sepa, ANTES de pagar, que no se queda con un archivo roto.
-   Por eso abre con lo que ya trae Live y cierra con qué pasa si
-   falta algo. Va plegado para no alejar el precio.
-   --------------------------------------------------------------- */
-function conQue(p){
-  var g = p.plugins;
-  if(!g || !g.terceros || !g.terceros.length) return "";
-
-  var serie = (g.serie||[]).slice(0,14).map(function(x){
-    return '<span class="chip">'+x.n+'</span>';
-  }).join("");
-  var mas = (g.serie||[]).length - 14;
-  if(mas > 0) serie += '<span class="chip chip-mas">'+ins(T.hechoMas,{n:mas})+'</span>';
-
-  var terc = g.terceros.map(function(x){
-    /* Decir siempre algo es mejor que dejar la fila a medias: quien lo lea sabe
-       que ahí pierde ese sonido, no que se me olvidó rellenarlo. Y un sustituto
-       de pago no se anuncia como gratis. */
-    var nota = x.e === "gratis" ? '<span class="lib">'+T.esGratuito+'</span>'
-             : x.e === "sin"    ? '<span class="nada">'+(trAlt(x) || T.sinEquivalente)+'</span>'
-             : !x.a             ? '<span class="nada">'+T.sinEquivalente+'</span>'
-             : x.e === "pago"   ? '<span class="sust">'+trAlt(x)+'</span>'
-             :                    '<span class="alt">'+trAlt(x)+'</span>';
-    return '<li><span class="tn">'+x.n+'</span>'+
-           '<span class="tf">'+x.f+'</span>'+ nota +'</li>';
-  }).join("");
-
-  return '<div class="hecho'+(g.pct >= 50 ? ' mitad' : '')+'">'+
-    '<button class="hecho-p" type="button" aria-expanded="false">'+
-      '<span class="hecho-t"><b>'+T.hechoTit+'</b>'+
-        '<span class="sub">'+ins(T.hechoSub,{pct:g.pct})+
-        '</span></span>'+
-      '<span class="qa-mas" aria-hidden="true"></span>'+
-    '</button>'+
-    '<div class="hecho-c"><div class="hecho-in"><div class="hecho-pad">'+
-      '<p class="et">'+T.hechoSerie+'</p>'+
-      '<div class="chips">'+serie+'</div>'+
-      '<p class="et">'+T.hechoTerceros+'</p>'+
-      '<ul class="terc">'+terc+'</ul>'+
-      '<p class="hecho-pie">'+T.hechoPie+'</p>'+
-    '</div></div></div>'+
-  '</div>';
-}
-
-/* ---------------------------------------------------------------
-   El MIDI gratis. Va DESPUÉS del botón de compra, no antes: quien
-   ya ha decidido pagar no se cruza con una alternativa gratuita
-   justo en el momento de decidir, y quien pasa de largo por el
-   precio sí se lo encuentra. Sin URL no se pinta nada.
-   --------------------------------------------------------------- */
-function midiGratis(p){
-  if(!p.midi) return "";
-  var que = tr(p, "midiQue");
-  var overlay = p.midi.indexOf("/l/") > -1 && p.midi.indexOf("gumroad.com") > -1;
-  return '<div class="midi">'+
-    '<div class="midi-t"><b>'+T.midiTit+'</b>'+
-      (que ? '<span class="sub">'+ins(T.midiSub,{que:que})+'</span>' : '')+
-    '</div>'+
-    '<a class="btn gh midi-b'+(overlay ? ' gumroad-button' : '')+'" href="'+p.midi+'"'+
-      (overlay ? '' : ' target="_blank" rel="noopener"')+'>'+T.midiBoton+'</a>'+
-  '</div>';
-}
-
-function specs(p){
-  var d=[];
-  if(p.bpm)    d.push('<div><b>'+p.bpm+'</b><span class="et">'+T.bpm+'</span></div>');
-  if(p.tono)   d.push('<div><b>'+p.tono+'</b><span class="et">'+T.tono+'</span></div>');
-  /* El número solo asusta; con los grupos al lado dice «grande y ordenado». */
-  if(p.pistas) d.push('<div><b>'+p.pistas+'</b><span class="et">'+T.pistas+
-    (p.grupos ? ins(T.enGrupos,{n:p.grupos}) : '')+'</span></div>');
-  if(!d.length) return '<p class="formato et">Archivo .als · Proyecto de Ableton Live</p>';
-  d.push('<div><b>.als</b><span class="et">'+T.formato+'</span></div>');
-  return '<div class="specs">'+d.join("")+'</div>';
-}
 
 /* deja fuera del foco todo lo que hay detrás del panel */
 var fondo = Array.prototype.filter.call(document.body.children,function(el){
@@ -429,75 +353,58 @@ var fondo = Array.prototype.filter.call(document.body.children,function(el){
 });
 function fondoInerte(v){ fondo.forEach(function(el){ el.inert = v; }); }
 
+/* El contenido de la ficha ya NO se escribe aquí: se descarga de
+   /proyectos/<slug>/, que es la única fuente. Antes el mismo marcado
+   existía dos veces —en este archivo y en cms/fichas.js— y era cuestión
+   de tiempo que dijeran cosas distintas.
+   Se guarda lo descargado, así que reabrir una ficha es instantáneo. */
+var cache = {};
+
+function extraer(html){
+  var doc = new DOMParser().parseFromString(html, "text/html");
+  var m = doc.querySelector("main");
+  if(!m) return null;
+  /* fuera lo que solo tiene sentido en la página suelta */
+  var quitar = m.querySelectorAll(".fic-volver, .fic-otros");
+  for(var i=0;i<quitar.length;i++) quitar[i].remove();
+  var h1 = m.querySelector("h1");
+  if(h1){ var h3 = document.createElement("h3"); h3.id = "p-tit";
+          h3.textContent = h1.textContent; h1.replaceWith(h3); }
+  return m.innerHTML;
+}
+
 function abrir(i, desdeUrl){
-  var p = PROYECTOS[i];
-  pin.innerHTML =
-    /* Sin cabecera de imagen: la misma captura ya sale justo debajo como
-       fondo de la carátula del vídeo. Repetirla no aportaba nada y alejaba
-       el precio y el botón de compra. */
-    '<div class="pcab et"><span>'+T.proyecto+' '+String(i+1).padStart(2,"0")+'</span>'+
-      '<span class="yr">'+p.y+'</span></div>'+
-    '<h3 id="p-tit">'+p.t+'</h3><p class="part">'+p.a+'</p>'+
+  var p = PROYECTOS[i], u = ficha(p);
+  if(!u){ return; }
 
-    /* La prueba antes que el precio. El vídeo se ve AQUÍ: pulsas y se
-       carga el reproductor de YouTube dentro del panel. No se incrusta de
-       entrada porque cargarlo son ~800 KB por proyecto aunque nadie le dé.
-       Las reproducciones incrustadas SÍ cuentan como visitas del canal. */
-    (p.video
-      ? '<div class="previa" data-video="'+p.video+'">'+
-          '<button class="previa-cara'+(p.captura ? ' nitida' : '')+'" type="button" data-play="'+p.video+'">'+
-            '<img src="'+(ruta(p.captura) || miniatura(p.video))+'" alt="" loading="lazy">'+
-            '<span class="play" aria-hidden="true">'+
-              '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'+
-            '</span>'+
-            '<span class="previa-txt"><b>'+T.previaTit+'</b>'+
-            '<span class="sub">'+T.previaSub+'</span></span>'+
-          '</button></div>'
-      : '')+
-
-    /* Un fragmento del tema, para quien prefiere oír antes que mirar — y la
-       única prueba que hay mientras un proyecto todavía no tiene vídeo.
-       preload="none" es lo que importa: el MP3 no se descarga hasta que se
-       pulsa, así que no cuesta nada a quien solo pasa por aquí. */
-    (p.audio
-      ? '<div class="oir" data-oir>'+
-          '<button class="oir-b" type="button" aria-label="'+T.oirAria+'">'+
-            '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+
-              '<path class="i-play" d="M8 5v14l11-7z"/>'+
-              '<path class="i-pausa" d="M6 5h4v14H6zM14 5h4v14h-4z"/>'+
-            '</svg>'+
-          '</button>'+
-          '<div class="oir-barra" role="presentation"><span class="oir-va"></span></div>'+
-          '<span class="oir-t et">0:00</span>'+
-          '<audio preload="none" src="'+ruta(p.audio)+'"></audio>'+
-        '</div>'+
-        '<p class="oir-pie et">'+T.oirPie+'</p>'
-      : '')+
-
-    specs(p)+
-    '<ul class="dentro">'+
-      '<li><i>01</i><div><b>'+T.d1t+'</b> '+T.d1+'</div></li>'+
-      '<li><i>02</i><div><b>'+T.d2t+'</b> '+T.d2+'</div></li>'+
-      '<li><i>03</i><div><b>'+T.d3t+'</b> '+T.d3+'</div></li>'+
-      '<li><i>04</i><div><b>'+T.d4t+'</b> '+T.d4+'</div></li>'+
-    '</ul>'+
-    conQue(p)+
-    '<div class="compra"><span class="pr">'+PRECIO+'</span>'+
-      botonCompra(p.id,T.conseguir,"btn")+
-      '<span class="nota">'+T.compraNota+'</span></div>'+
-    midiGratis(p)+
-    (ficha(p) ? '<p class="p-ficha"><a href="'+ficha(p)+'">'+T.fichaEnlace+'</a></p>' : '')+
-    '<p class="legal">'+T.legal+'</p>';
-
-  if(!desdeUrl && location.hash !== "#"+p.id) history.pushState({p:p.id}, "", "#"+p.id);
+  function pintar(html){
+    pin.innerHTML = html;
+    pin.scrollTop = 0;
+    cerrarBtn.focus();
+  }
 
   panel.hidden = false;
   requestAnimationFrame(function(){ velo.classList.add("on"); panel.classList.add("on"); });
   document.documentElement.style.overflow = "hidden";
   fondoInerte(true);
   pintarScroll();
-  cerrarBtn.focus();
+
+  if(cache[u]){ pintar(cache[u]); }
+  else {
+    pin.innerHTML = '<p class="p-cargando et">'+(LANG==="en"?"Loading…":"Cargando…")+'</p>';
+    fetch(u).then(function(r){ return r.ok ? r.text() : Promise.reject(r.status); })
+      .then(function(t){
+        var c = extraer(t);
+        if(!c) throw new Error("sin main");
+        cache[u] = c; pintar(c);
+      })
+      /* si la descarga falla, se va a la página en vez de dejar un hueco */
+      .catch(function(){ location.href = u; });
+  }
+
+  if(!desdeUrl && location.hash !== "#"+p.id) history.pushState({p:p.id}, "", "#"+p.id);
 }
+
 function cerrar(desdeUrl){
   /* Corta el vídeo AL INSTANTE. Si solo se oculta el panel, el iframe sigue
      vivo en el DOM y se sigue oyendo con la web ya cerrada. */

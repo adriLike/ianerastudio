@@ -889,3 +889,5 @@ body.ficha .wrap.ancho{max-width:1100px}
 .tpl .dim{color:var(--tinta45)}
 .tpl b{font-weight:400;color:var(--tinta)}
 body.ficha .tabla-caja{overflow-x:auto;border:1px solid var(--linea);background:var(--n2);margin-top:14px}
+/* el panel descarga la ficha: un aviso mientras llega */
+.p-cargando{color:var(--tinta45);padding:40px 0}
